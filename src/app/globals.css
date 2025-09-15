@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* 카카오 개발자 스타일 기반 CSS Variables */
 :root {
@@ -134,10 +136,10 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  line-height: var(--leading-normal);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  background-color: #151517;
+  color: #ffffff;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'rlig' 1, 'calt' 1;

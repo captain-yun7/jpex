@@ -12,12 +12,12 @@ export default function Home() {
       {/* 임시 Hero Section */}
       <Section padding="xl" id="main-content">
         <div className="text-center space-y-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-gradient animate-fadeInUp">
+          <h1 className="text-5xl md:text-6xl font-bold text-white">
             전문적인 웹 개발 &<br />
             AI 솔루션 서비스
           </h1>
           
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto animate-fadeInUp">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             카카오 개발자 스타일을 기반으로 한 현대적이고 혁신적인<br />
             웹/앱 개발 및 AI 솔루션을 제공합니다.
           </p>

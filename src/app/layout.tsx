@@ -86,7 +86,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       </head>
-      <body className="font-sans bg-background-primary text-text-primary antialiased">
+      <body className="font-sans bg-gray-900 text-white antialiased" style={{backgroundColor: '#151517'}}>
         <ClientErrorBoundary>
           {children}
         </ClientErrorBoundary>
