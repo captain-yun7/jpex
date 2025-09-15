@@ -4,7 +4,6 @@
  */
 
 import { Layout, Section } from '@/components/layout';
-import { Button } from '@/components/ui';
 
 export default function Home() {
   return (
@@ -23,12 +22,18 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp">
-            <Button variant="primary" size="lg" href="/quote">
+            <a
+              href="/quote"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+            >
               견적 요청하기
-            </Button>
-            <Button variant="outline" size="lg" href="/portfolio">
+            </a>
+            <a
+              href="/portfolio"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+            >
               포트폴리오 보기
-            </Button>
+            </a>
           </div>
           
           {/* 상태 표시 */}
@@ -169,9 +174,12 @@ export default function Home() {
           </div>
           
           <div className="pt-8">
-            <Button variant="outline" size="lg" href="/portfolio">
+            <a
+              href="/portfolio"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+            >
               전체 포트폴리오 보기
-            </Button>
+            </a>
           </div>
         </div>
       </Section>
@@ -261,12 +269,18 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="primary" size="lg" href="/contact">
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+            >
               문의하기
-            </Button>
-            <Button variant="ghost" size="lg" href="/about">
+            </a>
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-gray-300 rounded-md hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 transition-all duration-300"
+            >
               더 알아보기
-            </Button>
+            </a>
           </div>
         </div>
       </Section>

@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { NAVIGATION_ITEMS, CONTACT_INFO } from '@/lib/constants';
-import { Button } from '@/components/ui';
 
 interface HeaderProps {
   className?: string;
@@ -144,17 +143,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           {/* 헤더 */}
           <div className="flex items-center justify-between p-6 border-b border-secondary">
             <Logo />
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
               onClick={onClose}
-              className="p-2"
+              className="p-2 text-gray-400 hover:text-white transition-colors"
               aria-label="메뉴 닫기"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            </Button>
+            </button>
           </div>
 
           {/* 네비게이션 링크들 */}
@@ -245,34 +242,28 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
 
             {/* CTA 버튼들 */}
             <div className="hidden md:flex items-center space-x-3">
-              <Link href="/contact">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                >
-                  문의하기
-                </Button>
-              </Link>
-              <Link href="/quote">
-                <Button
-                  variant="primary"
-                  size="sm"
-                >
-                  견적 요청
-                </Button>
-              </Link>
+              <a
+                href="/contact"
+                className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              >
+                문의하기
+              </a>
+              <a
+                href="/quote"
+                className="px-3 py-2 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              >
+                견적 요청
+              </a>
             </div>
 
             {/* 모바일 메뉴 버튼 */}
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
               aria-label="메뉴 열기"
             >
               <MenuIcon isOpen={isMobileMenuOpen} />
-            </Button>
+            </button>
           </div>
         </div>
       </header>
