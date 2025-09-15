@@ -12,6 +12,5 @@ export {
   Container, 
   Grid, 
   Flex,
-  LoadingOverlay,
-  ErrorBoundary 
+  LoadingOverlay
 } from './Layout';

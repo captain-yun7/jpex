@@ -1,103 +1,112 @@
-import Image from "next/image";
+/**
+ * 홈페이지
+ * JPEX 프리랜싱 웹사이트 메인 페이지
+ */
+
+import { Layout, Section } from '@/components/layout';
+import { Button } from '@/components/ui';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Layout>
+      {/* 임시 Hero Section */}
+      <Section padding="xl" id="main-content">
+        <div className="text-center space-y-8">
+          <h1 className="text-5xl md:text-6xl font-bold text-gradient animate-fadeInUp">
+            전문적인 웹 개발 &<br />
+            AI 솔루션 서비스
+          </h1>
+          
+          <p className="text-xl text-text-secondary max-w-3xl mx-auto animate-fadeInUp">
+            카카오 개발자 스타일을 기반으로 한 현대적이고 혁신적인<br />
+            웹/앱 개발 및 AI 솔루션을 제공합니다.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp">
+            <Link href="/quote">
+              <Button variant="primary" size="lg">
+                견적 요청하기
+              </Button>
+            </Link>
+            <Link href="/portfolio">
+              <Button variant="outline" size="lg">
+                포트폴리오 보기
+              </Button>
+            </Link>
+          </div>
+          
+          {/* 상태 표시 */}
+          <div className="inline-flex items-center space-x-2 bg-background-secondary px-4 py-2 rounded-full animate-fadeInUp">
+            <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+            <span className="text-sm text-text-secondary">현재 새로운 프로젝트 문의 가능</span>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Section>
+
+      {/* 서비스 미리보기 */}
+      <Section background="secondary" padding="xl">
+        <div className="text-center space-y-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
+            제공 서비스
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 웹 개발 */}
+            <div className="bg-background-primary p-8 rounded-lg border border-secondary hover:border-accent transition-colors">
+              <div className="text-4xl mb-4">🌐</div>
+              <h3 className="text-xl font-semibold text-text-primary mb-3">웹/앱 개발</h3>
+              <p className="text-text-secondary">
+                반응형 웹사이트 및 모바일 애플리케이션 개발
+              </p>
+            </div>
+            
+            {/* AI 솔루션 */}
+            <div className="bg-background-primary p-8 rounded-lg border border-secondary hover:border-accent transition-colors">
+              <div className="text-4xl mb-4">🤖</div>
+              <h3 className="text-xl font-semibold text-text-primary mb-3">AI 솔루션</h3>
+              <p className="text-text-secondary">
+                ChatGPT 기반 챗봇 및 자동화 시스템 구축
+              </p>
+            </div>
+            
+            {/* 기술 컨설팅 */}
+            <div className="bg-background-primary p-8 rounded-lg border border-secondary hover:border-accent transition-colors">
+              <div className="text-4xl mb-4">💡</div>
+              <h3 className="text-xl font-semibold text-text-primary mb-3">기술 컨설팅</h3>
+              <p className="text-text-secondary">
+                시스템 아키텍처 설계 및 성능 최적화
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+      
+      {/* 연락처 섹션 */}
+      <Section padding="xl">
+        <div className="text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
+            프로젝트 시작하기
+          </h2>
+          
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+            아이디어가 있으시나요? 함께 멋진 디지털 솔루션을 만들어보세요.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/contact">
+              <Button variant="primary" size="lg">
+                문의하기
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button variant="ghost" size="lg">
+                더 알아보기
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Section>
+    </Layout>
   );
 }

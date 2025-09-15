@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_CONFIG, SEO_CONFIG } from "@/lib/constants";
-import { ErrorBoundary } from "@/components/layout";
+import { ClientErrorBoundary } from "@/components/common";
 
 export const metadata: Metadata = {
   title: {
@@ -87,14 +87,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       </head>
       <body className="font-sans bg-background-primary text-text-primary antialiased">
-        <ErrorBoundary
-          onError={(error, errorInfo) => {
-            // 프로덕션에서는 로깅 서비스로 전송
-            console.error('Global error:', error, errorInfo);
-          }}
-        >
+        <ClientErrorBoundary>
           {children}
-        </ErrorBoundary>
+        </ClientErrorBoundary>
         
         {/* Skip to content link for accessibility */}
         <a
