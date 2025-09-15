@@ -38,6 +38,13 @@
 - **Footer**: 소셜 링크, 연락처, 사이트맵
 - **Layout**: ErrorBoundary, SEO 메타데이터, 접근성
 
+#### 7. 홈페이지 구현 (15:00-15:30)
+- **Hero Section**: 그라데이션 텍스트, CTA 버튼, 상태 표시
+- **Services Section**: 3개 주요 서비스, 기술스택 태그, 호버 효과
+- **Portfolio Preview**: 샘플 프로젝트 3개, 카드 레이아웃
+- **Testimonials**: 고객 후기 3개, 평점 시스템
+- **Contact CTA**: 프로젝트 문의 유도 섹션
+
 ### 🛠️ 기술적 성과
 
 #### 성능 최적화
