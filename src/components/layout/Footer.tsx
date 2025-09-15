@@ -3,6 +3,8 @@
  * 카카오 개발자 스타일 기반의 푸터 컴포넌트
  */
 
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
