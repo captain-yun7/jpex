@@ -5,7 +5,6 @@
 
 import { Layout, Section } from '@/components/layout';
 import { Button } from '@/components/ui';
-import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -24,16 +23,12 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp">
-            <Link href="/quote">
-              <Button variant="primary" size="lg">
-                견적 요청하기
-              </Button>
-            </Link>
-            <Link href="/portfolio">
-              <Button variant="outline" size="lg">
-                포트폴리오 보기
-              </Button>
-            </Link>
+            <Button variant="primary" size="lg" href="/quote">
+              견적 요청하기
+            </Button>
+            <Button variant="outline" size="lg" href="/portfolio">
+              포트폴리오 보기
+            </Button>
           </div>
           
           {/* 상태 표시 */}
@@ -174,11 +169,9 @@ export default function Home() {
           </div>
           
           <div className="pt-8">
-            <Link href="/portfolio">
-              <Button variant="outline" size="lg">
-                전체 포트폴리오 보기
-              </Button>
-            </Link>
+            <Button variant="outline" size="lg" href="/portfolio">
+              전체 포트폴리오 보기
+            </Button>
           </div>
         </div>
       </Section>
@@ -268,16 +261,12 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/contact">
-              <Button variant="primary" size="lg">
-                문의하기
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button variant="ghost" size="lg">
-                더 알아보기
-              </Button>
-            </Link>
+            <Button variant="primary" size="lg" href="/contact">
+              문의하기
+            </Button>
+            <Button variant="ghost" size="lg" href="/about">
+              더 알아보기
+            </Button>
           </div>
         </div>
       </Section>

@@ -3,14 +3,17 @@
  * 카카오 개발자 스타일 기반의 버튼 컴포넌트
  */
 
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 // 버튼 변형 타입 정의
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -18,6 +21,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   children: React.ReactNode;
+  className?: string;
+}
+
+interface ButtonProps extends BaseButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
+  href?: never;
+}
+
+interface LinkButtonProps extends BaseButtonProps, React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  onClick?: never;
 }
 
 /**
@@ -118,96 +131,146 @@ const LoadingSpinner: React.FC<{ size: ButtonSize }> = ({ size }) => {
 };
 
 /**
+ * 공통 버튼 콘텐츠 렌더링
+ */
+const ButtonContent: React.FC<{
+  variant: ButtonVariant;
+  size: ButtonSize;
+  loading: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  children: React.ReactNode;
+}> = ({ variant, size, loading, leftIcon, rightIcon, children }) => (
+  <>
+    {/* 왼쪽 아이콘 */}
+    {leftIcon && !loading && (
+      <span className={cn('flex-shrink-0', children && 'mr-2')}>
+        {leftIcon}
+      </span>
+    )}
+
+    {/* 로딩 스피너 */}
+    {loading && (
+      <span className={cn('flex-shrink-0', children && 'mr-2')}>
+        <LoadingSpinner size={size} />
+      </span>
+    )}
+
+    {/* 버튼 텍스트 */}
+    {children && (
+      <span className={loading ? 'opacity-70' : undefined}>
+        {children}
+      </span>
+    )}
+
+    {/* 오른쪽 아이콘 */}
+    {rightIcon && !loading && (
+      <span className={cn('flex-shrink-0', children && 'ml-2')}>
+        {rightIcon}
+      </span>
+    )}
+
+    {/* 호버 효과를 위한 오버레이 */}
+    <span
+      className={cn(
+        'absolute inset-0 rounded-md',
+        'bg-gradient-to-r from-transparent via-white/10 to-transparent',
+        'translate-x-[-100%] hover:translate-x-[100%]',
+        'transition-transform duration-700 ease-in-out',
+        variant === 'primary' && 'opacity-30',
+        variant === 'danger' && 'opacity-30'
+      )}
+    />
+  </>
+);
+
+/**
  * Button 컴포넌트 메인
  */
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant = 'primary',
-      size = 'md',
-      loading = false,
-      fullWidth = false,
-      leftIcon,
-      rightIcon,
-      disabled,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    // 로딩 중이면 disabled 처리
-    const isDisabled = disabled || loading;
+export const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps | LinkButtonProps
+>((props, ref) => {
+  const {
+    variant = 'primary',
+    size = 'md',
+    loading = false,
+    fullWidth = false,
+    leftIcon,
+    rightIcon,
+    className,
+    children,
+    ...otherProps
+  } = props;
 
+  const baseClasses = cn(
+    // 기본 스타일
+    'inline-flex items-center justify-center',
+    'rounded-md font-medium',
+    'focus:outline-none focus:ring-offset-2 focus:ring-offset-background-primary',
+    'relative overflow-hidden',
+    'transition-all duration-normal',
+    
+    // 변형별 스타일
+    buttonVariants[variant],
+    
+    // 크기별 스타일
+    variant !== 'link' && buttonSizes[size],
+    
+    // 전체 너비
+    fullWidth && 'w-full',
+    
+    // 커스텀 클래스
+    className
+  );
+
+  // href가 있으면 Link 컴포넌트로 렌더링
+  if ('href' in props) {
     return (
-      <button
-        ref={ref}
-        disabled={isDisabled}
-        className={cn(
-          // 기본 스타일
-          'inline-flex items-center justify-center',
-          'rounded-md font-medium',
-          'focus:outline-none focus:ring-offset-2 focus:ring-offset-background-primary',
-          'disabled:cursor-not-allowed disabled:opacity-60',
-          'relative overflow-hidden',
-          
-          // 변형별 스타일
-          buttonVariants[variant],
-          
-          // 크기별 스타일
-          variant !== 'link' && buttonSizes[size],
-          
-          // 전체 너비
-          fullWidth && 'w-full',
-          
-          // 커스텀 클래스
-          className
-        )}
-        {...props}
+      <Link
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        href={props.href}
+        className={baseClasses}
+        {...(otherProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
-        {/* 왼쪽 아이콘 */}
-        {leftIcon && !loading && (
-          <span className={cn('flex-shrink-0', children && 'mr-2')}>
-            {leftIcon}
-          </span>
-        )}
-
-        {/* 로딩 스피너 */}
-        {loading && (
-          <span className={cn('flex-shrink-0', children && 'mr-2')}>
-            <LoadingSpinner size={size} />
-          </span>
-        )}
-
-        {/* 버튼 텍스트 */}
-        {children && (
-          <span className={loading ? 'opacity-70' : undefined}>
-            {children}
-          </span>
-        )}
-
-        {/* 오른쪽 아이콘 */}
-        {rightIcon && !loading && (
-          <span className={cn('flex-shrink-0', children && 'ml-2')}>
-            {rightIcon}
-          </span>
-        )}
-
-        {/* 호버 효과를 위한 오버레이 */}
-        <span
-          className={cn(
-            'absolute inset-0 rounded-md',
-            'bg-gradient-to-r from-transparent via-white/10 to-transparent',
-            'translate-x-[-100%] hover:translate-x-[100%]',
-            'transition-transform duration-700 ease-in-out',
-            variant === 'primary' && 'opacity-30',
-            variant === 'danger' && 'opacity-30'
-          )}
-        />
-      </button>
+        <ButtonContent
+          variant={variant}
+          size={size}
+          loading={loading}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+        >
+          {children}
+        </ButtonContent>
+      </Link>
     );
   }
-);
+
+  // 일반 버튼으로 렌더링
+  const isDisabled = (otherProps as ButtonProps).disabled || loading;
+
+  return (
+    <button
+      ref={ref as React.Ref<HTMLButtonElement>}
+      disabled={isDisabled}
+      className={cn(
+        baseClasses,
+        'disabled:cursor-not-allowed disabled:opacity-60'
+      )}
+      {...(otherProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+    >
+      <ButtonContent
+        variant={variant}
+        size={size}
+        loading={loading}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      >
+        {children}
+      </ButtonContent>
+    </button>
+  );
+});
 
 Button.displayName = 'Button';
 
