@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털 크리에이터 - 웹/앱 개발 & AI 혁신</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.95));
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="gradient"><stop offset="0%" style="stop-color:rgba(255,255,255,0.3)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23gradient)"/><circle cx="800" cy="600" r="400" fill="url(%23gradient)"/><circle cx="400" cy="800" r="250" fill="url(%23gradient)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .services {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .portfolio {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #1a1a1a;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NOVA.DEV</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#services">서비스</a></li>
+                <li><a href="#portfolio">포트폴리오</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>디지털 미래를 창조하는<br>혁신적인 개발자</h1>
+                <p class="hero-subtitle">최첨단 기술과 창의적인 아이디어로 당신의 꿈을 현실로 만들어드립니다. 웹/앱 개발부터 AI 솔루션까지, 무엇이든 가능합니다.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-gradient">무료 상담받기</a>
+                    <a href="#portfolio" class="btn-outline">작품 구경하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">혁신적인 서비스</h2>
+            <p class="section-subtitle animate-on-scroll">미래 지향적인 기술로 당신의 비즈니스를 한 단계 업그레이드하세요</p>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🚀</div>
+                    <h3>차세대 웹 플랫폼</h3>
+                    <p>React, Next.js, TypeScript를 활용한 초고속 로딩과 완벽한 SEO 최적화를 갖춘 웹사이트를 제작합니다.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">📱</div>
+                    <h3>크로스플랫폼 앱</h3>
+                    <p>React Native와 Flutter로 iOS와 Android를 동시에 지원하는 네이티브급 성능의 모바일 앱을 개발합니다.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🧠</div>
+                    <h3>AI 통합 솔루션</h3>
+                    <p>ChatGPT, Claude, Gemini API를 활용한 지능형 챗봇과 자동화 시스템으로 업무 효율성을 극대화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">창작 갤러리</h2>
+            <p class="section-subtitle animate-on-scroll">혁신과 창의성이 만나 탄생한 디지털 걸작들을 만나보세요</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">🛒 Smart Commerce</div>
+                    <div class="portfolio-content">
+                        <h3>AI 기반 스마트 쇼핑몰</h3>
+                        <p>개인화된 상품 추천과 자동 재고관리 시스템을 갖춘 차세대 전자상거래 플랫폼. 매출 300% 증가 달성.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">🎯 AI Assistant</div>
+                    <div class="portfolio-content">
+                        <h3>멀티모달 AI 어시스턴트</h3>
+                        <p>텍스트, 음성, 이미지를 동시에 처리하는 GPT-4V 기반 종합 업무 도우미. 업무 효율 500% 향상.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Whisper</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">📊 Analytics Pro</div>
+                    <div class="portfolio-content">
+                        <h3>실시간 데이터 대시보드</h3>
+                        <p>WebSocket과 D3.js를 활용한 실시간 데이터 시각화 플랫폼. 복잡한 데이터를 직관적으로 표현.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h2>창조하는 개발자</h2>
+                    <p>안녕하세요! 저는 기술과 창의성이 만나는 지점에서 혁신을 만들어내는 풀스택 개발자입니다.</p>
+                    <p>단순한 코딩을 넘어서, 사용자 경험과 비즈니스 가치를 극대화하는 디지털 솔루션을 설계하고 구현합니다.</p>
+                    <p>끊임없는 학습과 실험을 통해 최신 기술 트렌드를 앞서가며, 클라이언트의 꿈을 현실로 만드는 것이 저의 사명입니다.</p>
+                </div>
+                <div class="skills-grid animate-on-scroll">
+                    <div class="skill-item">🎨 UI/UX Design</div>
+                    <div class="skill-item">⚛️ React Ecosystem</div>
+                    <div class="skill-item">🚀 Next.js Expert</div>
+                    <div class="skill-item">📱 Mobile Development</div>
+                    <div class="skill-item">🧠 AI Integration</div>
+                    <div class="skill-item">☁️ Cloud Architecture</div>
+                    <div class="skill-item">🔒 Cybersecurity</div>
+                    <div class="skill-item">📊 Data Analytics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">함께 시작해요</h2>
+            <p class="section-subtitle animate-on-scroll">당신의 아이디어를 현실로 만들어드릴게요</p>
+            <form class="contact-form animate-on-scroll">
+                <div class="form-group">
+                    <label>이름 *</label>
+                    <input type="text" required placeholder="홍길동">
+                </div>
+                <div class="form-group">
+                    <label>이메일 *</label>
+                    <input type="email" required placeholder="hello@example.com">
+                </div>
+                <div class="form-group">
+                    <label>프로젝트 유형 *</label>
+                    <select required>
+                        <option value="">프로젝트를 선택해주세요</option>
+                        <option value="website">🌐 웹사이트 개발</option>
+                        <option value="mobile">📱 모바일 앱</option>
+                        <option value="ai">🤖 AI 솔루션</option>
+                        <option value="consulting">💡 기술 컨설팅</option>
+                        <option value="other">✨ 기타 혁신 프로젝트</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>예산 범위</label>
+                    <select>
+                        <option value="">예산을 선택해주세요 (선택사항)</option>
+                        <option value="small">💰 ~500만원</option>
+                        <option value="medium">💎 500만원~2000만원</option>
+                        <option value="large">🚀 2000만원 이상</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>프로젝트 상세 내용 *</label>
+                    <textarea rows="5" required placeholder="어떤 멋진 프로젝트를 함께 만들어갈까요? 자유롭게 작성해주세요!"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">🚀 프로젝트 시작하기</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>NOVA.DEV</h3>
+                    <p>디지털 혁신의 파트너<br>Creating Digital Excellence</p>
+                </div>
+                <div>
+                    <h4>전문 분야</h4>
+                    <p>웹/앱 개발<br>AI 솔루션<br>기술 컨설팅<br>디지털 전환</p>
+                </div>
+                <div>
+                    <h4>연락처</h4>
+                    <p>📧 hello@nova.dev<br>📱 010-1234-5678<br>💬 24/7 상담 가능</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">📧</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">📱</a>
+                <a href="#" class="social-link">🐙</a>
+            </div>
+            <hr style="border: 1px solid #4a5568; margin: 2rem 0;">
+            <p>&copy; 2024 NOVA.DEV. 모든 권리 보유. Made with ❤️ and ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.98), rgba(139, 92, 246, 0.98))';
+            } else {
+                header.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.95))';
+            }
+        });
+    </script>
+</body>
+</html>
