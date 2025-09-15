@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakao Developers Style Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #151517;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 1px solid #2a2a2a;
+            padding: 16px 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #00A0FF;
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #00A0FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: #00A0FF;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0080cc;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: #1a1a1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #00A0FF;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .card-link {
+            color: #00A0FF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Status Dashboard */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .status-item {
+            background: #1a1a1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .status-label {
+            font-size: 12px;
+            color: #888888;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .status-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00FF88;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #888888;
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Kakao Developers</a>
+                <ul class="nav-menu">
+                    <li><a href="#app">App</a></li>
+                    <li><a href="#docs">Docs</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#devtalk">DevTalk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>카카오 플랫폼과 함께<br>새로운 서비스를 만들어보세요</h1>
+                <p>카카오의 다양한 API와 도구들을 활용하여 혁신적인 서비스를 개발하고, 수많은 사용자들에게 새로운 경험을 제공해보세요.</p>
+                <a href="#" class="cta-button">시작하기</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>API 상태</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="status-label">KakaoTalk Login</div>
+                        <div class="status-value">정상</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">KakaoMap</div>
+                        <div class="status-value">정상</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">KakaoPay</div>
+                        <div class="status-value">정상</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">KakaoTalk Messaging</div>
+                        <div class="status-value">정상</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>추천 콘텐츠</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>카카오톡 로그인</h3>
+                        <p>간편하고 안전한 소셜 로그인 서비스로 사용자 경험을 향상시키세요.</p>
+                        <a href="#" class="card-link">바로가기 →</a>
+                    </div>
+                    <div class="card">
+                        <h3>카카오맵</h3>
+                        <p>정확하고 실시간 지도 서비스로 위치기반 서비스를 구현하세요.</p>
+                        <a href="#" class="card-link">바로가기 →</a>
+                    </div>
+                    <div class="card">
+                        <h3>카카오톡 메시징</h3>
+                        <p>카카오톡을 통해 사용자에게 직접 메시지를 전송할 수 있습니다.</p>
+                        <a href="#" class="card-link">바로가기 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>공지사항</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>새로운 API 업데이트</h3>
+                        <p>카카오 플랫폼 API의 새로운 기능들을 확인해보세요.</p>
+                        <a href="#" class="card-link">자세히 보기 →</a>
+                    </div>
+                    <div class="card">
+                        <h3>개발자 가이드</h3>
+                        <p>효율적인 개발을 위한 베스트 프랙티스를 알아보세요.</p>
+                        <a href="#" class="card-link">자세히 보기 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kakao Corp. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
