@@ -49,13 +49,28 @@ export default function AdminPage() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // TODO: Supabase에서 데이터 가져오기
-      // 현재는 빈 데이터로 초기화
-      setInquiries([]);
-      setQuotes([]);
+      // 문의사항 데이터 가져오기
+      const inquiriesResponse = await fetch('/api/admin/inquiries');
+      const inquiriesResult = await inquiriesResponse.json();
+      
+      if (!inquiriesResponse.ok) {
+        throw new Error(inquiriesResult.error);
+      }
+      
+      // 견적 요청 데이터 가져오기
+      const quotesResponse = await fetch('/api/admin/quotes');
+      const quotesResult = await quotesResponse.json();
+      
+      if (!quotesResponse.ok) {
+        throw new Error(quotesResult.error);
+      }
+      
+      setInquiries(inquiriesResult.data || []);
+      setQuotes(quotesResult.data || []);
       setError('');
     } catch (err) {
-      setError('데이터를 불러오는 중 오류가 발생했습니다.');
+      console.error('데이터 로딩 오류:', err);
+      setError(err instanceof Error ? err.message : '데이터를 불러오는 중 오류가 발생했습니다.');
     } finally {
       setLoading(false);
     }

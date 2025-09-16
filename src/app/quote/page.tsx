@@ -270,6 +270,57 @@ export default function Quote() {
     }
   };
 
+  const calculateComplexity = (): number => {
+    let score = 0;
+    
+    // 프로젝트 유형별 기본 점수
+    const typeScores = {
+      'landing': 1,
+      'website': 2,
+      'webapp': 4,
+      'mobile': 5,
+      'ai': 6
+    };
+    score += typeScores[formData.projectType as keyof typeof typeScores] || 0;
+    
+    // 프로젝트 규모별 점수
+    const scopeScores = {
+      'small': 1,
+      'medium': 2,
+      'large': 3,
+      'enterprise': 4
+    };
+    score += scopeScores[formData.projectScope as keyof typeof scopeScores] || 0;
+    
+    // 기능별 점수 (각 기능당 0.5점)
+    score += formData.features.length * 0.5;
+    
+    // 추가 기능별 점수
+    if (formData.responsive) score += 0.5;
+    if (formData.cms) score += 1;
+    if (formData.ecommerce) score += 2;
+    if (formData.userAuth) score += 1;
+    if (formData.api) score += 1.5;
+    if (formData.realtime) score += 2;
+    
+    // AI 기능 복잡도
+    if (formData.aiFeatures.length > 0) {
+      score += formData.aiFeatures.length * 1;
+      
+      const aiComplexityScores = {
+        'basic': 1,
+        'intermediate': 2,
+        'advanced': 3
+      };
+      score += aiComplexityScores[formData.aiComplexity as keyof typeof aiComplexityScores] || 0;
+    }
+    
+    // 기술 스택 복잡도 (각 기술당 0.3점)
+    score += formData.technologies.length * 0.3;
+    
+    return Math.round(score); // 정수로 반올림
+  };
+
   const handleSubmit = async () => {
     if (!formData.agreement) {
       alert('개인정보 수집 및 이용에 동의해주세요.');
