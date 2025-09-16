@@ -271,9 +271,61 @@ export default function Quote() {
   };
 
   const handleSubmit = async () => {
-    // 실제 구현에서는 API 호출
-    console.log('Quote submitted:', { formData, estimatedCost });
-    alert('견적 요청이 전송되었습니다. 곧 연락드리겠습니다.');
+    if (!formData.agreement) {
+      alert('개인정보 수집 및 이용에 동의해주세요.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectType: formData.projectType,
+          projectScope: formData.projectScope,
+          budgetRange: formData.budget,
+          timeline: formData.timeline,
+          requirements: JSON.stringify({
+            features: formData.features,
+            design: formData.design,
+            responsive: formData.responsive,
+            cms: formData.cms,
+            ecommerce: formData.ecommerce,
+            userAuth: formData.userAuth,
+            api: formData.api,
+            realtime: formData.realtime,
+            aiFeatures: formData.aiFeatures,
+            aiComplexity: formData.aiComplexity,
+            technologies: formData.technologies,
+            hosting: formData.hosting,
+            priority: formData.priority,
+            description: formData.description,
+            references: formData.references
+          }),
+          estimatedCost: estimatedCost,
+          complexityScore: calculateComplexity(),
+          urgencyMultiplier: formData.priority === 'urgent' ? 1.5 : formData.priority === 'flexible' ? 0.8 : 1.0
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || '견적 요청 접수에 실패했습니다.');
+      }
+
+      const result = await response.json();
+      console.log('견적 요청 접수 성공:', result);
+      alert('견적 요청이 성공적으로 전송되었습니다. 24시간 내에 상세한 견적서를 이메일로 발송해드리겠습니다.');
+      
+    } catch (error) {
+      console.error('견적 요청 접수 오류:', error);
+      alert(error instanceof Error ? error.message : '견적 요청 접수 중 오류가 발생했습니다.');
+    }
   };
 
   return (

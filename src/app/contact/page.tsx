@@ -138,11 +138,28 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      // 실제 구현에서는 API 호출
-      console.log('Form submitted:', formData);
-      
-      // 임시 지연
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          projectType: formData.projectType,
+          message: formData.message
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || '문의사항 접수에 실패했습니다.');
+      }
+
+      const result = await response.json();
+      console.log('문의사항 접수 성공:', result);
       
       setSubmitStatus('success');
       setFormData({
@@ -157,8 +174,9 @@ export default function Contact() {
         agreement: false
       });
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('문의사항 접수 오류:', error);
       setSubmitStatus('error');
+      alert(error instanceof Error ? error.message : '문의사항 접수 중 오류가 발생했습니다.');
     } finally {
       setIsSubmitting(false);
     }
