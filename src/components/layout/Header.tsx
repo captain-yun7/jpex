@@ -97,7 +97,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, className, onClick })
  */
 const DesktopNavigation: React.FC = () => (
   <nav className="hidden md:flex items-center space-x-1">
-    {NAVIGATION_ITEMS.map((item) => (
+    {NAVIGATION_ITEMS.filter((item) => item.href !== '/portfolio').map((item) => (
       <NavLink key={item.href} href={item.href}>
         {item.name}
       </NavLink>
@@ -157,7 +157,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           {/* 네비게이션 링크들 */}
           <nav className="flex-1 py-6">
             <div className="space-y-1 px-6">
-              {NAVIGATION_ITEMS.map((item) => (
+              {NAVIGATION_ITEMS.filter((item) => item.href !== '/portfolio').map((item) => (
                 <NavLink
                   key={item.href}
                   href={item.href}

@@ -265,21 +265,6 @@ export default function Services() {
             <br />
             스타트업부터 대기업까지, 규모에 관계없이 최적의 결과를 약속드립니다.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-6 pt-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent">50+</div>
-              <div className="text-sm text-text-muted">완료된 프로젝트</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent">99%</div>
-              <div className="text-sm text-text-muted">고객 만족도</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent">100%</div>
-              <div className="text-sm text-text-muted">납기 준수율</div>
-            </div>
-          </div>
         </div>
       </Section>
 
@@ -486,8 +471,8 @@ export default function Services() {
           
           <div className="pt-8 border-t border-secondary/50">
             <p className="text-sm text-text-muted">
-              📞 빠른 상담: <a href="tel:010-1234-5678" className="text-accent hover:underline">010-1234-5678</a> | 
-              ✉️ 이메일: <a href="mailto:contact@jpex.dev" className="text-accent hover:underline">contact@jpex.dev</a>
+              📞 문의: <a href="tel:010-2648-5072" className="text-accent hover:underline">010-2648-5072</a> | 
+              ✉️ 이메일: <a href="mailto:jslovejs182@gmail.com" className="text-accent hover:underline">jslovejs182@gmail.com</a>
             </p>
           </div>
         </div>

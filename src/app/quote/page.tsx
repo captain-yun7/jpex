@@ -48,21 +48,13 @@ export default function Quote() {
     meeting: false,
     agreement: false
   });
-  
-  const [estimatedCost, setEstimatedCost] = useState({
-    min: 0,
-    max: 0,
-    timeline: '',
-    breakdown: [] as Array<{category: string, cost: number, description: string}>
-  });
 
   const steps = [
     { id: 1, title: '기본 정보', description: '연락처 및 회사 정보' },
     { id: 2, title: '프로젝트 유형', description: '개발할 서비스 종류' },
     { id: 3, title: '기능 및 요구사항', description: '필요한 기능 선택' },
-    { id: 4, title: '기술 스택', description: '선호하는 기술' },
-    { id: 5, title: '일정 및 예산', description: '프로젝트 조건' },
-    { id: 6, title: '견적서', description: '예상 비용 확인' }
+    { id: 4, title: '일정', description: '프로젝트 일정' },
+    { id: 5, title: '요청서 확인', description: '입력 정보 확인' }
   ];
 
   const projectTypes = [
@@ -70,162 +62,63 @@ export default function Quote() {
       id: 'landing',
       title: '랜딩 페이지',
       description: '간단한 회사 소개 페이지',
-      basePrice: 100,
       icon: '📄'
     },
     {
       id: 'corporate',
       title: '기업 홈페이지',
       description: '회사 소개 및 서비스 홍보 사이트',
-      basePrice: 200,
       icon: '🏢'
     },
     {
       id: 'ecommerce',
       title: '쇼핑몰',
       description: '온라인 상품 판매 플랫폼',
-      basePrice: 500,
       icon: '🛒'
     },
     {
       id: 'webapp',
       title: '웹 애플리케이션',
       description: '복잡한 기능의 웹 서비스',
-      basePrice: 800,
       icon: '💻'
     },
     {
       id: 'mobile',
       title: '모바일 앱',
       description: 'iOS/Android 네이티브 앱',
-      basePrice: 1000,
       icon: '📱'
     },
     {
       id: 'ai',
       title: 'AI 솔루션',
       description: '인공지능 기반 시스템',
-      basePrice: 600,
       icon: '🤖'
     }
   ];
 
   const featureOptions = [
-    { id: 'responsive', name: '반응형 디자인', cost: 50 },
-    { id: 'cms', name: '관리자 시스템', cost: 200 },
-    { id: 'userAuth', name: '회원가입/로그인', cost: 150 },
-    { id: 'api', name: '외부 API 연동', cost: 100 },
-    { id: 'realtime', name: '실시간 기능', cost: 300 },
-    { id: 'payment', name: '결제 시스템', cost: 200 },
-    { id: 'search', name: '검색 기능', cost: 100 },
-    { id: 'notification', name: '알림 시스템', cost: 150 },
-    { id: 'multilang', name: '다국어 지원', cost: 100 },
-    { id: 'seo', name: 'SEO 최적화', cost: 100 }
+    { id: 'responsive', name: '반응형 디자인' },
+    { id: 'cms', name: '관리자 시스템' },
+    { id: 'userAuth', name: '회원가입/로그인' },
+    { id: 'api', name: '외부 API 연동' },
+    { id: 'realtime', name: '실시간 기능' },
+    { id: 'payment', name: '결제 시스템' },
+    { id: 'search', name: '검색 기능' },
+    { id: 'notification', name: '알림 시스템' },
+    { id: 'multilang', name: '다국어 지원' },
+    { id: 'seo', name: 'SEO 최적화' }
   ];
 
   const aiFeatureOptions = [
-    { id: 'chatbot', name: '챗봇', cost: 300 },
-    { id: 'recommendation', name: '추천 시스템', cost: 400 },
-    { id: 'analysis', name: '데이터 분석', cost: 500 },
-    { id: 'nlp', name: '자연어 처리', cost: 400 },
-    { id: 'computer-vision', name: '이미지 인식', cost: 600 },
-    { id: 'automation', name: '업무 자동화', cost: 300 }
+    { id: 'chatbot', name: '챗봇' },
+    { id: 'recommendation', name: '추천 시스템' },
+    { id: 'analysis', name: '데이터 분석' },
+    { id: 'nlp', name: '자연어 처리' },
+    { id: 'computer-vision', name: '이미지 인식' },
+    { id: 'automation', name: '업무 자동화' }
   ];
 
-  const technologiesOptions = [
-    'React', 'Next.js', 'Vue.js', 'Node.js', 'Python',
-    'WordPress', 'Laravel', 'Django', 'AWS', 'Google Cloud'
-  ];
 
-  // 견적 계산
-  useEffect(() => {
-    calculateEstimate();
-  }, [formData]);
-
-  const calculateEstimate = () => {
-    let baseCost = 0;
-    let additionalCost = 0;
-    const breakdown: Array<{category: string, cost: number, description: string}> = [];
-
-    // 기본 프로젝트 비용
-    const projectType = projectTypes.find(p => p.id === formData.projectType);
-    if (projectType) {
-      baseCost = projectType.basePrice;
-      breakdown.push({
-        category: '기본 개발',
-        cost: baseCost,
-        description: projectType.title
-      });
-    }
-
-    // 기능별 추가 비용
-    let featureCost = 0;
-    formData.features.forEach(featureId => {
-      const feature = featureOptions.find(f => f.id === featureId);
-      if (feature) {
-        featureCost += feature.cost;
-      }
-    });
-
-    if (featureCost > 0) {
-      breakdown.push({
-        category: '추가 기능',
-        cost: featureCost,
-        description: `${formData.features.length}개 기능`
-      });
-      additionalCost += featureCost;
-    }
-
-    // AI 기능 비용
-    let aiCost = 0;
-    formData.aiFeatures.forEach(aiFeatureId => {
-      const aiFeature = aiFeatureOptions.find(f => f.id === aiFeatureId);
-      if (aiFeature) {
-        aiCost += aiFeature.cost;
-      }
-    });
-
-    if (aiCost > 0) {
-      breakdown.push({
-        category: 'AI 기능',
-        cost: aiCost,
-        description: `${formData.aiFeatures.length}개 AI 기능`
-      });
-      additionalCost += aiCost;
-    }
-
-    // 복잡도에 따른 조정
-    let complexityMultiplier = 1;
-    if (formData.projectScope === 'complex') complexityMultiplier = 1.5;
-    else if (formData.projectScope === 'enterprise') complexityMultiplier = 2;
-
-    const totalBase = (baseCost + additionalCost) * complexityMultiplier;
-    
-    // 일정에 따른 조정
-    let urgencyMultiplier = 1;
-    if (formData.timeline === '1-2weeks') urgencyMultiplier = 1.5;
-    else if (formData.timeline === '1month') urgencyMultiplier = 1.2;
-
-    const finalCost = totalBase * urgencyMultiplier;
-
-    setEstimatedCost({
-      min: Math.round(finalCost * 0.8),
-      max: Math.round(finalCost * 1.2),
-      timeline: getTimelineDescription(formData.timeline),
-      breakdown
-    });
-  };
-
-  const getTimelineDescription = (timeline: string) => {
-    const timelineMap: Record<string, string> = {
-      '1-2weeks': '1-2주',
-      '1month': '1개월',
-      '2-3months': '2-3개월',
-      '3-6months': '3-6개월',
-      '6months+': '6개월 이상'
-    };
-    return timelineMap[timeline] || '협의';
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -358,9 +251,7 @@ export default function Quote() {
             description: formData.description,
             references: formData.references
           }),
-          estimatedCost: estimatedCost,
-          complexityScore: calculateComplexity(),
-          urgencyMultiplier: formData.priority === 'urgent' ? 1.5 : formData.priority === 'flexible' ? 0.8 : 1.0
+          complexityScore: calculateComplexity()
         })
       });
 
@@ -371,7 +262,13 @@ export default function Quote() {
 
       const result = await response.json();
       console.log('견적 요청 접수 성공:', result);
-      alert('견적 요청이 성공적으로 전송되었습니다. 24시간 내에 상세한 견적서를 이메일로 발송해드리겠습니다.');
+      
+      // 견적서 상세 페이지로 이동
+      if (result.data && result.data.id) {
+        window.location.href = `/quote/${result.data.id}`;
+      } else {
+        alert('견적 요청이 성공적으로 전송되었습니다. 24시간 내에 상세한 견적서를 이메일로 발송해드리겠습니다.');
+      }
       
     } catch (error) {
       console.error('견적 요청 접수 오류:', error);
@@ -389,9 +286,9 @@ export default function Quote() {
           </h1>
           
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            몇 가지 질문에 답하시면 즉시 예상 견적을 확인하실 수 있습니다.
+            프로젝트에 대한 정보를 입력해주시면 맞춤형 상담을 제공해드립니다.
             <br />
-            정확한 견적은 상담을 통해 제공해드립니다.
+            24시간 내에 연락드리겠습니다.
           </p>
         </div>
       </Section>
@@ -525,7 +422,6 @@ export default function Quote() {
                         <div className="text-4xl">{type.icon}</div>
                         <h3 className="font-semibold text-text-primary">{type.title}</h3>
                         <p className="text-sm text-text-secondary">{type.description}</p>
-                        <div className="text-accent font-bold">{type.basePrice}만원~</div>
                       </div>
                     </div>
                   ))}
@@ -581,10 +477,7 @@ export default function Quote() {
                           onChange={() => handleMultipleChoice('features', feature.id)}
                           className="text-accent focus:ring-accent"
                         />
-                        <div className="flex-1 flex justify-between">
-                          <span className="text-text-primary">{feature.name}</span>
-                          <span className="text-accent font-medium">+{feature.cost}만원</span>
-                        </div>
+                        <span className="text-text-primary">{feature.name}</span>
                       </label>
                     ))}
                   </div>
@@ -602,10 +495,7 @@ export default function Quote() {
                           onChange={() => handleMultipleChoice('aiFeatures', feature.id)}
                           className="text-accent focus:ring-accent"
                         />
-                        <div className="flex-1 flex justify-between">
-                          <span className="text-text-primary">{feature.name}</span>
-                          <span className="text-accent font-medium">+{feature.cost}만원</span>
-                        </div>
+                        <span className="text-text-primary">{feature.name}</span>
                       </label>
                     ))}
                   </div>
@@ -613,64 +503,12 @@ export default function Quote() {
               </div>
             )}
 
-            {/* Step 4: 기술 스택 */}
+            {/* Step 4: 일정 */}
             {currentStep === 4 && (
               <div className="space-y-6">
                 <div className="text-center space-y-2 mb-8">
-                  <h2 className="text-2xl font-bold text-text-primary">기술 스택</h2>
-                  <p className="text-text-secondary">선호하는 기술이 있다면 선택해주세요</p>
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-text-primary mb-3">
-                      선호 기술 (선택사항)
-                    </label>
-                    <div className="flex flex-wrap gap-3">
-                      {technologiesOptions.map(tech => (
-                        <label key={tech} className="flex items-center space-x-2 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={formData.technologies.includes(tech)}
-                            onChange={() => handleMultipleChoice('technologies', tech)}
-                            className="text-accent focus:ring-accent"
-                          />
-                          <span className="text-text-primary px-3 py-1 bg-background-primary rounded-full text-sm">
-                            {tech}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-text-primary mb-2">
-                      호스팅 환경
-                    </label>
-                    <select
-                      name="hosting"
-                      value={formData.hosting}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-secondary bg-background-primary text-text-primary focus:border-accent outline-none"
-                    >
-                      <option value="">선택해주세요</option>
-                      <option value="vercel">Vercel (추천)</option>
-                      <option value="aws">AWS</option>
-                      <option value="google-cloud">Google Cloud</option>
-                      <option value="azure">Microsoft Azure</option>
-                      <option value="other">기타/협의</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Step 5: 일정 및 예산 */}
-            {currentStep === 5 && (
-              <div className="space-y-6">
-                <div className="text-center space-y-2 mb-8">
-                  <h2 className="text-2xl font-bold text-text-primary">일정 및 예산</h2>
-                  <p className="text-text-secondary">프로젝트 조건을 선택해주세요</p>
+                  <h2 className="text-2xl font-bold text-text-primary">프로젝트 일정</h2>
+                  <p className="text-text-secondary">희망하는 일정을 선택해주세요</p>
                 </div>
                 
                 <div className="space-y-6">
@@ -680,12 +518,12 @@ export default function Quote() {
                     </label>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {[
-                        { value: '1-2weeks', label: '1-2주 (긴급)', extra: '+50%' },
-                        { value: '1month', label: '1개월', extra: '+20%' },
-                        { value: '2-3months', label: '2-3개월', extra: '표준' },
-                        { value: '3-6months', label: '3-6개월', extra: '' },
-                        { value: '6months+', label: '6개월 이상', extra: '' },
-                        { value: 'flexible', label: '유연하게', extra: '' }
+                        { value: '1-2weeks', label: '1-2주' },
+                        { value: '1month', label: '1개월' },
+                        { value: '2-3months', label: '2-3개월' },
+                        { value: '3-6months', label: '3-6개월' },
+                        { value: '6months+', label: '6개월 이상' },
+                        { value: 'flexible', label: '유연하게' }
                       ].map(option => (
                         <label key={option.value} className="flex items-center space-x-3 cursor-pointer">
                           <input
@@ -696,35 +534,10 @@ export default function Quote() {
                             onChange={handleInputChange}
                             className="text-accent focus:ring-accent"
                           />
-                          <div>
-                            <div className="text-text-primary">{option.label}</div>
-                            {option.extra && (
-                              <div className="text-xs text-accent">{option.extra}</div>
-                            )}
-                          </div>
+                          <span className="text-text-primary">{option.label}</span>
                         </label>
                       ))}
                     </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-text-primary mb-2">
-                      예상 예산 범위
-                    </label>
-                    <select
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-secondary bg-background-primary text-text-primary focus:border-accent outline-none"
-                    >
-                      <option value="">선택해주세요</option>
-                      <option value="under-200">200만원 미만</option>
-                      <option value="200-500">200-500만원</option>
-                      <option value="500-1000">500-1000만원</option>
-                      <option value="1000-2000">1000-2000만원</option>
-                      <option value="over-2000">2000만원 이상</option>
-                      <option value="discuss">협의</option>
-                    </select>
                   </div>
                   
                   <div>
@@ -758,54 +571,94 @@ export default function Quote() {
               </div>
             )}
 
-            {/* Step 6: 견적서 */}
-            {currentStep === 6 && (
+            {/* Step 5: 요청서 확인 */}
+            {currentStep === 5 && (
               <div className="space-y-8">
                 <div className="text-center space-y-2 mb-8">
-                  <h2 className="text-2xl font-bold text-text-primary">예상 견적서</h2>
-                  <p className="text-text-secondary">아래는 입력하신 정보를 바탕으로 한 예상 견적입니다</p>
+                  <h2 className="text-2xl font-bold text-text-primary">요청서 확인</h2>
+                  <p className="text-text-secondary">입력하신 정보를 확인해주세요</p>
                 </div>
                 
-                {/* 견적 요약 */}
+                {/* 요청 정보 요약 */}
                 <div className="bg-gradient-to-r from-accent/10 to-accent/5 p-8 rounded-2xl border border-accent/20">
-                  <div className="text-center space-y-4">
-                    <h3 className="text-xl font-semibold text-text-primary">예상 개발 비용</h3>
-                    <div className="text-4xl font-bold text-accent">
-                      {estimatedCost.min.toLocaleString()}만원 - {estimatedCost.max.toLocaleString()}만원
-                    </div>
-                    <div className="text-text-secondary">
-                      예상 개발 기간: {estimatedCost.timeline}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* 견적 상세 */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-text-primary">비용 상세</h4>
-                  <div className="space-y-3">
-                    {estimatedCost.breakdown.map((item, index) => (
-                      <div key={index} className="flex justify-between items-center py-3 border-b border-secondary/30">
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold text-text-primary mb-3">프로젝트 정보</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <div className="font-medium text-text-primary">{item.category}</div>
-                          <div className="text-sm text-text-secondary">{item.description}</div>
+                          <span className="text-text-secondary text-sm">프로젝트 유형</span>
+                          <p className="text-text-primary font-medium">
+                            {projectTypes.find(p => p.id === formData.projectType)?.title || '-'}
+                          </p>
                         </div>
-                        <div className="font-semibold text-accent">
-                          {item.cost.toLocaleString()}만원
+                        <div>
+                          <span className="text-text-secondary text-sm">프로젝트 규모</span>
+                          <p className="text-text-primary font-medium">
+                            {formData.projectScope === 'simple' ? '간단함' : 
+                             formData.projectScope === 'complex' ? '복잡함' : 
+                             formData.projectScope === 'enterprise' ? '대규모' : '-'}
+                          </p>
+                        </div>
+                        <div>
+                          <span className="text-text-secondary text-sm">희망 일정</span>
+                          <p className="text-text-primary font-medium">
+                            {formData.timeline === '1-2weeks' ? '1-2주' :
+                             formData.timeline === '1month' ? '1개월' :
+                             formData.timeline === '2-3months' ? '2-3개월' :
+                             formData.timeline === '3-6months' ? '3-6개월' :
+                             formData.timeline === '6months+' ? '6개월 이상' :
+                             formData.timeline === 'flexible' ? '유연하게' : '-'}
+                          </p>
+                        </div>
+                        <div>
+                          <span className="text-text-secondary text-sm">미팅 희망</span>
+                          <p className="text-text-primary font-medium">{formData.meeting ? '예' : '아니오'}</p>
                         </div>
                       </div>
-                    ))}
+                    </div>
+                    
+                    {formData.features.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-semibold text-text-primary mb-2">선택한 기능</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {formData.features.map(featureId => {
+                            const feature = featureOptions.find(f => f.id === featureId);
+                            return feature ? (
+                              <span key={featureId} className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">
+                                {feature.name}
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {formData.aiFeatures.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-semibold text-text-primary mb-2">AI 기능</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {formData.aiFeatures.map(featureId => {
+                            const feature = aiFeatureOptions.find(f => f.id === featureId);
+                            return feature ? (
+                              <span key={featureId} className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
+                                {feature.name}
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 
-                {/* 주의사항 */}
+                {/* 안내사항 */}
                 <div className="bg-background-primary p-6 rounded-xl border border-secondary">
-                  <h4 className="font-semibold text-text-primary mb-3">📋 안내사항</h4>
+                  <h4 className="font-semibold text-text-primary mb-3">📋 다음 단계</h4>
                   <ul className="space-y-2 text-sm text-text-secondary">
-                    <li>• 위 견적은 예상 견적으로, 정확한 견적은 상담 후 제공됩니다</li>
-                    <li>• 프로젝트 복잡도에 따라 비용이 달라질 수 있습니다</li>
-                    <li>• 디자인 비용은 별도로 산정됩니다</li>
-                    <li>• 유지보수 및 호스팅 비용은 포함되어 있지 않습니다</li>
-                    <li>• 견적서 유효기간은 30일입니다</li>
+                    <li>• 요청서가 접수되면 24시간 내에 연락드리겠습니다</li>
+                    <li>• 상세한 상담을 통해 프로젝트 범위를 확정합니다</li>
+                    <li>• 정확한 견적서는 상담 후 제공됩니다</li>
+                    <li>• 프로젝트 시작 전 계약서를 작성합니다</li>
                   </ul>
                 </div>
                 
@@ -853,7 +706,7 @@ export default function Quote() {
                   disabled={!formData.agreement}
                   className="px-8 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
                 >
-                  견적 요청하기
+                  상담 요청하기
                 </button>
               )}
             </div>

@@ -433,9 +433,9 @@ export const SOCIAL_LINKS = {
 // ============================================================================
 
 export const CONTACT_INFO = {
-  email: 'contact@jpex.kr',
-  phone: '010-1234-5678',
-  address: '서울특별시 강남구',
+  email: 'jslovejs182@gmail.com',
+  phone: '010-2648-5072',
+  address: '서울 및 경기 협의',
   businessHours: {
     weekdays: '09:00 - 18:00',
     saturday: '10:00 - 16:00',
