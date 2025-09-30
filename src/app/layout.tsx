@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: SEO_CONFIG.defaultTitle,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: SEO_CONFIG.author }],
   creator: SEO_CONFIG.creator,
   publisher: SEO_CONFIG.publisher,

@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Layout, Section } from '@/components/layout';
 
 export default function Quote() {

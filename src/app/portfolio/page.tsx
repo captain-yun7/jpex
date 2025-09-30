@@ -7,6 +7,7 @@
 
 import { useState } from 'react';
 import { Layout, Section } from '@/components/layout';
+import Link from 'next/link';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -359,7 +360,7 @@ export default function Portfolio() {
                   <div className="space-y-3">
                     <h3 className="font-semibold text-text-primary">주요 성과</h3>
                     <div className="space-y-2">
-                      {Object.entries(project.results).map(([key, value], resultIndex) => (
+                      {Object.entries(project.results).map(([, value], resultIndex) => (
                         <div key={resultIndex} className="flex items-center space-x-2">
                           <span className="text-accent">🎯</span>
                           <span className="text-sm font-medium text-accent">{value}</span>
@@ -436,12 +437,12 @@ export default function Portfolio() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
+            <Link
               href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
             >
               프로젝트 의뢰하기
-            </a>
+            </Link>
             <a
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"

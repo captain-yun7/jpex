@@ -248,12 +248,12 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
               >
                 문의하기
               </a>
-              <a
+              <Link
                 href="/quote"
                 className="px-3 py-2 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
               >
                 견적 요청
-              </a>
+              </Link>
             </div>
 
             {/* 모바일 메뉴 버튼 */}

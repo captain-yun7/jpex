@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 type InputVariant = 'default' | 'filled' | 'outlined';
 type InputSize = 'sm' | 'md' | 'lg';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: InputVariant;
   inputSize?: InputSize;
   error?: boolean;
@@ -76,7 +76,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     // 고유 ID 생성 (접근성을 위해)
-    const inputId = id || `input-${React.useId()}`;
+    const generatedId = React.useId();
+    const inputId = id || `input-${generatedId}`;
     const hasError = error || !!errorMessage;
 
     return (
@@ -220,7 +221,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref
   ) => {
-    const inputId = id || `textarea-${React.useId()}`;
+    const generatedId = React.useId();
+    const inputId = id || `textarea-${generatedId}`;
     const hasError = error || !!errorMessage;
 
     return (
@@ -348,7 +350,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref
   ) => {
-    const inputId = id || `select-${React.useId()}`;
+    const generatedId = React.useId();
+    const inputId = id || `select-${generatedId}`;
     const hasError = error || !!errorMessage;
 
     return (

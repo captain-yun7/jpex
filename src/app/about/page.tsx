@@ -4,7 +4,7 @@
  */
 
 import { Layout, Section } from '@/components/layout';
-import { SITE_CONFIG } from '@/lib/constants';
+import Link from 'next/link';
 
 export default function About() {
   const skills = [
@@ -191,12 +191,12 @@ export default function About() {
             >
               연락하기
             </a>
-            <a
+            <Link
               href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"
             >
               견적 요청하기
-            </a>
+            </Link>
           </div>
         </div>
       </Section>

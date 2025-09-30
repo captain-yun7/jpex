@@ -6,7 +6,7 @@ export async function GET() {
     const supabase = await createClient()
     
     // Supabase 연결 테스트
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('inquiries')
       .select('count')
       .single()

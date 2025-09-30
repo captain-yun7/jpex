@@ -19,7 +19,7 @@ export interface ApiResponse<T> {
   error?: {
     code: string;
     message: string;
-    details?: any;
+    details?: unknown;
   };
   timestamp: string;
 }
@@ -62,7 +62,7 @@ export interface Project extends BaseEntity {
     revenue_increase?: number;
     user_growth?: number;
     performance_improvement?: number;
-    [key: string]: any;
+    [key: string]: number | undefined;
   };
   
   // 클라이언트 정보
@@ -255,7 +255,7 @@ export interface AnalyticsEvent {
     element_text?: string;
     project_id?: string;
     form_type?: string;
-    [key: string]: any;
+    [key: string]: string | number | undefined;
   };
   user_agent?: string;
   referrer?: string;
@@ -377,7 +377,7 @@ export interface PaginationParams {
 export interface AppError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
   timestamp: string;
 }
 
@@ -388,7 +388,7 @@ export type LoadingState = 'idle' | 'loading' | 'success' | 'error';
 // ============================================================================
 
 export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-export type Required<T, K extends keyof T> = T & Required<Pick<T, K>>;
+export type RequiredFields<T, K extends keyof T> = T & { [P in K]-?: T[P] };
 
 // 데이터베이스 생성을 위한 타입 (id, created_at, updated_at 제외)
 export type CreateInput<T extends BaseEntity> = Omit<T, 'id' | 'created_at' | 'updated_at'>;

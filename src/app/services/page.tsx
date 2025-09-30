@@ -4,7 +4,7 @@
  */
 
 import { Layout, Section } from '@/components/layout';
-import { PROJECT_CATEGORIES } from '@/lib/constants';
+import Link from 'next/link';
 
 export default function Services() {
   const services = [
@@ -455,12 +455,12 @@ export default function Services() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
+            <Link
               href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
             >
               견적 요청하기
-            </a>
+            </Link>
             <a
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"

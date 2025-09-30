@@ -8,6 +8,27 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Layout, Section } from '@/components/layout';
+import Link from 'next/link';
+
+interface RequirementsData {
+  features?: string[];
+  aiFeatures?: string[];
+  technologies?: string[];
+  description?: string;
+}
+
+interface EstimatedCostBreakdown {
+  category: string;
+  description?: string;
+  cost?: number;
+}
+
+interface EstimatedCostData {
+  min?: number;
+  max?: number;
+  timeline?: string;
+  breakdown?: EstimatedCostBreakdown[];
+}
 
 interface QuoteData {
   id: string;
@@ -18,8 +39,8 @@ interface QuoteData {
   project_scope: string;
   budget_range: string;
   timeline: string;
-  requirements: any;
-  estimated_cost: any;
+  requirements: RequirementsData | string;
+  estimated_cost: EstimatedCostData | string;
   complexity_score: number;
   urgency_multiplier: number;
   status: string;
@@ -165,9 +186,9 @@ export default function QuoteDetail() {
               <p className="text-text-secondary">
                 요청하신 견적서를 찾을 수 없습니다. URL을 확인해주세요.
               </p>
-              <a href="/quote" className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors">
+              <Link href="/quote" className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors">
                 새 견적 요청하기
-              </a>
+              </Link>
             </div>
           </div>
         </Section>
@@ -175,11 +196,13 @@ export default function QuoteDetail() {
     );
   }
 
-  const requirements = typeof quote.requirements === 'string' 
+  const requirements: RequirementsData = typeof quote.requirements === 'string' 
     ? JSON.parse(quote.requirements) 
     : quote.requirements;
 
-  const estimatedCost = quote.estimated_cost || {};
+  const estimatedCost: EstimatedCostData = typeof quote.estimated_cost === 'string'
+    ? JSON.parse(quote.estimated_cost)
+    : quote.estimated_cost || {};
 
   return (
     <Layout>
@@ -334,7 +357,7 @@ export default function QuoteDetail() {
               {estimatedCost.breakdown && estimatedCost.breakdown.length > 0 && (
                 <div className="mt-6 space-y-2">
                   <h3 className="text-lg font-medium text-text-primary">비용 상세</h3>
-                  {estimatedCost.breakdown.map((item: any, index: number) => (
+                  {estimatedCost.breakdown.map((item: EstimatedCostBreakdown, index: number) => (
                     <div key={index} className="flex justify-between py-2 border-b border-secondary/30">
                       <div>
                         <span className="text-text-primary">{item.category}</span>
@@ -364,18 +387,18 @@ export default function QuoteDetail() {
 
           {/* 액션 버튼 */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a 
+            <Link 
               href="/contact" 
               className="px-8 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors text-center font-semibold"
             >
               상담 요청하기
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/quote" 
               className="px-8 py-3 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors text-center font-semibold"
             >
               새 견적 요청
-            </a>
+            </Link>
           </div>
         </div>
       </Section>

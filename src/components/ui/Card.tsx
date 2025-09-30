@@ -4,13 +4,14 @@
  */
 
 import React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 // 카드 변형 타입 정의
 type CardVariant = 'default' | 'outlined' | 'elevated' | 'glass' | 'gradient';
 type CardPadding = 'none' | 'sm' | 'md' | 'lg' | 'xl';
 
-interface CardProps {
+export interface CardProps {
   variant?: CardVariant;
   padding?: CardPadding;
   hoverable?: boolean;
@@ -251,10 +252,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* 프로젝트 이미지 */}
       {imageUrl && (
         <div className="relative w-full h-48 -mx-4 -mt-4 mb-4">
-          <img
+          <Image
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>

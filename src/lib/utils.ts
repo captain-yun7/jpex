@@ -202,12 +202,12 @@ export function chunk<T>(array: T[], size: number): T[][] {
 /**
  * 객체에서 빈 값들을 제거
  */
-export function removeEmpty<T extends Record<string, any>>(obj: T): Partial<T> {
+export function removeEmpty<T extends Record<string, unknown>>(obj: T): Partial<T> {
   const cleaned: Partial<T> = {};
   
   for (const [key, value] of Object.entries(obj)) {
     if (value !== null && value !== undefined && value !== '') {
-      cleaned[key as keyof T] = value;
+      cleaned[key as keyof T] = value as T[keyof T];
     }
   }
   
@@ -222,7 +222,7 @@ export function deepClone<T>(obj: T): T {
   if (obj instanceof Date) return new Date(obj.getTime()) as unknown as T;
   if (obj instanceof Array) return obj.map(item => deepClone(item)) as unknown as T;
   if (typeof obj === 'object') {
-    const cloned: Record<string, any> = {};
+    const cloned: Record<string, unknown> = {};
     for (const key in obj) {
       cloned[key] = deepClone(obj[key]);
     }
@@ -350,7 +350,7 @@ export function isLightColor(hexColor: string): boolean {
  * 디바운스 함수
  * 연속된 호출을 방지하여 성능 최적화
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
@@ -366,7 +366,7 @@ export function debounce<T extends (...args: any[]) => any>(
  * 스로틀 함수
  * 일정 시간 간격으로만 함수 실행 허용
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {
@@ -388,7 +388,7 @@ export function throttle<T extends (...args: any[]) => any>(
 /**
  * 안전한 로컬 스토리지 설정
  */
-export function setLocalStorage(key: string, value: any): boolean {
+export function setLocalStorage(key: string, value: unknown): boolean {
   try {
     localStorage.setItem(key, JSON.stringify(value));
     return true;
@@ -443,7 +443,7 @@ export function generateMetaDescription(content: string): string {
 /**
  * JSON-LD 구조화 데이터 생성
  */
-export function generateJsonLd(type: string, data: Record<string, any>): string {
+export function generateJsonLd(type: string, data: Record<string, unknown>): string {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': type,
