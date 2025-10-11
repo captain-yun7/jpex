@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS 온라인 강의 플랫폼 견적서</title>
+
+    <!-- PDF 생성 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 헤더 영역 */
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* 수신처 정보 */
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 100px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        /* 메인 콘텐츠 */
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* 제작범위 테이블 스타일 */
+        .scope-table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .scope-table td {
+            padding: 15px;
+            vertical-align: top;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .scope-table td:first-child {
+            width: 150px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .scope-table ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .scope-table li {
+            padding: 3px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .scope-table li:before {
+            content: "• ";
+            color: #888;
+            margin-right: 5px;
+        }
+
+        /* 견적 테이블 */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .price-table thead {
+            background: #f5f5f5;
+        }
+
+        .price-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .price-table td {
+            padding: 12px;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .price-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .price-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .price-table tr.total-row td {
+            padding: 15px 12px;
+            font-size: 16px;
+            border-top: 2px solid #333;
+        }
+
+        .price-table tr.highlight-row {
+            background: #e8f5e9;
+        }
+
+        .price-table tr.highlight-row td {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        /* 참고사항 */
+        .notes-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .notes-list li {
+            padding: 5px 0;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .notes-list li:before {
+            content: "※ ";
+            color: #888;
+            margin-right: 5px;
+        }
+
+        /* 푸터 */
+        .footer {
+            margin-top: 60px;
+            padding: 40px 60px;
+            border-top: 1px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .company-details {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .company-details strong {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .validity-notice {
+            text-align: right;
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* 액션 버튼 스타일 */
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        /* 인쇄 스타일 */
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .doc-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .doc-title {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 액션 버튼들 -->
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web Development & AI Solutions</div>
+                </div>
+                <h1 class="doc-title">견 적 서</h1>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: LMS-2025-001</span>
+                <span>작성일자: 2025년 10월 11일</span>
+            </div>
+        </div>
+
+        <!-- 수신처 정보 -->
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td>문의자님 귀하</td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>LMS 온라인 강의 플랫폼 제작</td>
+                </tr>
+                <tr>
+                    <td>예상 기간</td>
+                    <td>3 ~ 5주</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="content">
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <table class="scope-table">
+                    <tr>
+                        <td>예상 규모</td>
+                        <td>
+                            <ul>
+                                <li>예상 강의 수: 25~60개</li>
+                                <li>예상 수강생: 50명</li>
+                                <li>평균 영상 길이: 30분</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>기술 스택</td>
+                        <td>
+                            <ul>
+                                <li>Next.js 15</li>
+                                <li>Prisma + Supabase PostgreSQL</li>
+                                <li>Supabase Auth</li>
+                                <li>Vimeo Player</li>
+                                <li>Toss Payments</li>
+                                <li>TailwindCSS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 제작 범위 -->
+            <div class="section">
+                <h2 class="section-title">제작 범위</h2>
+                <table class="scope-table">
+                    <tr>
+                        <td>사용자 인증</td>
+                        <td>
+                            <ul>
+                                <li>회원가입 / 로그인 / 로그아웃</li>
+                                <li>이메일 인증</li>
+                                <li>비밀번호 찾기 및 재설정</li>
+                                <li>프로필 관리</li>
+                                <li>다중 기기 로그인 제한 (최대 3대)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>강의 시스템</td>
+                        <td>
+                            <ul>
+                                <li>강의 목록</li>
+                                <li>강의 상세 페이지 (커리큘럼)</li>
+                                <li>미리보기 영상</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>동영상 학습</td>
+                        <td>
+                            <ul>
+                                <li>Vimeo Player</li>
+                                <li>배속 조절, 화질 선택</li>
+                                <li>진도율 자동 저장</li>
+                                <li>이어보기 기능</li>
+                                <li>레슨 완료 체크</li>
+                                <li>우클릭/개발자도구 차단</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학습 관리</td>
+                        <td>
+                            <ul>
+                                <li>내 강의실</li>
+                                <li>학습 진도율 표시</li>
+                                <li>학습 시간 통계</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>결제 시스템</td>
+                        <td>
+                            <ul>
+                                <li>장바구니</li>
+                                <li>결제 연동</li>
+                                <li>결제 내역 조회</li>
+                                <li>영수증 출력</li>
+                                <li>환불 신청 및 처리</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>커뮤니티</td>
+                        <td>
+                            <ul>
+                                <li>공지사항</li>
+                                <li>Q&A 게시판</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>관리자 기능</td>
+                        <td>
+                            <ul>
+                                <li>강의 CRUD (생성, 수정, 삭제)</li>
+                                <li>챕터/레슨 관리</li>
+                                <li>영상 업로드 및 관리</li>
+                                <li>수강생 관리 (진도 조회, 권한 관리)</li>
+                                <li>결제 관리 및 통계</li>
+                                <li>게시판 관리</li>
+                                <li>통계 대시보드</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>보안 및 최적화</td>
+                        <td>
+                            <ul>
+                                <li>영상 다운로드 방지</li>
+                                <li>동시 접속 제한</li>
+                                <li>기기 등록 시스템</li>
+                                <li>반응형 디자인 (모바일/태블릿/PC)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 견적 내역 -->
+            <div class="section">
+                <h2 class="section-title">개발 견적</h2>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 70%;">항목</th>
+                            <th style="width: 30%;" class="amount">금액(원)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LMS 플랫폼 풀 패키지 개발</td>
+                            <td class="amount">1,500,000</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>개발 총액</td>
+                            <td class="amount">1,500,000 (vat 별도)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 월간 운영 비용 -->
+            <div class="section">
+                <h2 class="section-title">월간 운영 비용</h2>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 70%;">항목</th>
+                            <th style="width: 30%;" class="amount">금액(원)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>동영상 플레이어</td>
+                            <td class="amount">50,000/월</td>
+                        </tr>
+                        <tr>
+                            <td>서버 호스팅 (데이터베이스, 웹서버 포함)</td>
+                            <td class="amount">50,000/월</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>월간 운영비 합계</td>
+                            <td class="amount">100,000/월 (vat 별도) </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 결제 조건 -->
+            <div class="section">
+                <h2 class="section-title">결제 조건</h2>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">단계</th>
+                            <th style="width: 40%;">내용</th>
+                            <th style="width: 30%;" class="amount">금액(원)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>착수금</td>
+                            <td>프로젝트 시작 시</td>
+                            <td class="amount">600,000 (40%)</td>
+                        </tr>
+                        <tr>
+                            <td>잔금</td>
+                            <td>프로젝트 완료 및 배포 시</td>
+                            <td class="amount">900,000 (60%)</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2">총 개발 비용</td>
+                            <td class="amount">1,500,000 (vat 별도)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 제공 사항 -->
+            <div class="section">
+                <h2 class="section-title">제공 사항</h2>
+                <table class="price-table">
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td colspan="3" style="text-align: center; padding: 15px;">
+                                ✓ 프로젝트 완료 후 3개월간 무상 하자보수 제공 (기능 추가 제외)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 참고사항 -->
+            <div class="section">
+                <h2 class="section-title">참고사항</h2>
+                <ul class="notes-list">
+                    <li>본 견적은 요구사항을 기반으로 작성되었으며, 추가 기능 요청 시 별도 협의가 필요합니다</li>
+                    <li>강의 콘텐츠(동영상, 이미지, 설명 등)는 고객사에서 제공해 주셔야 합니다</li>
+                    <li>개발 기간은 프로젝트 규모와 요구사항에 따라 조정될 수 있습니다</li>
+                    <li>계약 후 일정 및 마일스톤을 상세히 협의합니다</li>
+                    <li>완료 후 3개월간 무상 하자보수를 제공합니다 (기능 추가는 별도 견적)</li>
+                    <li>월간 운영비는 개발 완료 시점부터 매월 특정일(협의)에 부과됩니다</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 푸터 -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="company-details">
+                    <strong>JPEX Studio</strong><br>
+                    연락처: 010-2648-5072<br>
+                    이메일: jslovejs182@gmail.com<br>
+                </div>
+            </div>
+            <div class="validity-notice">
+                상기 견적 내용을 확인하시고 문의사항이 있으시면 연락 부탁드립니다.<br>
+                본 견적서는 작성일로부터 30일간 유효합니다.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
