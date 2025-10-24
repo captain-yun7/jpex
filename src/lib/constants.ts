@@ -33,11 +33,6 @@ export const NAVIGATION_ITEMS = [
     description: '메인 페이지',
   },
   {
-    name: '소개',
-    href: '/about',
-    description: '회사 소개 및 경력',
-  },
-  {
     name: '서비스',
     href: '/services',
     description: '제공 서비스 안내',
@@ -48,12 +43,17 @@ export const NAVIGATION_ITEMS = [
     description: '프로젝트 사례',
   },
   {
-    name: '연락처',
-    href: '/contact',
-    description: '문의 및 연락',
+    name: '진행 프로세스',
+    href: '/process',
+    description: '프로젝트 진행 과정',
   },
   {
-    name: '견적 요청',
+    name: '고객 후기',
+    href: '/reviews',
+    description: '고객 리뷰 및 평가',
+  },
+  {
+    name: '견적 문의',
     href: '/quote',
     description: '프로젝트 견적 요청',
   },

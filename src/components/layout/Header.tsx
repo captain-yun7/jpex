@@ -144,7 +144,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, className, onClick })
  */
 const DesktopNavigation: React.FC = () => (
   <nav className="hidden lg:flex items-center space-x-2">
-    {NAVIGATION_ITEMS.filter((item) => item.href !== '/portfolio').map((item, index) => (
+    {NAVIGATION_ITEMS.filter((item) => item.href !== '/quote').map((item, index) => (
       <motion.div
         key={item.href}
         initial={{ opacity: 0, y: -10 }}
@@ -160,17 +160,10 @@ const DesktopNavigation: React.FC = () => (
 );
 
 /**
- * CTA 버튼들
+ * CTA 버튼
  */
 const CTAButtons: React.FC = () => (
-  <div className="hidden lg:flex items-center space-x-4">
-    <Link
-      href="/contact"
-      className="px-4 py-2 text-base font-medium text-white hover:text-green transition-colors duration-300"
-    >
-      문의하기
-    </Link>
-
+  <div className="hidden lg:flex items-center">
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -181,7 +174,7 @@ const CTAButtons: React.FC = () => (
       >
         {/* 버튼 배경 애니메이션 */}
         <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-        <span className="relative z-10">견적 요청</span>
+        <span className="relative z-10">견적 문의</span>
       </Link>
     </motion.div>
   </div>
@@ -250,7 +243,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           {/* 네비게이션 링크들 */}
           <nav className="flex-1 py-8 overflow-y-auto">
             <div className="space-y-2 px-6">
-              {NAVIGATION_ITEMS.filter((item) => item.href !== '/portfolio').map((item, index) => (
+              {NAVIGATION_ITEMS.map((item, index) => (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, x: 50 }}
