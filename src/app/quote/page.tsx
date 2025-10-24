@@ -437,9 +437,9 @@ export default function Quote() {
             급하신가요? 바로 연락주세요
           </h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-gray-400">
-            <a href="tel:010-2648-5072" className="flex items-center gap-2 hover:text-green transition-colors">
+            <a href="tel:010-2174-5072" className="flex items-center gap-2 hover:text-green transition-colors">
               <span>📞</span>
-              <span className="font-semibold">010-2648-5072</span>
+              <span className="font-semibold">010-2174-5072</span>
             </a>
             <span className="hidden sm:block">|</span>
             <a href="mailto:jslovejs182@gmail.com" className="flex items-center gap-2 hover:text-green transition-colors">

@@ -348,7 +348,7 @@ export default function Services() {
           {/* Contact Info */}
           <div className="pt-8 border-t border-gray-800/50 max-w-2xl mx-auto">
             <p className="text-sm text-gray-500">
-              📞 <a href="tel:010-2648-5072" className="text-green hover:underline">010-2648-5072</a> |
+              📞 <a href="tel:010-2174-5072" className="text-green hover:underline">010-2174-5072</a> |
               ✉️ <a href="mailto:jslovejs182@gmail.com" className="text-green hover:underline ml-2">jslovejs182@gmail.com</a>
             </p>
           </div>

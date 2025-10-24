@@ -434,7 +434,7 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
   email: 'jslovejs182@gmail.com',
-  phone: '010-2648-5072',
+  phone: '010-2174-5072',
   address: '서울 및 경기 협의',
   businessHours: {
     weekdays: '09:00 - 18:00',
