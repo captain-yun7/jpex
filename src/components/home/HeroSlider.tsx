@@ -9,6 +9,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { WebDevIcon, AppDevIcon, AIIcon, CloudIcon } from '@/components/icons';
 
 // 슬라이드 데이터 인터페이스
 interface Slide {
@@ -22,6 +23,7 @@ interface Slide {
   primaryCTA: string;
   secondaryCTA: string;
   stats: Array<{ value: string; label: string }>;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
 }
 
 // 슬라이드 컨텐츠
@@ -41,6 +43,7 @@ const slides: Slide[] = [
       { value: '98%', label: '고객 만족도' },
       { value: '24/7', label: '기술 지원' },
     ],
+    icon: WebDevIcon,
   },
   {
     id: 2,
@@ -57,6 +60,7 @@ const slides: Slide[] = [
       { value: '4.8★', label: '평균 평점' },
       { value: '60일', label: '평균 개발 기간' },
     ],
+    icon: AppDevIcon,
   },
   {
     id: 3,
@@ -73,6 +77,7 @@ const slides: Slide[] = [
       { value: '5x', label: '처리 속도 향상' },
       { value: '40%', label: '비용 절감' },
     ],
+    icon: AIIcon,
   },
   {
     id: 4,
@@ -89,6 +94,7 @@ const slides: Slide[] = [
       { value: '50%', label: '인프라 비용 절감' },
       { value: '3배', label: '배포 속도 향상' },
     ],
+    icon: CloudIcon,
   },
 ];
 
@@ -305,17 +311,35 @@ export const HeroSlider: React.FC = () => {
             </div>
           </div>
 
-          {/* 회전 장식 요소 (Yellopencil 스타일) */}
-          <motion.div
-            className="absolute top-1/4 right-[10%] w-64 h-64 lg:w-96 lg:h-96 border-4 border-green/20 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-[15%] w-32 h-32 lg:w-48 lg:h-48 border-4 border-green/10 rounded-full"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-          />
+          {/* 아이콘 & 회전 장식 요소 (Yellopencil 스타일) */}
+          <div className="hidden lg:block absolute top-1/2 right-[10%] -translate-y-1/2">
+            {/* 회전하는 외부 원 */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border-4 border-green/20 rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            />
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-4 border-green/10 rounded-full"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+            />
+
+            {/* SVG 아이콘 */}
+            <motion.div
+              className="relative z-10"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 20,
+                delay: 0.3
+              }}
+            >
+              <slide.icon size={280} />
+            </motion.div>
+          </div>
         </motion.div>
       </AnimatePresence>
 

@@ -6,6 +6,7 @@
 
 import { Layout, Section } from '@/components/layout';
 import { HeroSlider } from '@/components/home/HeroSlider';
+import { WebDevIcon, AIIcon, CloudIcon, SpeedIcon, TargetIcon, VerifiedIcon, PartnershipIcon } from '@/components/icons';
 import Link from 'next/link';
 
 export default function Home() {
@@ -29,7 +30,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* 웹 개발 */}
             <div className="group bg-black-light p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm hover:-translate-y-2">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌐</div>
+              <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <WebDevIcon size={80} />
+              </div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green transition-colors duration-300">
                 웹/앱 개발
               </h3>
@@ -46,7 +49,9 @@ export default function Home() {
 
             {/* AI 솔루션 */}
             <div className="group bg-black-light p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm hover:-translate-y-2">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🤖</div>
+              <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <AIIcon size={80} />
+              </div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green transition-colors duration-300">
                 AI 솔루션
               </h3>
@@ -63,7 +68,9 @@ export default function Home() {
 
             {/* 클라우드 인프라 */}
             <div className="group bg-black-light p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm hover:-translate-y-2">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">☁️</div>
+              <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <CloudIcon size={80} />
+              </div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green transition-colors duration-300">
                 클라우드 인프라
               </h3>
@@ -92,32 +99,40 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="p-6 bg-black-light rounded-xl border border-gray-800">
-              <div className="text-4xl mb-4">⚡</div>
+            <div className="p-6 bg-black-light rounded-xl border border-gray-800 hover:border-green/50 transition-all duration-300">
+              <div className="flex justify-center mb-4">
+                <SpeedIcon size={64} />
+              </div>
               <h3 className="text-xl font-bold text-green mb-2">빠른 개발 속도</h3>
               <p className="text-gray-400">
                 검증된 프로세스와 최신 기술 스택으로 신속한 개발을 보장합니다
               </p>
             </div>
 
-            <div className="p-6 bg-black-light rounded-xl border border-gray-800">
-              <div className="text-4xl mb-4">🎯</div>
+            <div className="p-6 bg-black-light rounded-xl border border-gray-800 hover:border-green/50 transition-all duration-300">
+              <div className="flex justify-center mb-4">
+                <TargetIcon size={64} />
+              </div>
               <h3 className="text-xl font-bold text-green mb-2">비즈니스 중심 사고</h3>
               <p className="text-gray-400">
                 단순 개발을 넘어 비즈니스 성장에 기여하는 솔루션을 제공합니다
               </p>
             </div>
 
-            <div className="p-6 bg-black-light rounded-xl border border-gray-800">
-              <div className="text-4xl mb-4">💪</div>
+            <div className="p-6 bg-black-light rounded-xl border border-gray-800 hover:border-green/50 transition-all duration-300">
+              <div className="flex justify-center mb-4">
+                <VerifiedIcon size={64} />
+              </div>
               <h3 className="text-xl font-bold text-green mb-2">검증된 기술력</h3>
               <p className="text-gray-400">
                 200+ 프로젝트 경험과 최신 기술 트렌드에 대한 깊은 이해
               </p>
             </div>
 
-            <div className="p-6 bg-black-light rounded-xl border border-gray-800">
-              <div className="text-4xl mb-4">🤝</div>
+            <div className="p-6 bg-black-light rounded-xl border border-gray-800 hover:border-green/50 transition-all duration-300">
+              <div className="flex justify-center mb-4">
+                <PartnershipIcon size={64} />
+              </div>
               <h3 className="text-xl font-bold text-green mb-2">지속적인 파트너십</h3>
               <p className="text-gray-400">
                 런칭 후에도 지속적인 기술 지원과 유지보수를 제공합니다
