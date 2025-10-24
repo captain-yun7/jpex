@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { NAVIGATION_ITEMS, CONTACT_INFO } from '@/lib/constants';
+import { JPLogo } from '@/components/icons';
 
 interface HeaderProps {
   className?: string;
@@ -52,35 +53,51 @@ const MenuIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => (
 );
 
 /**
- * 로고 컴포넌트 (그린 강조)
+ * 로고 컴포넌트 (SVG 기반 JP 로고)
  */
 const Logo: React.FC = () => (
   <Link
     href="/"
-    className="flex items-center space-x-3 group"
+    className="flex items-center space-x-2 lg:space-x-3 group"
   >
     <motion.div
       className="relative w-10 h-10 lg:w-12 lg:h-12"
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.05, rotate: 5 }}
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
     >
       {/* 배경 글로우 */}
-      <div className="absolute inset-0 bg-green rounded-xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-green rounded-lg blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
 
-      {/* 로고 박스 */}
-      <div className="relative w-full h-full bg-gradient-to-br from-green via-green-light to-green-dark rounded-xl flex items-center justify-center shadow-glow-green-sm group-hover:shadow-glow-green transition-shadow duration-300">
-        <span className="text-black font-black text-lg lg:text-xl">JP</span>
-      </div>
+      {/* SVG 로고 */}
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <JPLogo size={48} className="lg:w-12 lg:h-12 w-10 h-10" />
+      </motion.div>
     </motion.div>
 
-    <motion.span
-      className="text-2xl lg:text-3xl font-black text-white group-hover:text-green transition-colors duration-300"
+    <motion.div
+      className="flex flex-col leading-none"
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      JPEX
-    </motion.span>
+      <span
+        className="text-xl lg:text-2xl font-black text-white group-hover:text-green transition-colors duration-300"
+        style={{ fontStyle: 'italic', letterSpacing: '0.02em' }}
+      >
+        JPEX
+      </span>
+      <span
+        className="text-[10px] lg:text-xs font-bold text-green/70 group-hover:text-green transition-colors duration-300 -mt-0.5"
+        style={{ fontStyle: 'italic', letterSpacing: '0.15em' }}
+      >
+        STUDIO
+      </span>
+    </motion.div>
   </Link>
 );
 
