@@ -23,7 +23,7 @@ interface Slide {
   primaryCTA: string;
   secondaryCTA: string;
   stats: Array<{ value: string; label: string }>;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  iconType: 'web' | 'app' | 'ai' | 'cloud';
 }
 
 // 슬라이드 컨텐츠
@@ -43,7 +43,7 @@ const slides: Slide[] = [
       { value: '98%', label: '고객 만족도' },
       { value: '24/7', label: '기술 지원' },
     ],
-    icon: WebDevIcon,
+    iconType: 'web',
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ const slides: Slide[] = [
       { value: '4.8★', label: '평균 평점' },
       { value: '60일', label: '평균 개발 기간' },
     ],
-    icon: AppDevIcon,
+    iconType: 'app',
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ const slides: Slide[] = [
       { value: '5x', label: '처리 속도 향상' },
       { value: '40%', label: '비용 절감' },
     ],
-    icon: AIIcon,
+    iconType: 'ai',
   },
   {
     id: 4,
@@ -94,7 +94,7 @@ const slides: Slide[] = [
       { value: '50%', label: '인프라 비용 절감' },
       { value: '3배', label: '배포 속도 향상' },
     ],
-    icon: CloudIcon,
+    iconType: 'cloud',
   },
 ];
 
@@ -102,26 +102,32 @@ const slides: Slide[] = [
 const BackgroundParticles: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-green rounded-full"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: 0,
-          }}
-          animate={{
-            y: [null, Math.random() * window.innerHeight],
-            opacity: [0, 0.5, 0],
-          }}
-          transition={{
-            duration: 10 + Math.random() * 10,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-          }}
-        />
-      ))}
+      {[...Array(20)].map((_, i) => {
+        const startX = Math.random() * 1920;
+        const startY = Math.random() * 1080;
+        const endY = Math.random() * 1080;
+
+        return (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-green rounded-full"
+            initial={{
+              x: startX,
+              y: startY,
+              opacity: 0,
+            }}
+            animate={{
+              y: [null, endY],
+              opacity: [0, 0.5, 0],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -142,6 +148,22 @@ const StatCard: React.FC<{ stat: { value: string; label: string }; index: number
     </div>
   </motion.div>
 );
+
+// 아이콘 렌더링 헬퍼 함수
+const getIconComponent = (iconType: 'web' | 'app' | 'ai' | 'cloud', size: number) => {
+  switch (iconType) {
+    case 'web':
+      return <WebDevIcon size={size} />;
+    case 'app':
+      return <AppDevIcon size={size} />;
+    case 'ai':
+      return <AIIcon size={size} />;
+    case 'cloud':
+      return <CloudIcon size={size} />;
+    default:
+      return null;
+  }
+};
 
 // Hero Slider 메인 컴포넌트
 export const HeroSlider: React.FC = () => {
@@ -337,7 +359,7 @@ export const HeroSlider: React.FC = () => {
                 delay: 0.3
               }}
             >
-              <slide.icon size={280} />
+              {getIconComponent(slide.iconType, 280)}
             </motion.div>
           </div>
         </motion.div>

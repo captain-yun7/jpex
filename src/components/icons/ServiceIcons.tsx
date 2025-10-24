@@ -141,7 +141,7 @@ export const AIIcon: React.FC<IconProps> = ({ className = '', size = 64 }) => (
     <circle cx="38" cy="24" r="2.5" fill="#00FF88" className="animate-pulse" style={{ animationDelay: '0.4s' }} />
     <circle cx="26" cy="32" r="2.5" fill="#00FF88" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
     <circle cx="32" cy="36" r="2.5" fill="#00FF88" className="animate-pulse" style={{ animationDelay: '0.8s' }} />
-    <circle cx="38" cy="32" r="2.5" fill="#00FF88" className="animate-pulse" style={{ animationDelay="1s" }} />
+    <circle cx="38" cy="32" r="2.5" fill="#00FF88" className="animate-pulse" style={{ animationDelay: '1s' }} />
 
     <defs>
       <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
