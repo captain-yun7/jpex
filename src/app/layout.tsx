@@ -8,6 +8,14 @@ import "./globals.css";
 import { SITE_CONFIG, SEO_CONFIG } from "@/lib/constants";
 import { ClientErrorBoundary } from "@/components/common";
 
+// Pretendard 폰트 import
+import '@fontsource/pretendard/300.css';  // Light
+import '@fontsource/pretendard/400.css';  // Regular
+import '@fontsource/pretendard/500.css';  // Medium
+import '@fontsource/pretendard/600.css';  // SemiBold
+import '@fontsource/pretendard/700.css';  // Bold
+import '@fontsource/pretendard/900.css';  // Black
+
 export const metadata: Metadata = {
   title: {
     template: SEO_CONFIG.titleTemplate,

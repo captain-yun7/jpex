@@ -2,56 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 카카오 개발자 스타일 기반 CSS Variables */
+/* JPEX 디자인 시스템 - Yellopencil 레이아웃 스타일 적용 */
 :root {
-  /* Primary Colors */
-  --color-primary: #151517;      /* 메인 다크 배경 */
-  --color-primary-light: #1a1a1c; /* 카드 배경 */
-  --color-primary-dark: #0f0f10;  /* 더 진한 배경 */
-  
-  /* Secondary Colors */
-  --color-secondary: #2a2a2a;     /* 보더, 구분선 */
-  --color-secondary-light: #3a3a3a; /* 호버 상태 */
-  --color-secondary-dark: #1a1a1a;  /* 눌린 상태 */
-  
-  /* Accent Colors */
-  --color-accent: #00A0FF;        /* 카카오 블루 */
-  --color-accent-hover: #0080cc;  /* 호버 시 블루 */
-  --color-accent-light: #33b3ff;  /* 밝은 블루 */
-  
-  /* Text Colors */
-  --color-text-primary: #ffffff;   /* 메인 텍스트 */
-  --color-text-secondary: #cccccc; /* 보조 텍스트 */
-  --color-text-muted: #888888;     /* 흐린 텍스트 */
-  
-  /* Status Colors */
-  --color-success: #00FF88;        /* 성공, 온라인 상태 */
-  --color-warning: #FFB800;        /* 경고, 대기 상태 */
-  --color-error: #FF4444;          /* 오류, 오프라인 상태 */
-  --color-info: #00A0FF;           /* 정보, 알림 */
-  
-  /* Background Colors */
-  --color-bg-primary: #151517;     /* 메인 배경 */
-  --color-bg-secondary: #1a1a1c;   /* 카드, 모달 배경 */
-  --color-bg-tertiary: #f7fafc;    /* 라이트 모드 배경 (필요시) */
+  /* Primary Colors - 그린 기반 */
+  --color-primary: #00FF88;          /* 메인 그린 */
+  --color-primary-light: #33ffaa;    /* 밝은 그린 */
+  --color-primary-dark: #00cc6f;     /* 어두운 그린 */
 
-  /* Font Families */
-  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  /* Background Colors - 다크 테마 */
+  --color-bg-primary: #151517;       /* 메인 배경 */
+  --color-bg-secondary: #1a1a1c;     /* 카드/모달 배경 */
+  --color-bg-tertiary: #2a2a2a;      /* 호버 상태 */
+  --color-bg-darker: #0f0f10;        /* 더 어두운 배경 */
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;     /* 메인 텍스트 */
+  --color-text-secondary: #cccccc;   /* 보조 텍스트 */
+  --color-text-muted: #888888;       /* 흐린 텍스트 */
+
+  /* Accent Colors */
+  --color-accent: #00FF88;           /* 그린 (primary와 동일) */
+  --color-accent-hover: #33ffaa;     /* 호버 시 그린 */
+
+  /* Status Colors */
+  --color-success: #00FF88;          /* 성공 - 그린 */
+  --color-warning: #FFB800;          /* 경고 */
+  --color-error: #FF4444;            /* 오류 */
+  --color-info: #00A0FF;             /* 정보 - 블루 */
+
+  /* Legacy Colors (호환성 유지) */
+  --color-secondary: #2a2a2a;
+  --color-secondary-light: #3a3a3a;
+  --color-secondary-dark: #1a1a1a;
+
+  /* Font Families - Pretendard */
+  --font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                  'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
   --font-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
   --font-numeric: 'SF Pro Display', -apple-system, sans-serif;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
-  --text-4xl: 2.25rem;   /* 36px */
-  --text-5xl: 3rem;      /* 48px */
-  --text-6xl: 3.75rem;   /* 60px */
-  
+  /* Font Sizes - Yellopencil 대형 타이틀 */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.75rem;    /* 28px - Yellopencil 시작 */
+  --text-3xl: 2.25rem;    /* 36px */
+  --text-4xl: 3rem;       /* 48px */
+  --text-5xl: 4rem;       /* 64px */
+  --text-6xl: 5rem;       /* 80px */
+  --text-7xl: 6rem;       /* 96px - Yellopencil 최대 */
+
   /* Font Weights */
   --font-light: 300;
   --font-normal: 400;
@@ -59,7 +61,8 @@
   --font-semibold: 600;
   --font-bold: 700;
   --font-extrabold: 800;
-  
+  --font-black: 900;      /* Yellopencil 대형 타이틀용 */
+
   /* Line Heights */
   --leading-tight: 1.25;
   --leading-snug: 1.375;
@@ -68,39 +71,42 @@
   --leading-loose: 2;
 
   /* Spacing */
-  --space-xs: 0.25rem;   /* 4px */
-  --space-sm: 0.5rem;    /* 8px */
-  --space-md: 1rem;      /* 16px */
-  --space-lg: 1.5rem;    /* 24px */
-  --space-xl: 2rem;      /* 32px */
-  --space-2xl: 3rem;     /* 48px */
-  --space-3xl: 4rem;     /* 64px */
-  --space-4xl: 6rem;     /* 96px */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+  --space-4xl: 6rem;      /* 96px */
 
-  /* Animation Durations */
+  /* Animation Durations - Yellopencil 0.3s */
   --duration-fast: 0.15s;
   --duration-normal: 0.3s;
+  --duration-smooth: 0.3s;  /* Yellopencil 기본값 */
   --duration-slow: 0.6s;
-  
+
   /* Easing Functions */
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Breakpoints (for JS usage) */
+  /* Breakpoints (for JS usage) - Yellopencil 기준 */
+  --breakpoint-xs: 475px;
   --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
+  --breakpoint-md: 768px;   /* 모바일 경계 */
+  --breakpoint-lg: 992px;   /* 데스크톱 시작 */
   --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1420px; /* 최대 컨테이너 너비 */
 }
 
-/* 라이트 모드 (필요시) */
+/* 라이트 모드 (선택사항) */
 [data-theme="light"] {
   --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-text-primary: #1a202c;
-  --color-text-secondary: #4a5568;
-  --color-text-muted: #718096;
+  --color-bg-secondary: #f5f5f5;
+  --color-text-primary: #151517;
+  --color-text-secondary: #525252;
+  --color-text-muted: #737373;
 }
 
 /* 다크 모드 (기본) */
@@ -110,17 +116,6 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #cccccc;
   --color-text-muted: #888888;
-}
-
-/* 시스템 설정에 따른 자동 전환 */
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-bg-primary: #ffffff;
-    --color-bg-secondary: #f8fafc;
-    --color-text-primary: #1a202c;
-    --color-text-secondary: #4a5568;
-    --color-text-muted: #718096;
-  }
 }
 
 /* 글로벌 스타일 */
@@ -136,16 +131,16 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-  background-color: #151517;
-  color: #ffffff;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'rlig' 1, 'calt' 1;
 }
 
-/* 포커스 표시 */
+/* 포커스 표시 - 그린 */
 *:focus {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
@@ -169,18 +164,18 @@ body {
   border: 0;
 }
 
-/* 선택 영역 스타일 */
+/* 선택 영역 스타일 - 그린 */
 ::selection {
   background-color: var(--color-accent);
-  color: white;
+  color: #000000;  /* 그린 배경에 검정 텍스트 */
 }
 
 ::-moz-selection {
   background-color: var(--color-accent);
-  color: white;
+  color: #000000;
 }
 
-/* 스크롤바 스타일 (Webkit) */
+/* 스크롤바 스타일 (Webkit) - 그린 */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -199,11 +194,11 @@ body {
   background: var(--color-accent-hover);
 }
 
-/* 기본 링크 스타일 */
+/* 기본 링크 스타일 - 그린 */
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color var(--duration-normal) var(--ease-in-out);
+  transition: color var(--duration-smooth) var(--ease-in-out);
 }
 
 a:hover {
@@ -232,7 +227,7 @@ input, textarea, select {
   line-height: inherit;
 }
 
-/* 로딩 애니메이션 */
+/* 기본 애니메이션 */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -275,17 +270,28 @@ input, textarea, select {
   100% { background-position: 200% 0; }
 }
 
+/* Yellopencil 스타일 애니메이션 */
+@keyframes slideUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
 /* 유틸리티 클래스 */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1420px;  /* Yellopencil 최대 너비 */
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 15px;    /* Yellopencil 모바일 패딩 */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 992px) {
   .container {
-    padding: 0 var(--space-md);
+    padding: 0 2rem;  /* Yellopencil 데스크톱 패딩 (32px) */
   }
 }
 
@@ -296,6 +302,14 @@ input, textarea, select {
   background-clip: text;
 }
 
+.text-gradient-green {
+  background: linear-gradient(135deg, var(--color-accent-hover), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 애니메이션 유틸리티 */
 .animate-fadeIn {
   animation: fadeIn var(--duration-slow) var(--ease-out);
 }
@@ -305,11 +319,24 @@ input, textarea, select {
 }
 
 .animate-scaleIn {
-  animation: scaleIn var(--duration-normal) var(--ease-out);
+  animation: scaleIn var(--duration-smooth) var(--ease-out);
 }
 
+.animate-spin-slow {
+  animation: spin 20s linear infinite;  /* Yellopencil 회전 */
+}
+
+.animate-slide-up {
+  animation: slideUp var(--duration-slow) var(--ease-out);
+}
+
+.animate-slide-down {
+  animation: slideDown var(--duration-slow) var(--ease-out);
+}
+
+/* 트랜지션 유틸리티 */
 .transition-base {
-  transition: all var(--duration-normal) var(--ease-in-out);
+  transition: all var(--duration-smooth) var(--ease-in-out);
 }
 
 .transition-fast {
@@ -318,4 +345,42 @@ input, textarea, select {
 
 .transition-slow {
   transition: all var(--duration-slow) var(--ease-in-out);
+}
+
+.transition-smooth {
+  transition: all var(--duration-smooth) ease;  /* Yellopencil 기본 */
+}
+
+/* 그린 글로우 효과 유틸리티 */
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.glow-green-sm {
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+.glow-green-lg {
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
+}
+
+/* 애니메이션 지연 유틸리티 */
+.animation-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
 }
