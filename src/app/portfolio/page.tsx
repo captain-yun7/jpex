@@ -310,48 +310,6 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      {/* Tech Stats */}
-      <Section background="secondary" padding="xl">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white">
-              기술 <span className="text-green">경험</span>
-            </h2>
-            <p className="text-lg text-gray-400">
-              다양한 프로젝트를 통해 축적한 기술별 경험
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: '⚛️', title: 'Frontend', count: 8, desc: 'React, Next.js 등' },
-              { icon: '⚙️', title: 'Backend', count: 6, desc: 'Node.js, Python 등' },
-              { icon: '🤖', title: 'AI/ML', count: 4, desc: 'OpenAI, LangChain 등' },
-              { icon: '☁️', title: 'Cloud', count: 5, desc: 'AWS, Docker 등' }
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-black-light p-6 lg:p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm text-center"
-              >
-                <div className="text-5xl mb-4">{stat.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{stat.title}</h3>
-                <div className="text-3xl font-black text-green mb-2">{stat.count}개</div>
-                <p className="text-sm text-gray-500">{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       {/* CTA Section */}
       <Section padding="xl">
         <motion.div
@@ -368,27 +326,18 @@ export default function Portfolio() {
             여러분의 아이디어를 현실로 만들어드리겠습니다
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/quote"
-              className="group relative px-8 py-4 text-lg font-bold text-black bg-green rounded-lg overflow-hidden shadow-glow-green-sm hover:shadow-glow-green transition-all duration-300"
-            >
-              <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              <span className="relative z-10 flex items-center gap-2">
-                프로젝트 시작하기
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-
-            <Link
-              href="/reviews"
-              className="px-8 py-4 text-lg font-bold text-white border-2 border-green rounded-lg hover:bg-green/10 transition-all duration-300"
-            >
-              고객 후기 보기
-            </Link>
-          </div>
+          <Link
+            href="/quote"
+            className="group relative inline-flex px-8 py-4 text-lg font-bold text-black bg-green rounded-lg overflow-hidden shadow-glow-green-sm hover:shadow-glow-green transition-all duration-300"
+          >
+            <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            <span className="relative z-10 flex items-center gap-2">
+              견적 문의하기
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </Link>
         </motion.div>
       </Section>
     </Layout>

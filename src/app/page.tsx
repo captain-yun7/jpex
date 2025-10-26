@@ -154,27 +154,18 @@ export default function Home() {
             함께 멋진 디지털 솔루션을 만들어보세요.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/quote"
-              className="group relative px-8 py-4 text-lg font-bold text-black bg-green rounded-lg overflow-hidden shadow-glow-green-sm hover:shadow-glow-green transition-all duration-300"
-            >
-              <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              <span className="relative z-10 flex items-center gap-2">
-                견적 요청하기
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-8 py-4 text-lg font-bold text-white border-2 border-green rounded-lg hover:bg-green/10 transition-all duration-300"
-            >
-              문의하기
-            </Link>
-          </div>
+          <Link
+            href="/quote"
+            className="group relative inline-flex px-8 py-4 text-lg font-bold text-black bg-green rounded-lg overflow-hidden shadow-glow-green-sm hover:shadow-glow-green transition-all duration-300"
+          >
+            <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            <span className="relative z-10 flex items-center gap-2">
+              견적 문의하기
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </Link>
 
           {/* 상태 표시 */}
           <div className="inline-flex items-center space-x-2 bg-black-light px-6 py-3 rounded-full border border-green/20">
