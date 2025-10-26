@@ -27,11 +27,11 @@ export default function Quote() {
 
   const projectTypes = [
     { id: 'web', name: '웹사이트', icon: '🌐', desc: '반응형 웹사이트' },
-    { id: 'webapp', name: '웹앱', icon: '💻', desc: '웹 애플리케이션' },
     { id: 'mobile', name: '모바일앱', icon: '📱', desc: 'iOS/Android' },
-    { id: 'ai', name: 'AI솔루션', icon: '🤖', desc: 'AI 기반 서비스' },
-    { id: 'ecommerce', name: '쇼핑몰', icon: '🛒', desc: '이커머스' },
-    { id: 'other', name: '기타', icon: '📋', desc: '상담 필요' }
+    { id: 'ai', name: 'AI 서비스', icon: '🤖', desc: 'AI 기반 서비스' },
+    { id: 'cloud', name: '클라우드 및 인프라 구축', icon: '☁️', desc: '클라우드 아키텍처' },
+    { id: 'consulting', name: '컨설팅', icon: '💼', desc: '기술 컨설팅' },
+    { id: 'education', name: '교육', icon: '📚', desc: '개발 교육' }
   ];
 
   const budgetRanges = [
@@ -329,7 +329,7 @@ export default function Quote() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green mt-0.5">3.</span>
-                  <span>화상/대면 미팅 진행 (무료)</span>
+                  <span>온라인/오프라인 미팅 진행 (무료)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green mt-0.5">4.</span>
