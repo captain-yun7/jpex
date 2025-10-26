@@ -48,11 +48,6 @@ export const NAVIGATION_ITEMS = [
     description: '프로젝트 진행 과정',
   },
   {
-    name: '고객 후기',
-    href: '/reviews',
-    description: '고객 리뷰 및 평가',
-  },
-  {
     name: '견적 문의',
     href: '/quote',
     description: '프로젝트 견적 요청',
