@@ -152,14 +152,9 @@ export default function Process() {
 
                   {/* Right: Content */}
                   <div className="flex-1 space-y-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                      <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-green transition-colors duration-300">
-                        {step.title}
-                      </h3>
-                      <span className="inline-flex items-center px-3 py-1 bg-green/10 text-green text-sm font-semibold rounded-full border border-green/30 w-fit">
-                        {step.duration}
-                      </span>
-                    </div>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-green transition-colors duration-300">
+                      {step.title}
+                    </h3>
 
                     <p className="text-gray-400 text-lg">
                       {step.description}
