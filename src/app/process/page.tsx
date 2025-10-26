@@ -33,7 +33,7 @@ export default function Process() {
         '기술 스택 및 아키텍처 제안',
         '상세 견적서 제공',
         '개발 일정 수립',
-        '계약서 작성 및 착수금 (30%)'
+        '계약서 작성 및 착수금 (40%)'
       ],
       icon: '📋'
     },
@@ -59,7 +59,7 @@ export default function Process() {
         '애자일 방식의 반복 개발',
         '주간 단위 진행상황 공유',
         '중간 결과물 검토 및 피드백',
-        '중도금 (40%) - 50% 완성 시점'
+        '지속적인 소통 및 개선'
       ],
       icon: '⚡'
     },
@@ -85,7 +85,7 @@ export default function Process() {
         '프로덕션 환경 배포',
         '도메인 연결 및 SSL 인증서',
         '모니터링 시스템 구축',
-        '잔금 (30%) 및 프로젝트 인수인계'
+        '잔금 (60%) 및 프로젝트 인수인계'
       ],
       icon: '🚀'
     },
@@ -105,9 +105,8 @@ export default function Process() {
   ];
 
   const payment = [
-    { stage: '착수금', amount: '30%', timing: '계약 체결 시' },
-    { stage: '중도금', amount: '40%', timing: '개발 50% 완성 시' },
-    { stage: '잔금', amount: '30%', timing: '프로젝트 완료 및 배포 후' }
+    { stage: '착수금', amount: '40%', timing: '계약 체결 시' },
+    { stage: '잔금', amount: '60%', timing: '프로젝트 완료 및 배포 후' }
   ];
 
   return (
@@ -199,7 +198,7 @@ export default function Process() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {payment.map((item, index) => (
               <motion.div
                 key={index}
