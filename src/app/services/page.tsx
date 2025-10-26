@@ -28,43 +28,6 @@ export default function Services() {
       technologies: [
         'React', 'Next.js', 'TypeScript', 'Tailwind CSS',
         'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB'
-      ],
-      pricing: [
-        {
-          name: '기본 패키지',
-          price: '200만원~',
-          duration: '2-3주',
-          features: [
-            '5-10 페이지 웹사이트',
-            '반응형 디자인',
-            '기본 SEO 설정',
-            '1개월 무료 유지보수'
-          ]
-        },
-        {
-          name: '프리미엄 패키지',
-          price: '500만원~',
-          duration: '4-6주',
-          features: [
-            '복잡한 기능의 웹 애플리케이션',
-            '사용자 인증 시스템',
-            '데이터베이스 연동',
-            '관리자 패널',
-            '3개월 무료 유지보수'
-          ]
-        },
-        {
-          name: '엔터프라이즈',
-          price: '협의',
-          duration: '8주+',
-          features: [
-            '대규모 플랫폼 개발',
-            '마이크로서비스 아키텍처',
-            '고가용성 인프라',
-            '24/7 모니터링',
-            '지속적인 기술 지원'
-          ]
-        }
       ]
     },
     {
@@ -83,43 +46,6 @@ export default function Services() {
       technologies: [
         'OpenAI GPT-4', 'LangChain', 'Python', 'FastAPI',
         'TensorFlow', 'PyTorch', 'Hugging Face', 'Pinecone'
-      ],
-      pricing: [
-        {
-          name: '기본 챗봇',
-          price: '150만원~',
-          duration: '1-2주',
-          features: [
-            '간단한 Q&A 챗봇',
-            '웹사이트 임베딩',
-            '기본 학습 데이터 구축',
-            '1개월 무료 튜닝'
-          ]
-        },
-        {
-          name: '고급 AI 시스템',
-          price: '400만원~',
-          duration: '3-5주',
-          features: [
-            '복잡한 업무 자동화',
-            '문서 분석 및 처리',
-            '맞춤형 AI 모델 구축',
-            '대화형 인터페이스',
-            '3개월 무료 지원'
-          ]
-        },
-        {
-          name: '엔터프라이즈 AI',
-          price: '협의',
-          duration: '6주+',
-          features: [
-            '대규모 AI 플랫폼',
-            '실시간 학습 시스템',
-            '고성능 추론 엔진',
-            '클라우드 인프라',
-            '지속적인 모델 업데이트'
-          ]
-        }
       ]
     },
     {
@@ -138,41 +64,6 @@ export default function Services() {
       technologies: [
         'AWS', 'Google Cloud', 'Docker', 'Kubernetes',
         'Terraform', 'Jenkins', 'GitHub Actions', 'Monitoring Tools'
-      ],
-      pricing: [
-        {
-          name: '코드 리뷰',
-          price: '50만원~',
-          duration: '1주',
-          features: [
-            '코드베이스 전체 리뷰',
-            '개선사항 보고서',
-            '리팩토링 가이드',
-            '1회 화상 미팅'
-          ]
-        },
-        {
-          name: '아키텍처 컨설팅',
-          price: '200만원~',
-          duration: '2-3주',
-          features: [
-            '시스템 아키텍처 설계',
-            '기술 스택 추천',
-            '개발 로드맵 제작',
-            '팀 워크샵 진행'
-          ]
-        },
-        {
-          name: '장기 컨설팅',
-          price: '협의',
-          duration: '1-6개월',
-          features: [
-            '지속적인 기술 자문',
-            '정기 코드 리뷰',
-            '성능 모니터링',
-            '팀 교육 및 멘토링'
-          ]
-        }
       ]
     }
   ];
@@ -227,7 +118,7 @@ export default function Services() {
               </div>
 
               {/* Features & Technologies */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Features */}
                 <div className="bg-black-light p-6 lg:p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
@@ -261,43 +152,6 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Pricing Packages */}
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6 text-center">
-                  가격 패키지
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {service.pricing.map((pkg, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ y: -5 }}
-                      className="group bg-black-light p-6 lg:p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm"
-                    >
-                      <div className="text-center mb-6">
-                        <h4 className="text-lg font-bold text-white mb-2 group-hover:text-green transition-colors duration-300">
-                          {pkg.name}
-                        </h4>
-                        <div className="text-3xl font-black text-green mb-1">
-                          {pkg.price}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          개발 기간: {pkg.duration}
-                        </div>
-                      </div>
-
-                      <ul className="space-y-2">
-                        {pkg.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="text-sm text-gray-400 flex items-start gap-2">
-                            <span className="text-green mt-1">✓</span>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
               {/* Divider */}
               {index < services.length - 1 && (
                 <div className="mt-24 border-t border-gray-800"></div>
@@ -307,8 +161,48 @@ export default function Services() {
         </div>
       </Section>
 
-      {/* CTA Section */}
+      {/* Pricing Info Section */}
       <Section padding="xl">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-green/10 to-green/5 p-8 lg:p-12 rounded-2xl border-2 border-green/30"
+          >
+            <div className="text-center space-y-6">
+              <h2 className="text-3xl md:text-4xl font-black text-white">
+                맞춤형 <span className="text-green">견적</span> 제공
+              </h2>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                모든 프로젝트는 고유한 요구사항을 가지고 있습니다.<br />
+                정확한 견적은 상담을 통해 제공해드립니다.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+                <div className="text-center">
+                  <div className="text-3xl mb-2">💰</div>
+                  <div className="text-sm font-semibold text-green">투명한 가격</div>
+                  <div className="text-xs text-gray-500 mt-1">숨겨진 비용 없음</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl mb-2">⚡</div>
+                  <div className="text-sm font-semibold text-green">빠른 견적</div>
+                  <div className="text-xs text-gray-500 mt-1">24시간 내 회신</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl mb-2">🤝</div>
+                  <div className="text-sm font-semibold text-green">유연한 협의</div>
+                  <div className="text-xs text-gray-500 mt-1">예산에 맞춰 조정</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* CTA Section */}
+      <Section background="secondary" padding="xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
