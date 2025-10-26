@@ -69,19 +69,20 @@ export default function Services() {
     {
       id: 'education',
       icon: <EducationIcon size={80} />,
-      title: '개발 교육 & 멘토링',
-      description: '실무 중심 교육과 1:1 멘토링으로 개발자의 성장을 돕습니다',
+      title: '교육 & 컨설팅',
+      description: '웹/앱부터 AI, 클라우드까지 전 분야를 아우르는 실무 중심 교육 및 기술 컨설팅',
       features: [
-        '웹 개발 기초부터 심화까지',
-        '프로젝트 기반 실습 교육',
-        '코드 리뷰 및 개선 피드백',
-        '취업/이직 포트폴리오 코칭',
-        '현업 개발자 1:1 멘토링',
-        '기업 맞춤형 기술 교육'
+        '풀스택 개발 (Frontend/Backend)',
+        'AI/ML 실무 활용 교육',
+        '클라우드 & DevOps 구축',
+        '프로젝트 기반 실전 교육',
+        '기술 아키텍처 설계 컨설팅',
+        '기업 맞춤형 기술 교육 프로그램'
       ],
       technologies: [
-        'JavaScript', 'React', 'Next.js', 'Node.js',
-        'TypeScript', 'Git/GitHub', 'Database', 'DevOps'
+        'Web/App Dev', 'AI/ML', 'Cloud/DevOps',
+        'React', 'Next.js', 'Node.js', 'Python',
+        'OpenAI', 'LangChain', 'AWS', 'Docker'
       ]
     }
   ];
