@@ -11,6 +11,7 @@ export {
   TargetIcon,
   VerifiedIcon,
   PartnershipIcon,
+  EducationIcon,
 } from './ServiceIcons';
 
 export { JPLogo } from './JPLogo';
