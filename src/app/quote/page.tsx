@@ -376,55 +376,6 @@ export default function Quote() {
         </div>
       </Section>
 
-      {/* Why Choose Us */}
-      <Section padding="xl">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-              왜 <span className="text-green">JPEX</span>인가요?
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '⚡',
-                title: '빠른 응답',
-                desc: '24시간 내 연락 보장'
-              },
-              {
-                icon: '💰',
-                title: '합리적 가격',
-                desc: '투명한 견적 제공'
-              },
-              {
-                icon: '✅',
-                title: '검증된 실력',
-                desc: '200+ 프로젝트 완료'
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-black-light p-8 rounded-xl border-2 border-gray-800 hover:border-green transition-all duration-300 text-center"
-              >
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-400">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       {/* Contact Info */}
       <Section background="secondary" padding="lg">
         <motion.div
