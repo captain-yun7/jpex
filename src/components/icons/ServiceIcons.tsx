@@ -425,6 +425,72 @@ export const PartnershipIcon: React.FC<IconProps> = ({ className = '', size = 48
   </svg>
 );
 
+/**
+ * 교육 아이콘 - 졸업모자와 책
+ */
+export const EducationIcon: React.FC<IconProps> = ({ className = '', size = 64 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    {/* 책 */}
+    <rect
+      x="12"
+      y="28"
+      width="20"
+      height="24"
+      rx="2"
+      stroke="#00FF88"
+      strokeWidth="2.5"
+      fill="rgba(0, 255, 136, 0.1)"
+      className="drop-shadow-[0_0_8px_rgba(0,255,136,0.6)]"
+    />
+    <line x1="22" y1="28" x2="22" y2="52" stroke="#00FF88" strokeWidth="2" opacity="0.5" />
+    <line x1="16" y1="34" x2="28" y2="34" stroke="#00FF88" strokeWidth="1.5" opacity="0.7" />
+    <line x1="16" y1="38" x2="28" y2="38" stroke="#00FF88" strokeWidth="1.5" opacity="0.7" />
+    <line x1="16" y1="42" x2="28" y2="42" stroke="#00FF88" strokeWidth="1.5" opacity="0.7" />
+
+    {/* 졸업모자 */}
+    <path
+      d="M 32 18 L 52 24 L 32 30 L 12 24 L 32 18 Z"
+      stroke="#00FF88"
+      strokeWidth="2.5"
+      fill="rgba(0, 255, 136, 0.2)"
+      strokeLinejoin="round"
+      className="drop-shadow-[0_0_10px_rgba(0,255,136,0.8)]"
+    />
+    <rect
+      x="31"
+      y="24"
+      width="2"
+      height="16"
+      fill="#00FF88"
+      opacity="0.8"
+    />
+    <circle
+      cx="32"
+      cy="42"
+      r="2.5"
+      fill="#00FF88"
+      className="animate-pulse"
+    />
+
+    {/* 장식 라인 */}
+    <path
+      d="M 48 26 L 48 36 Q 48 38 46 38 L 38 38"
+      stroke="#00FF88"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.6"
+    />
+  </svg>
+);
+
 export default {
   WebDevIcon,
   AIIcon,
@@ -434,4 +500,5 @@ export default {
   TargetIcon,
   VerifiedIcon,
   PartnershipIcon,
+  EducationIcon,
 };

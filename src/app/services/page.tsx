@@ -8,7 +8,7 @@
 import { Layout, Section } from '@/components/layout';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { WebDevIcon, AIIcon, CloudIcon } from '@/components/icons';
+import { WebDevIcon, AIIcon, CloudIcon, EducationIcon } from '@/components/icons';
 
 export default function Services() {
   const services = [
@@ -64,6 +64,24 @@ export default function Services() {
       technologies: [
         'AWS', 'Google Cloud', 'Docker', 'Kubernetes',
         'Terraform', 'Jenkins', 'GitHub Actions', 'Monitoring Tools'
+      ]
+    },
+    {
+      id: 'education',
+      icon: <EducationIcon size={80} />,
+      title: '개발 교육 & 멘토링',
+      description: '실무 중심 교육과 1:1 멘토링으로 개발자의 성장을 돕습니다',
+      features: [
+        '웹 개발 기초부터 심화까지',
+        '프로젝트 기반 실습 교육',
+        '코드 리뷰 및 개선 피드백',
+        '취업/이직 포트폴리오 코칭',
+        '현업 개발자 1:1 멘토링',
+        '기업 맞춤형 기술 교육'
+      ],
+      technologies: [
+        'JavaScript', 'React', 'Next.js', 'Node.js',
+        'TypeScript', 'Git/GitHub', 'Database', 'DevOps'
       ]
     }
   ];
