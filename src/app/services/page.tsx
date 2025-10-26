@@ -51,15 +51,15 @@ export default function Services() {
     {
       id: 'cloud',
       icon: <CloudIcon size={80} />,
-      title: '클라우드 & 컨설팅',
-      description: '시스템 아키텍처 설계, 성능 최적화, 클라우드 인프라 구축 및 기술 전략 수립',
+      title: '클라우드 & DevOps',
+      description: '클라우드 인프라 구축, 자동화 배포, 시스템 모니터링 및 성능 최적화',
       features: [
         '클라우드 아키텍처 설계 (AWS, GCP)',
         '컨테이너화 및 오케스트레이션',
         'CI/CD 파이프라인 구축',
-        '성능 분석 및 최적화',
-        '코드 리뷰 및 품질 개선',
-        '기술 스택 선정 및 팀 멘토링'
+        '자동화 배포 시스템',
+        '모니터링 및 로그 관리',
+        '성능 분석 및 최적화'
       ],
       technologies: [
         'AWS', 'Google Cloud', 'Docker', 'Kubernetes',
