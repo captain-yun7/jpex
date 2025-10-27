@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Layout, Section } from '@/components/layout';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -26,7 +27,9 @@ export default function Portfolio() {
       title: '기업 포트폴리오 웹사이트',
       category: 'web',
       description: 'Next.js와 Headless CMS를 활용하여 제작한 현대적이고 반응형 기업 홈페이지입니다.',
-      image: '🏢',
+      image: '/images/projects/project1.png',
+      liveUrl: 'https://example.com',
+      githubUrl: '', // 선택사항
       technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Strapi', 'PostgreSQL'],
       features: [
         '반응형 웹 디자인',
@@ -47,7 +50,9 @@ export default function Portfolio() {
       title: 'AI 기반 고객 상담 챗봇',
       category: 'ai',
       description: 'GPT-4 API를 활용한 24/7 자동 고객 상담 시스템으로 고객 만족도와 업무 효율성을 크게 향상시켰습니다.',
-      image: '🤖',
+      image: '/images/projects/project2.png',
+      liveUrl: '',
+      githubUrl: '',
       technologies: ['OpenAI GPT-4', 'LangChain', 'Python', 'FastAPI', 'React'],
       features: [
         'GPT-4 자연어 처리',
@@ -68,7 +73,9 @@ export default function Portfolio() {
       title: '이커머스 플랫폼',
       category: 'web',
       description: '완전한 온라인 쇼핑몰 솔루션으로 결제, 재고 관리, 주문 처리 등 모든 기능이 통합되어 있습니다.',
-      image: '🛒',
+      image: '/images/projects/project3.png',
+      liveUrl: '',
+      githubUrl: '',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'AWS'],
       features: [
         '결제 시스템 통합',
@@ -89,7 +96,9 @@ export default function Portfolio() {
       title: '레거시 시스템 현대화',
       category: 'consulting',
       description: '오래된 모놀리식 시스템을 현대적인 마이크로서비스 아키텍처로 전환하여 확장성과 유지보수성을 개선했습니다.',
-      image: '🏗️',
+      image: '/images/projects/project4.png',
+      liveUrl: '',
+      githubUrl: '',
       technologies: ['Docker', 'Kubernetes', 'Node.js', 'React', 'PostgreSQL'],
       features: [
         '마이크로서비스 설계',
@@ -110,7 +119,9 @@ export default function Portfolio() {
       title: '문서 자동 분석 AI 시스템',
       category: 'ai',
       description: '대량의 PDF 문서를 자동으로 분석하고 요약하여 업무 효율성을 크게 향상시킨 AI 시스템입니다.',
-      image: '📄',
+      image: '/images/projects/project5.png',
+      liveUrl: '',
+      githubUrl: '',
       technologies: ['Python', 'GPT-4', 'LangChain', 'PyPDF2', 'Streamlit'],
       features: [
         'PDF 자동 파싱',
@@ -131,7 +142,9 @@ export default function Portfolio() {
       title: 'SaaS 플랫폼 대시보드',
       category: 'web',
       description: '실시간 데이터 시각화와 사용자 관리 기능을 갖춘 종합적인 SaaS 관리 대시보드입니다.',
-      image: '📊',
+      image: '/images/projects/project6.png',
+      liveUrl: '',
+      githubUrl: '',
       technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL', 'WebSocket'],
       features: [
         '실시간 데이터 시각화',
@@ -222,16 +235,23 @@ export default function Portfolio() {
               transition={{ delay: index * 0.1 }}
               className="group bg-black-light p-6 lg:p-8 rounded-2xl border-2 border-gray-800 hover:border-green transition-all duration-300 hover:shadow-glow-green-sm"
             >
-              {/* Project Icon */}
+              {/* Project Image */}
               <div className="relative mb-6">
-                <div className="aspect-video bg-gradient-to-br from-green/10 to-green/5 rounded-xl flex items-center justify-center border border-gray-800 group-hover:border-green transition-all duration-300">
-                  <motion.div
-                    className="text-7xl"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
-                  >
-                    {project.image}
-                  </motion.div>
+                <div className="aspect-video bg-gradient-to-br from-green/10 to-green/5 rounded-xl overflow-hidden border border-gray-800 group-hover:border-green transition-all duration-300">
+                  <div className="relative w-full h-full bg-gray-900 flex items-center justify-center">
+                    {/* 플레이스홀더 - 실제 이미지로 교체하세요 */}
+                    <div className="text-6xl opacity-30">
+                      {project.id === 1 ? '🏢' : project.id === 2 ? '🤖' : project.id === 3 ? '🛒' : project.id === 4 ? '🏗️' : project.id === 5 ? '📄' : '📊'}
+                    </div>
+                    {/* 실제 사용 시:
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                    */}
+                  </div>
                 </div>
 
                 {/* Year Badge */}
@@ -304,6 +324,38 @@ export default function Portfolio() {
                     ))}
                   </div>
                 </div>
+
+                {/* Action Buttons */}
+                {(project.liveUrl || project.githubUrl) && (
+                  <div className="pt-4 border-t border-gray-800 flex gap-3">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-green text-black font-semibold rounded-lg hover:bg-green-light transition-all duration-300 group/btn"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <span>사이트 보기</span>
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all duration-300 border border-gray-700"
+                      >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>GitHub</span>
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
