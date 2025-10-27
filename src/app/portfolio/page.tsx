@@ -183,22 +183,6 @@ export default function Portfolio() {
             다양한 분야의 성공적인 프로젝트들을 통해<br />
             쌓은 경험과 노하우를 확인해보세요
           </p>
-
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-8 pt-8">
-            <div className="text-center">
-              <div className="text-4xl font-black text-green">{projects.length}+</div>
-              <div className="text-sm text-gray-500">완료 프로젝트</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-black text-green">100%</div>
-              <div className="text-sm text-gray-500">고객 만족도</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-black text-green">5년+</div>
-              <div className="text-sm text-gray-500">개발 경험</div>
-            </div>
-          </div>
         </motion.div>
       </Section>
 

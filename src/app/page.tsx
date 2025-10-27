@@ -125,7 +125,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-green mb-2">검증된 기술력</h3>
               <p className="text-gray-400">
-                200+ 프로젝트 경험과 최신 기술 트렌드에 대한 깊은 이해
+                다양한 프로젝트 경험과 최신 기술 트렌드에 대한 깊은 이해
               </p>
             </div>
 

@@ -329,7 +329,7 @@ export const HeroSlider: React.FC = () => {
                 </Link>
               </motion.div>
 
-              {/* 통계 */}
+              {/* 통계 - 추후 실제 데이터로 교체 예정
               <motion.div
                 className="grid grid-cols-3 gap-4"
                 initial={{ opacity: 0 }}
@@ -340,6 +340,7 @@ export const HeroSlider: React.FC = () => {
                   <StatCard key={index} stat={stat} index={index} />
                 ))}
               </motion.div>
+              */}
             </div>
           </div>
 
