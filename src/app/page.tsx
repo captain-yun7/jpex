@@ -166,12 +166,6 @@ export default function Home() {
               </svg>
             </span>
           </Link>
-
-          {/* 상태 표시 */}
-          <div className="inline-flex items-center space-x-2 bg-black-light px-6 py-3 rounded-full border border-green/20">
-            <div className="w-3 h-3 bg-green rounded-full animate-pulse shadow-glow-green-sm"></div>
-            <span className="text-sm text-gray-400">현재 새로운 프로젝트 문의 가능</span>
-          </div>
         </div>
       </Section>
     </Layout>
