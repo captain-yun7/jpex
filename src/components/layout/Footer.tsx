@@ -236,7 +236,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                   </FooterLink>
                 ))}
                 <FooterLink href="/quote">견적 요청</FooterLink>
-                <FooterLink href="/contact">문의하기</FooterLink>
               </FooterSection>
             </motion.div>
           </div>
