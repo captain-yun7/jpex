@@ -1,10 +1,8 @@
-import { createClient } from '@/utils/supabase/server'
+import { createInquiry } from '@/lib/db'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createClient()
-    
     const { name, email, phone, company, projectType, message } = await request.json()
 
     // 필수 필드 검증
@@ -24,34 +22,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Supabase에 데이터 삽입
-    const { data, error } = await supabase
-      .from('inquiries')
-      .insert([
-        {
-          name,
-          email,
-          phone: phone || null,
-          company: company || null,
-          project_type: projectType,
-          message,
-          status: 'new'
-        }
-      ])
-      .select()
-
-    if (error) {
-      console.error('Supabase 삽입 오류:', error)
-      return NextResponse.json(
-        { error: '문의사항 접수 중 오류가 발생했습니다.' },
-        { status: 500 }
-      )
-    }
+    // Neon 데이터베이스에 데이터 삽입
+    const inquiry = await createInquiry({
+      name,
+      email,
+      phone: phone || null,
+      company: company || null,
+      project_type: projectType,
+      message,
+      status: 'new'
+    })
 
     return NextResponse.json(
       {
         message: '문의사항이 성공적으로 접수되었습니다.',
-        data: data[0]
+        data: inquiry
       },
       { status: 201 }
     )

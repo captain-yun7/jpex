@@ -95,7 +95,7 @@ export const PROJECT_TECHNOLOGIES = [
   'FastAPI', 'Flask', 'PHP', 'Laravel', 'Java', 'Spring Boot',
   
   // Database
-  'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Firebase',
+  'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Neon', 'Firebase',
   'Prisma', 'TypeORM', 'Sequelize',
   
   // Mobile

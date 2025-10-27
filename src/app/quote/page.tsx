@@ -103,23 +103,21 @@ export default function Quote() {
 
       const result = await response.json();
 
-      if (result.data && result.data.id) {
-        window.location.href = `/quote/${result.data.id}`;
-      } else {
-        alert('견적 요청이 접수되었습니다!\n24시간 내에 연락드리겠습니다.');
-        // 폼 초기화
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          projectType: '',
-          budget: '',
-          timeline: '',
-          description: '',
-          agreement: false
-        });
-      }
+      // 성공 메시지 표시
+      alert('견적 요청이 접수되었습니다!\n24시간 내에 연락드리겠습니다.');
+
+      // 폼 초기화
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        projectType: '',
+        budget: '',
+        timeline: '',
+        description: '',
+        agreement: false
+      });
 
     } catch (error) {
       console.error('견적 요청 접수 오류:', error);
@@ -170,7 +168,7 @@ export default function Quote() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-400 mb-2">
-                    이름 <span className="text-green">*</span>
+                    이름 <span className="text-green text-base">*</span>
                   </label>
                   <input
                     type="text"
@@ -178,14 +176,14 @@ export default function Quote() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-black border-2 border-gray-800 text-white placeholder-gray-600 focus:border-green outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-black border-2 border-gray-800 text-white placeholder-gray-600 focus:border-green focus:shadow-[0_0_0_3px_rgba(0,255,136,0.1)] outline-none transition-all duration-300"
                     placeholder="홍길동"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-400 mb-2">
-                    이메일 <span className="text-green">*</span>
+                    이메일 <span className="text-green text-base">*</span>
                   </label>
                   <input
                     type="email"
@@ -193,7 +191,7 @@ export default function Quote() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-black border-2 border-gray-800 text-white placeholder-gray-600 focus:border-green outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-black border-2 border-gray-800 text-white placeholder-gray-600 focus:border-green focus:shadow-[0_0_0_3px_rgba(0,255,136,0.1)] outline-none transition-all duration-300"
                     placeholder="hong@example.com"
                   />
                 </div>
@@ -238,7 +236,7 @@ export default function Quote() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-400 mb-3">
-                  프로젝트 유형 <span className="text-green">*</span>
+                  프로젝트 유형 <span className="text-green text-base">*</span>
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {projectTypes.map(type => (
@@ -339,20 +337,49 @@ export default function Quote() {
             </div>
 
             {/* 동의 */}
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 p-4 rounded-lg border-2 border-gray-800 hover:border-green/30 transition-colors duration-300">
               <input
                 type="checkbox"
                 id="agreement"
                 name="agreement"
                 checked={formData.agreement}
                 onChange={handleInputChange}
-                className="mt-1 w-4 h-4 text-green bg-black border-gray-800 rounded focus:ring-green focus:ring-2"
+                className="mt-1 w-5 h-5 text-green bg-black border-gray-800 rounded focus:ring-green focus:ring-2 cursor-pointer"
               />
-              <label htmlFor="agreement" className="text-sm text-gray-400 leading-relaxed">
-                개인정보 수집 및 이용에 동의합니다.
+              <label htmlFor="agreement" className="text-sm text-gray-400 leading-relaxed cursor-pointer">
+                <span className="text-green font-semibold">*</span> 개인정보 수집 및 이용에 동의합니다.
                 수집된 정보는 견적 제공 및 상담 목적으로만 사용되며, 프로젝트 종료 후 즉시 파기됩니다.
               </label>
             </div>
+
+            {/* 비활성화 상태 안내 */}
+            {!isFormValid && (
+              <div className="text-sm text-center space-y-2 p-4 bg-red-500/10 rounded-lg border border-red-500/30">
+                <p className="text-gray-400 font-medium">아래 필수 항목을 입력해주세요</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {!formData.name && (
+                    <span className="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full border border-red-500/40">
+                      • 이름
+                    </span>
+                  )}
+                  {!formData.email && (
+                    <span className="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full border border-red-500/40">
+                      • 이메일
+                    </span>
+                  )}
+                  {!formData.projectType && (
+                    <span className="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full border border-red-500/40">
+                      • 프로젝트 유형
+                    </span>
+                  )}
+                  {!formData.agreement && (
+                    <span className="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-semibold rounded-full border border-red-500/40">
+                      • 개인정보 동의
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* 제출 버튼 */}
             <motion.button
@@ -364,8 +391,8 @@ export default function Quote() {
             >
               <span className="absolute inset-0 bg-green-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               <span className="relative z-10 flex items-center justify-center gap-2">
-                {isSubmitting ? '제출 중...' : '무료 견적 받기'}
-                {!isSubmitting && (
+                {isSubmitting ? '제출 중...' : !isFormValid ? '필수 항목을 입력해주세요' : '무료 견적 받기'}
+                {!isSubmitting && isFormValid && (
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>

@@ -1,42 +1,27 @@
-import { createClient } from '@/utils/supabase/server'
+import { sql } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const supabase = await createClient()
-    
-    // Supabase 연결 테스트
-    const { error } = await supabase
-      .from('inquiries')
-      .select('count')
-      .single()
-    
-    if (error && error.code !== 'PGRST116') {
-      // PGRST116은 행이 없을 때 발생하는 에러이므로 무시
-      console.error('Supabase 연결 오류:', error)
-      return NextResponse.json(
-        { 
-          success: false,
-          error: error.message,
-          details: error
-        },
-        { status: 500 }
-      )
-    }
+    // Neon 연결 테스트 - 간단한 쿼리 실행
+    const result = await sql`SELECT NOW() as current_time, version() as pg_version`
 
     return NextResponse.json({
       success: true,
-      message: 'Supabase 연결 성공!',
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL
+      message: 'Neon 데이터베이스 연결 성공!',
+      data: {
+        currentTime: result[0].current_time,
+        postgresVersion: result[0].pg_version
+      }
     })
-    
+
   } catch (error) {
     console.error('API 오류:', error)
     return NextResponse.json(
-      { 
+      {
         success: false,
-        error: '서버 내부 오류가 발생했습니다.',
-        details: error
+        error: '데이터베이스 연결 실패',
+        details: error instanceof Error ? error.message : String(error)
       },
       { status: 500 }
     )
