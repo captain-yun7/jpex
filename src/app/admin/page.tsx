@@ -6,6 +6,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Layout, Section } from '@/components/layout';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -24,15 +25,24 @@ interface Quote {
 }
 
 export default function AdminPage() {
+  const router = useRouter();
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedItem, setSelectedItem] = useState<Quote | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
+    // 로그인 체크
+    const token = localStorage.getItem('admin_session');
+    if (!token) {
+      router.push('/admin/login');
+      return;
+    }
+    setIsAuthenticated(true);
     fetchData();
-  }, []);
+  }, [router]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -96,6 +106,11 @@ export default function AdminPage() {
     setSelectedItem(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('admin_session');
+    router.push('/admin/login');
+  };
+
   const getProjectTypeLabel = (type: string) => {
     const types: Record<string, string> = {
       web: '웹사이트',
@@ -108,13 +123,13 @@ export default function AdminPage() {
     return types[type] || type;
   };
 
-  if (loading) {
+  if (loading || !isAuthenticated) {
     return (
       <Layout>
         <Section padding="xl">
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green mx-auto mb-4"></div>
-            <p className="text-gray-400">데이터를 불러오는 중...</p>
+            <p className="text-gray-400">로딩 중...</p>
           </div>
         </Section>
       </Layout>
@@ -131,10 +146,20 @@ export default function AdminPage() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">
-              견적 요청 <span className="text-green">관리</span>
-            </h1>
-            <p className="text-lg text-gray-400">접수된 견적 요청을 확인하고 관리하세요.</p>
+            <div className="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">
+                  견적 요청 <span className="text-green">관리</span>
+                </h1>
+                <p className="text-lg text-gray-400">접수된 견적 요청을 확인하고 관리하세요.</p>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg hover:bg-red-500/30 transition-colors font-medium"
+              >
+                로그아웃
+              </button>
+            </div>
           </motion.div>
 
           {/* 에러 메시지 */}
