@@ -235,7 +235,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                     {category.label}
                   </FooterLink>
                 ))}
-                <FooterLink href="/quote">견적 요청</FooterLink>
               </FooterSection>
             </motion.div>
           </div>
