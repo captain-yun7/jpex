@@ -24,141 +24,187 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: '기업 포트폴리오 웹사이트',
+      title: 'KCPOWER 회사 홈페이지',
       category: 'web',
-      description: 'Next.js와 Headless CMS를 활용하여 제작한 현대적이고 반응형 기업 홈페이지입니다.',
+      description: '친환경 에너지 솔루션 전문기업의 현대적이고 전문적인 기업 홈페이지를 제작했습니다.',
       image: '/images/projects/project1.png',
-      liveUrl: 'https://example.com',
-      githubUrl: '', // 선택사항
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Strapi', 'PostgreSQL'],
+      liveUrl: '',
+      githubUrl: '',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
       features: [
         '반응형 웹 디자인',
         'SEO 최적화',
-        'CMS 연동',
-        '다국어 지원'
+        '회사 소개 및 사업 영역 구성',
+        '문의 시스템'
       ],
       results: [
-        '로딩 속도 70% 향상',
-        'SEO 점수 95점 달성',
-        '문의 전환율 40% 증가'
+        '깔끔하고 전문적인 UI/UX',
+        '빠른 로딩 속도',
+        '모바일 최적화'
       ],
       duration: '3주',
-      year: '2024'
+      year: '2025'
     },
     {
       id: 2,
-      title: 'AI 기반 고객 상담 챗봇',
+      title: 'FaceFalcon - AI 얼굴분석 서비스',
       category: 'ai',
-      description: 'GPT-4 API를 활용한 24/7 자동 고객 상담 시스템으로 고객 만족도와 업무 효율성을 크게 향상시켰습니다.',
+      description: 'AI 기반 얼굴 분석 기술을 활용한 혁신적인 서비스 플랫폼입니다.',
       image: '/images/projects/project2.png',
       liveUrl: '',
       githubUrl: '',
-      technologies: ['OpenAI GPT-4', 'LangChain', 'Python', 'FastAPI', 'React'],
+      technologies: ['Python', 'TensorFlow', 'React', 'FastAPI', 'OpenCV'],
       features: [
-        'GPT-4 자연어 처리',
-        '실시간 대화 인터페이스',
-        '대화 히스토리 관리',
-        '관리자 대시보드'
+        'AI 얼굴 분석 알고리즘',
+        '실시간 이미지 처리',
+        '사용자 대시보드',
+        '분석 결과 시각화'
       ],
       results: [
-        '상담 처리 시간 60% 단축',
-        '고객 만족도 85% 향상',
-        '운영 비용 50% 절감'
+        '정확한 얼굴 분석',
+        '빠른 처리 속도',
+        '직관적인 사용자 경험'
       ],
-      duration: '4주',
-      year: '2024'
+      duration: '5주',
+      year: '2025'
     },
     {
       id: 3,
-      title: '이커머스 플랫폼',
+      title: '온라인 강의 플랫폼',
       category: 'web',
-      description: '완전한 온라인 쇼핑몰 솔루션으로 결제, 재고 관리, 주문 처리 등 모든 기능이 통합되어 있습니다.',
+      description: '학생들을 위한 온라인 학습 관리 시스템으로 강의 수강, 과제 제출, 성적 관리 등의 기능을 제공합니다.',
       image: '/images/projects/project3.png',
       liveUrl: '',
       githubUrl: '',
-      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'AWS'],
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'WebSocket'],
       features: [
-        '결제 시스템 통합',
-        '재고 관리 시스템',
-        '주문 추적 기능',
-        '관리자 대시보드'
+        '강의 동영상 스트리밍',
+        '과제 제출 시스템',
+        '실시간 채팅',
+        '학습 진도 관리'
       ],
       results: [
-        '온라인 매출 200% 증가',
-        '주문 처리 자동화 90%',
-        '월 활성 사용자 150% 증가'
+        '학습 효율성 향상',
+        '편리한 과제 관리',
+        '학생-교사 소통 강화'
       ],
       duration: '6주',
-      year: '2024'
+      year: '2025'
     },
     {
       id: 4,
-      title: '레거시 시스템 현대화',
-      category: 'consulting',
-      description: '오래된 모놀리식 시스템을 현대적인 마이크로서비스 아키텍처로 전환하여 확장성과 유지보수성을 개선했습니다.',
+      title: '염창역더채움 분양사이트',
+      category: 'web',
+      description: '부동산 분양 정보를 효과적으로 전달하는 프리미엄 분양 웹사이트입니다.',
       image: '/images/projects/project4.png',
       liveUrl: '',
       githubUrl: '',
-      technologies: ['Docker', 'Kubernetes', 'Node.js', 'React', 'PostgreSQL'],
+      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       features: [
-        '마이크로서비스 설계',
-        '컨테이너화',
-        'API 게이트웨이 구축',
-        '자동 배포 파이프라인'
+        '매력적인 인터랙티브 디자인',
+        '단지 정보 상세 페이지',
+        '위치 정보 지도 연동',
+        '분양 문의 시스템'
       ],
       results: [
-        '확장성 300% 향상',
-        '유지보수 시간 70% 단축',
-        '가용성 99.9% 달성'
+        '프리미엄 브랜드 이미지 구축',
+        '높은 사용자 참여도',
+        '효과적인 정보 전달'
       ],
-      duration: '8주',
-      year: '2024'
+      duration: '4주',
+      year: '2025'
     },
     {
       id: 5,
-      title: '문서 자동 분석 AI 시스템',
-      category: 'ai',
-      description: '대량의 PDF 문서를 자동으로 분석하고 요약하여 업무 효율성을 크게 향상시킨 AI 시스템입니다.',
+      title: '고등국어 시험 시스템',
+      category: 'web',
+      description: '학생들의 국어 학습을 돕는 온라인 시험 및 평가 시스템입니다.',
       image: '/images/projects/project5.png',
       liveUrl: '',
       githubUrl: '',
-      technologies: ['Python', 'GPT-4', 'LangChain', 'PyPDF2', 'Streamlit'],
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'TypeScript'],
       features: [
-        'PDF 자동 파싱',
-        'AI 기반 내용 요약',
-        '키워드 추출',
-        '일괄 처리 시스템'
+        '온라인 시험 기능',
+        '자동 채점 시스템',
+        '성적 분석 리포트',
+        '문제은행 관리'
       ],
       results: [
-        '문서 처리 시간 80% 단축',
-        '분석 정확도 95% 달성',
-        '업무 생산성 120% 향상'
+        '시험 관리 효율화',
+        '즉각적인 성적 확인',
+        '학습 분석 데이터 제공'
       ],
-      duration: '3주',
-      year: '2024'
+      duration: '5주',
+      year: '2025'
     },
     {
       id: 6,
-      title: 'SaaS 플랫폼 대시보드',
+      title: '국가대표광고 - 광고회사 홈페이지',
       category: 'web',
-      description: '실시간 데이터 시각화와 사용자 관리 기능을 갖춘 종합적인 SaaS 관리 대시보드입니다.',
+      description: '광고 전문 기업의 포트폴리오와 서비스를 효과적으로 소개하는 웹사이트입니다.',
       image: '/images/projects/project6.png',
       liveUrl: '',
       githubUrl: '',
-      technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL', 'WebSocket'],
+      technologies: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
       features: [
-        '실시간 데이터 시각화',
-        '사용자 권한 관리',
-        '알림 시스템',
-        'API 관리 도구'
+        '포트폴리오 갤러리',
+        '서비스 소개 페이지',
+        '반응형 디자인',
+        '문의 시스템'
       ],
       results: [
-        '관리 효율성 150% 향상',
-        '데이터 접근성 개선',
-        '사용자 만족도 90%'
+        '전문적인 브랜드 이미지',
+        '포트폴리오 효과적 전달',
+        '고객 문의 증가'
       ],
-      duration: '5주',
-      year: '2023'
+      duration: '3주',
+      year: '2025'
+    },
+    {
+      id: 7,
+      title: '병원 홈페이지',
+      category: 'web',
+      description: '의료 기관의 전문성과 신뢰를 전달하는 병원 홈페이지입니다.',
+      image: '/images/projects/project7.png',
+      liveUrl: '',
+      githubUrl: '',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+      features: [
+        '진료 과목 소개',
+        '의료진 프로필',
+        '온라인 예약 시스템',
+        '병원 소식 게시판'
+      ],
+      results: [
+        '환자 편의성 향상',
+        '온라인 예약 활성화',
+        '병원 신뢰도 제고'
+      ],
+      duration: '4주',
+      year: '2025'
+    },
+    {
+      id: 8,
+      title: '유통회사 홈페이지',
+      category: 'web',
+      description: '유통 전문 기업의 사업 영역과 제품을 소개하는 기업 홈페이지입니다.',
+      image: '/images/projects/project8.png',
+      liveUrl: '',
+      githubUrl: '',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      features: [
+        '회사 소개 및 연혁',
+        '제품 카탈로그',
+        '파트너사 관리',
+        '문의 시스템'
+      ],
+      results: [
+        '기업 신뢰도 향상',
+        '제품 정보 효과적 전달',
+        'B2B 파트너십 강화'
+      ],
+      duration: '3주',
+      year: '2025'
     }
   ];
 
@@ -222,19 +268,13 @@ export default function Portfolio() {
               {/* Project Image */}
               <div className="relative mb-6">
                 <div className="aspect-video bg-gradient-to-br from-green/10 to-green/5 rounded-xl overflow-hidden border border-gray-800 group-hover:border-green transition-all duration-300">
-                  <div className="relative w-full h-full bg-gray-900 flex items-center justify-center">
-                    {/* 플레이스홀더 - 실제 이미지로 교체하세요 */}
-                    <div className="text-6xl opacity-30">
-                      {project.id === 1 ? '🏢' : project.id === 2 ? '🤖' : project.id === 3 ? '🛒' : project.id === 4 ? '🏗️' : project.id === 5 ? '📄' : '📊'}
-                    </div>
-                    {/* 실제 사용 시:
+                  <div className="relative w-full h-full bg-gray-900">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover"
                     />
-                    */}
                   </div>
                 </div>
 
