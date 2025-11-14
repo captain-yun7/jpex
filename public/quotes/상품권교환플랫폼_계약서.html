@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소프트웨어 개발 용역 계약서 - 상품권 교환 플랫폼</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 헤더 영역 */
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 3px solid #333;
+            text-align: center;
+        }
+
+        .doc-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* 계약 당사자 정보 */
+        .parties-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .party-box {
+            margin-bottom: 25px;
+        }
+
+        .party-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .party-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        .party-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .party-table td {
+            padding: 6px 0;
+        }
+
+        .party-table td:first-child {
+            width: 140px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .party-table td:last-child {
+            color: #000;
+        }
+
+        /* 메인 콘텐츠 */
+        .content {
+            padding: 40px 60px;
+        }
+
+        .article {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .article-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 10px;
+        }
+
+        .article-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* 테이블 스타일 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.highlight {
+            background: #e3f2fd;
+        }
+
+        .info-table tr.highlight td {
+            color: #1565c0;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+        }
+
+        /* 박스 스타일 */
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        /* 서명 영역 */
+        .signature-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #333;
+        }
+
+        .signature-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .signature-boxes {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 25px;
+            background: #fafafa;
+        }
+
+        .signature-box h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .signature-box p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .signature-box .sign-line {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #333;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 푸터 */
+        .footer {
+            padding: 30px 60px;
+            border-top: 1px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        .footer-note {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        .footer-note li {
+            margin-bottom: 5px;
+        }
+
+        /* 액션 버튼 */
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* 인쇄 스타일 */
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .article {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .parties-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .signature-boxes {
+                flex-direction: column;
+            }
+
+            .doc-title {
+                font-size: 24px;
+                letter-spacing: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 액션 버튼들 -->
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1 class="doc-title">용역 계약서</h1>
+            <div class="doc-meta">
+                <span>문서번호: DORICON-2025-001</span>
+                <span>작성일자: 2025년 11월 15일</span>
+            </div>
+        </div>
+
+        <!-- 계약 당사자 정보 -->
+        <div class="parties-section">
+            <div class="party-box">
+                <div class="party-title">발주자 (갑)</div>
+                <table class="party-table">
+                    <tr>
+                        <td>상호 (단체명)</td>
+                        <td>도리콘</td>
+                    </tr>
+                    <tr>
+                        <td>대표자</td>
+                        <td>박슬기</td>
+                    </tr>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td>110111-0941673</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="party-box">
+                <div class="party-title">수주자 (을)</div>
+                <table class="party-table">
+                    <tr>
+                        <td>상호 (단체명)</td>
+                        <td>JPEX Studio</td>
+                    </tr>
+                    <tr>
+                        <td>대표자</td>
+                        <td>윤지수</td>
+                    </tr>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td>560-45-01327</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="content">
+            <!-- 제1조: 계약의 목적 -->
+            <div class="article">
+                <h2 class="article-title">제1조 (계약의 목적)</h2>
+                <div class="article-content">
+                    <p>본 계약은 갑이 을에게 상품권 판매/교환 플랫폼 개발 용역을 의뢰하고, 을이 이를 수행함에 있어 필요한 사항을 정함으로써 양 당사자의 권리와 의무를 명확히 하고 신의성실의 원칙에 따라 계약을 이행하는 것을 목적으로 한다.</p>
+                </div>
+            </div>
+
+            <!-- 제2조: 개발 범위 -->
+            <div class="article">
+                <h2 class="article-title">제2조 (개발 범위 및 내용)</h2>
+                <div class="article-content">
+                    <div class="sub-section">
+                        <div class="sub-title">프로젝트명</div>
+                        <p>도리콘 상품권 판매/교환 플랫폼</p>
+                    </div>
+
+                    <div class="sub-section">
+                        <div class="sub-title">개발 범위</div>
+                        <ul>
+                            <li><strong>상품권 판매 신청 시스템</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>상품권 종류 선택 (이미지, 상품권명, 설명 표시)</li>
+                                    <li>핀번호 직접 입력 (전체 붙여넣기 시 자리수별로 자동 분리)</li>
+                                    <li>주문정보 입력 (은행명, 예금주명, 계좌번호, 휴대폰번호)</li>
+                                    <li>개인정보 수집 및 이용 동의 체크박스 (동의서 전문 확인 가능)</li>
+                                    <li>교환 유의사항 및 이용조건 동의 체크박스</li>
+                                </ul>
+                            </li>
+                            <li><strong>관리자 페이지</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>상품권 종류 추가/수정 (이미지, 상품권명, 설명, 핀번호 자리수 등)</li>
+                                    <li>교환 요청 데이터 확인 및 관리</li>
+                                    <li>교환 완료 처리 기능</li>
+                                    <li>실시간 판매내역 관리</li>
+                                    <li>메뉴 및 문구 수정 기능</li>
+                                </ul>
+                            </li>
+                            <li><strong>실시간 채팅 시스템</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>교환 신청 완료 시 채팅창 표시</li>
+                                    <li>채팅창에 주문 이력 표시 (상품권 종류, 교환금액, 이용조건 동의여부, 상태)</li>
+                                    <li>관리자 교환 알림 기능 (푸시 또는 이메일)</li>
+                                    <li>교환 완료 시 채팅창에 자동 메시지 발송</li>
+                                </ul>
+                            </li>
+                            <li><strong>실시간 판매내역</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>교환 완료 건 자동 표시 (최대 10-15건)</li>
+                                    <li>오늘 날짜 자동 업데이트 표시</li>
+                                    <li>판매 리스트는 날짜 미기재</li>
+                                </ul>
+                            </li>
+                            <li><strong>메뉴 및 페이지</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>상품권 매입시세</li>
+                                    <li>상품권 판매신청</li>
+                                    <li>실시간 판매현황</li>
+                                    <li>고객센터</li>
+                                    <li>내 주문 조회하기</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sub-section">
+                        <div class="sub-title">기술 스택</div>
+                        <p>Next.js 15+, TypeScript, Tailwind CSS, PostgreSQL, WebSocket (실시간 채팅)</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>제외 사항:</strong> 서버 호스팅 비용 및 도메인 비용은 연 운영비에 포함 (연 20만원)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제3조: 계약금액 -->
+            <div class="article">
+                <h2 class="article-title">제3조 (계약금액 및 지급조건)</h2>
+                <div class="article-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th style="width: 30%; text-align: right;">금액</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="total-row">
+                                <td>총 계약금액</td>
+                                <td class="amount">₩1,000,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="sub-section" style="margin-top: 25px;">
+                        <div class="sub-title">지급 조건</div>
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>지급 시점</th>
+                                    <th style="width: 25%; text-align: right;">금액</th>
+                                    <th style="width: 15%; text-align: center;">비율</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>계약금</td>
+                                    <td>계약 체결 시</td>
+                                    <td class="amount">₩400,000</td>
+                                    <td style="text-align: center;">40%</td>
+                                </tr>
+                                <tr>
+                                    <td>잔금</td>
+                                    <td>최종 검수 완료 및 배포 시</td>
+                                    <td class="amount">₩600,000</td>
+                                    <td style="text-align: center;">60%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 20px;">
+                        <p><strong>지급 방법:</strong> 계좌 이체</p>
+                        <p><strong>지급 계좌:</strong> [은행명] [계좌번호] (예금주: JPEX Studio)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제4조: 연간 운영비 -->
+            <div class="article">
+                <h2 class="article-title">제4조 (연간 운영비)</h2>
+                <div class="article-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>세부내용</th>
+                                <th style="width: 25%; text-align: right;">금액(원/년)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>서버 호스팅 + 도메인</td>
+                                <td>연간 서버 호스팅 비용 및 도메인 등록/갱신 포함</td>
+                                <td class="amount">₩200,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="highlight-box" style="margin-top: 15px;">
+                        <p><strong>운영비 지급:</strong> 최초 개발 완료 1년 후부터 매년 갱신</p>
+                        <p><strong>포함 사항:</strong> 서버 유지보수, 도메인 갱신, 기본적인 시스템 모니터링</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제5조: 개발 일정 -->
+            <div class="article">
+                <h2 class="article-title">제5조 (개발 일정)</h2>
+                <div class="article-content">
+                    <p><strong>총 개발 기간:</strong> 계약일로부터 약 4주</p>
+                    <p><strong>시작일:</strong> 2025년 11월 15일 | <strong>완료 예정일:</strong> 2025년 12월 13일</p>
+                </div>
+            </div>
+
+            <!-- 제6조: 완료 및 인수 -->
+            <div class="article">
+                <h2 class="article-title">제6조 (완료 및 인수)</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>을은 웹사이트를 완성하여 정상적으로 사용 가능한 상태로 제공한다.</li>
+                        <li>갑은 완성된 결과물을 확인하고, 수정이 필요한 경우 을에게 요청한다.</li>
+                        <li>양 당사자가 최종 완료를 확인한 시점에 인수가 완료된 것으로 본다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 제7조: 하자보수 -->
+            <div class="article">
+                <h2 class="article-title">제7조 (하자보수)</h2>
+                <div class="article-content">
+                    <p>을은 인수 완료일로부터 <strong>3개월간</strong> 계약 범위 내 기능의 오류 및 버그를 무상으로 수정한다.</p>
+                    <div class="highlight-box" style="margin-top: 15px;">
+                        <p><strong>제외 사항:</strong> 새로운 기능 추가, 갑이 임의로 수정한 코드로 인한 오류</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제8조: 지적재산권 -->
+            <div class="article">
+                <h2 class="article-title">제8조 (지적재산권)</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>개발된 소스코드의 저작권은 <strong>최종 대금 완납 시</strong> 갑에게 이전된다.</li>
+                        <li>소스코드는 갑이 필요시 요청하면 을이 즉시 제공한다.</li>
+                        <li>을은 본 프로젝트를 포트폴리오 용도로 사용할 수 있다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 제9조: 특약 사항 -->
+            <div class="article">
+                <h2 class="article-title">제9조 (특약 사항)</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>개인정보 수집 및 이용 동의서 전문은 갑이 별도로 제공한다.</li>
+                        <li>상품권 교환 유의사항 및 이용조건 문구는 갑이 별도로 제공한다.</li>
+                        <li>계약 범위를 벗어나는 추가 기능은 별도 협의한다.</li>
+                        <li>본 계약에 명시되지 않은 사항은 양 당사자 간 협의를 통해 해결한다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 계약 체결 -->
+            <div class="signature-section">
+                <div class="signature-title">계약 체결</div>
+                <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 30px;">
+                    본 계약의 성립을 증명하기 위하여 계약서 2부를 작성하고,<br>
+                    양 당사자가 서명 날인한 후 각각 1부씩 보관한다.
+                </p>
+
+                <p style="text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 30px;">
+                    계약일: 2025년 11월 15일
+                </p>
+
+                <div class="signature-boxes">
+                    <div class="signature-box">
+                        <h3>갑 (발주자)</h3>
+                        <p><strong>상호:</strong> 도리콘</p>
+                        <p><strong>대표자:</strong> 박슬기</p>
+                        <div class="sign-line">(서명 또는 인)</div>
+                    </div>
+
+                    <div class="signature-box">
+                        <h3>을 (수주자)</h3>
+                        <p><strong>상호:</strong> JPEX Studio</p>
+                        <p><strong>대표자:</strong> 윤지수</p>
+                        <div class="sign-line">(서명 또는 인)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
