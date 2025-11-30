@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 제작 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 100px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .tech-stack {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .tech-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .tech-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-label {
+            width: 100px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .tech-value {
+            flex: 1;
+            color: #666;
+        }
+
+        .maintenance-box {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .maintenance-box h4 {
+            font-size: 14px;
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .maintenance-option {
+            background: white;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .maintenance-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .maintenance-option strong {
+            color: #1976d2;
+        }
+
+        .maintenance-option p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-title {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: WEB-2025-010</span>
+                <span>작성일자: 2025년 12월 1일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>쇼핑몰 웹사이트 제작</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>Spring Boot 기반의 쇼핑몰 웹사이트 개발 및 AWS 클라우드 인프라 구축</p>
+                    <div class="sub-section">
+                        <div class="sub-title">예상 기간</div>
+                        <p>약 4~6주</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">기술 스택</h2>
+                <div class="section-content">
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <span class="tech-label">Frontend</span>
+                            <span class="tech-value">React / S3 + CloudFront + Route53</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-label">Backend</span>
+                            <span class="tech-value">Spring Boot + MyBatis / EC2 (혹은 ECS 및 EKS)</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-label">Database</span>
+                            <span class="tech-value">Oracle / RDS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">개발 범위</h2>
+                <div class="section-content">
+                    <ul>
+                        <li><strong>회원 관리</strong> - 회원가입, 로그인, 마이페이지</li>
+                        <li><strong>상품 관리</strong> - 상품 목록, 상세페이지, 카테고리</li>
+                        <li><strong>장바구니/주문</strong> - 장바구니, 주문/결제, 주문내역</li>
+                        <li><strong>관리자</strong> - 상품/주문/회원 관리 페이지</li>
+                        <li><strong>인프라 구축</strong> - AWS 환경 세팅 및 배포</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">항목</th>
+                                <th>세부내용</th>
+                                <th width="25%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>웹 개발</td>
+                                <td>프론트엔드 + 백엔드 + 관리자</td>
+                                <td class="amount">1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>인프라 구축</td>
+                                <td>AWS 환경 세팅 및 배포</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 금액</strong></td>
+                                <td class="amount"><strong>2,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">유지보수 옵션 (선택)</h2>
+                <div class="section-content">
+                    <div class="maintenance-box">
+                        <h4>개발 완료 후 유지보수 방식을 선택하실 수 있습니다.</h4>
+                        <div class="maintenance-option">
+                            <strong>옵션 1. SLA 방식</strong>
+                            <p>월 30만원~ / 간단한 기능 수정 및 인프라 운영 관리 포함</p>
+                        </div>
+                        <div class="maintenance-option">
+                            <strong>옵션 2. 건별 방식</strong>
+                            <p>요구사항별 비용 산정 (기능 추가, 인프라 스케일링 등)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>개발 완료 후 3개월간 무상 하자보수를 제공합니다.</li>                        
+                        <li>추가 기능 개발은 별도 협의가 필요합니다.</li>
+                        <li style="font-size: 12px; color: #888;">※ AWS 인프라 비용은 사용량에 따라 클라이언트에게 별도 청구됩니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box" style="margin-top: 30px;">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
