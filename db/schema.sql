@@ -52,3 +52,55 @@ COMMENT ON COLUMN quotes.requirements IS '프로젝트 설명 및 요구사항';
 COMMENT ON COLUMN quotes.status IS '상태 (pending, in_progress, completed, cancelled)';
 COMMENT ON COLUMN quotes.created_at IS '생성 일시';
 COMMENT ON COLUMN quotes.updated_at IS '수정 일시';
+
+-- ============================================
+-- 견적서 문서 테이블 (관리자용)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS quote_documents (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title VARCHAR(255) NOT NULL,
+  client_name VARCHAR(255),
+  project_name VARCHAR(255),
+  doc_number VARCHAR(100),
+  doc_date DATE DEFAULT CURRENT_DATE,
+  valid_days INTEGER DEFAULT 30,
+  total_amount BIGINT DEFAULT 0,
+  items JSONB DEFAULT '[]'::jsonb,
+  payment_terms JSONB DEFAULT '{}'::jsonb,
+  extra_costs JSONB DEFAULT '[]'::jsonb,
+  notes TEXT,
+  status VARCHAR(50) DEFAULT 'draft',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 인덱스 생성
+CREATE INDEX IF NOT EXISTS idx_quote_documents_status ON quote_documents(status);
+CREATE INDEX IF NOT EXISTS idx_quote_documents_created_at ON quote_documents(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_quote_documents_doc_number ON quote_documents(doc_number);
+
+-- 트리거 생성
+DROP TRIGGER IF EXISTS update_quote_documents_updated_at ON quote_documents;
+CREATE TRIGGER update_quote_documents_updated_at
+  BEFORE UPDATE ON quote_documents
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- 코멘트 추가
+COMMENT ON TABLE quote_documents IS 'JPEX 견적서 문서 관리';
+COMMENT ON COLUMN quote_documents.id IS '견적서 고유 ID';
+COMMENT ON COLUMN quote_documents.title IS '견적서 제목';
+COMMENT ON COLUMN quote_documents.client_name IS '수신처 (고객명)';
+COMMENT ON COLUMN quote_documents.project_name IS '프로젝트명';
+COMMENT ON COLUMN quote_documents.doc_number IS '문서번호';
+COMMENT ON COLUMN quote_documents.doc_date IS '견적서 작성일';
+COMMENT ON COLUMN quote_documents.valid_days IS '유효기간 (일)';
+COMMENT ON COLUMN quote_documents.total_amount IS '총 금액';
+COMMENT ON COLUMN quote_documents.items IS '견적 항목 (JSON 배열)';
+COMMENT ON COLUMN quote_documents.payment_terms IS '결제 조건 (JSON)';
+COMMENT ON COLUMN quote_documents.extra_costs IS '별도 비용 항목 (JSON 배열)';
+COMMENT ON COLUMN quote_documents.notes IS '기타 사항';
+COMMENT ON COLUMN quote_documents.status IS '상태 (draft, sent, accepted, rejected)';
+COMMENT ON COLUMN quote_documents.created_at IS '생성 일시';
+COMMENT ON COLUMN quote_documents.updated_at IS '수정 일시';

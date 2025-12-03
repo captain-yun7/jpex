@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // 하드코딩된 관리자 계정
 const ADMIN_CREDENTIALS = {
   username: process.env.ADMIN_USERNAME || 'admin',
-  password: process.env.ADMIN_PASSWORD || 'jpex2024!',
+  password: process.env.ADMIN_PASSWORD || 'admin123',
 };
 
 // 간단한 토큰 생성 (실제로는 JWT 등을 사용하는 것이 좋지만, 하드코딩으로 간단하게)
