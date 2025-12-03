@@ -180,9 +180,9 @@ export default function QuoteDocumentsPage() {
               <div className="flex gap-3">
                 <Link
                   href="/admin"
-                  className="px-4 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                  className="px-4 py-2 bg-green/20 text-green border border-green/30 rounded-lg hover:bg-green/30 transition-colors font-medium"
                 >
-                  견적 요청
+                  ← 대시보드
                 </Link>
                 <button
                   onClick={handleLogout}

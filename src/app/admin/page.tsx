@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Layout, Section } from '@/components/layout';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -146,12 +147,12 @@ export default function AdminPage() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="flex items-start justify-between gap-4 mb-3">
+            <div className="flex items-start justify-between gap-4 mb-6">
               <div>
                 <h1 className="text-4xl lg:text-5xl font-black text-white mb-3">
-                  견적 요청 <span className="text-green">관리</span>
+                  관리자 <span className="text-green">대시보드</span>
                 </h1>
-                <p className="text-lg text-gray-400">접수된 견적 요청을 확인하고 관리하세요.</p>
+                <p className="text-lg text-gray-400">JPEX Studio 관리 시스템</p>
               </div>
               <button
                 onClick={handleLogout}
@@ -160,6 +161,48 @@ export default function AdminPage() {
                 로그아웃
               </button>
             </div>
+
+            {/* 네비게이션 메뉴 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="bg-green/10 border-2 border-green rounded-xl p-6">
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-4xl">📋</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">견적 요청</h3>
+                    <p className="text-sm text-gray-400">고객 문의 관리</p>
+                  </div>
+                </div>
+                <p className="text-3xl font-black text-green mb-2">{quotes.length}건</p>
+                <p className="text-xs text-gray-500">현재 페이지</p>
+              </div>
+
+              <Link
+                href="/admin/quotes"
+                className="bg-black-light border-2 border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all group"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-4xl">📄</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">견적서 관리</h3>
+                    <p className="text-sm text-gray-400">견적서 생성/조회</p>
+                  </div>
+                </div>
+                <p className="text-sm text-purple-400 font-medium">바로가기 →</p>
+              </Link>
+
+              <div className="bg-black-light border-2 border-gray-800 rounded-xl p-6 opacity-50">
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-4xl">📁</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">계약서 관리</h3>
+                    <p className="text-sm text-gray-400">계약서 생성/조회</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 font-medium">준비중</p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl font-bold text-white mb-4">견적 요청 목록</h2>
           </motion.div>
 
           {/* 에러 메시지 */}
