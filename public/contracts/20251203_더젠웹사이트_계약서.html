@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소프트웨어 개발 용역 계약서 - 더젠</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 3px solid #333;
+            text-align: center;
+        }
+
+        .doc-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .parties-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .party-box {
+            margin-bottom: 25px;
+        }
+
+        .party-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .party-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        .party-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .party-table td {
+            padding: 6px 0;
+        }
+
+        .party-table td:first-child {
+            width: 140px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .party-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .article {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .article-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 10px;
+        }
+
+        .article-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .article-content ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .article-content ol li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        .process-box {
+            background: #f0f7ff;
+            border: 1px solid #cce0ff;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .process-box h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 12px;
+        }
+
+        .process-box ul {
+            margin-left: 20px;
+        }
+
+        .process-box li {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #333;
+        }
+
+        .signature-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .signature-boxes {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 25px;
+            background: #fafafa;
+        }
+
+        .signature-box h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .signature-box p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .signature-box .sign-line {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #333;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #2c3e50;
+            color: white;
+            border: 1px solid #2c3e50;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            .action-buttons { display: none !important; }
+            body { background: white; padding: 0; margin: 0; }
+            .container { max-width: 100%; box-shadow: none; border: none; }
+            html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .parties-section { padding-left: 30px; padding-right: 30px; }
+            .signature-boxes { flex-direction: column; }
+            .doc-title { font-size: 24px; letter-spacing: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="doc-title">용역 계약서</h1>
+            <div class="doc-meta">
+                <span>문서번호: THEZEN-2025-001</span>
+                <span>작성일자: 2025년 12월 3일</span>
+            </div>
+        </div>
+
+        <div class="parties-section">
+            <div class="party-box">
+                <div class="party-title">발주자 (갑)</div>
+                <table class="party-table">
+                    <tr>
+                        <td>상호</td>
+                        <td>주식회사 더젠</td>
+                    </tr>
+                    <tr>
+                        <td>대표자</td>
+                        <td>이윤정</td>
+                    </tr>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td>211-88-94921</td>
+                    </tr>
+                    <tr>
+                        <td>소재지</td>
+                        <td>경기도 김포시 통진읍 서암고정로 89</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="party-box">
+                <div class="party-title">수주자 (을)</div>
+                <table class="party-table">
+                    <tr>
+                        <td>상호</td>
+                        <td>JPEX Studio</td>
+                    </tr>
+                    <tr>
+                        <td>대표자</td>
+                        <td>윤지수</td>
+                    </tr>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td>560-45-01327</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article">
+                <h2 class="article-title">제1조 (계약의 목적)</h2>
+                <div class="article-content">
+                    <p>본 계약은 갑이 을에게 더젠 웹사이트 개발 용역을 의뢰하고, 을이 이를 수행함에 있어 양 당사자의 권리와 의무를 명확히 하는 것을 목적으로 한다.</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제2조 (계약금액 및 결제조건)</h2>
+                <div class="article-content">
+                    <table class="info-table">
+                        <tbody>
+                            <tr class="total-row">
+                                <td>총 계약금액</td>
+                                <td class="amount">₩1,000,000 (VAT 포함)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="highlight-box">
+                        <p><strong>결제 조건</strong></p>
+                        <p>• 착수금: 50% (₩500,000) - 계약 체결 시</p>
+                        <p>• 잔금: 50% (₩500,000) - 오픈 과정 완료 후 7일 이내</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제3조 (개발 기간)</h2>
+                <div class="article-content">
+                    <p>착수금 입금 후 <strong>최대 30일</strong> 이내에 개발을 완료한다.</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제4조 (개발 환경 및 프로세스)</h2>
+                <div class="article-content">
+                    <div class="process-box">
+                        <h4>1. 개발 과정</h4>
+                        <ul>
+                            <li><strong>소스코드 저장소:</strong> 을(JPEX Studio) 계정 사용</li>
+                            <li><strong>서버/호스팅:</strong> 을(JPEX Studio) 계정 사용</li>
+                            <li><strong>데이터베이스:</strong> Supabase (갑 계정)</li>
+                            <li><strong>개발 확인:</strong> 을이 제공하는 임시 주소를 통해 갑이 개발 과정 확인</li>
+                        </ul>
+                    </div>
+                    <div class="process-box">
+                        <h4>2. 오픈 과정 (개발 및 수정 완료 후)</h4>
+                        <ul>
+                            <li><strong>소스코드 저장소:</strong> 갑의 GitHub 계정으로 이전 (갑이 을을 초대)</li>
+                            <li><strong>서버/호스팅:</strong> Vercel (갑 계정)</li>
+                            <li><strong>도메인 연결:</strong> 가비아 (갑 계정)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제5조 (지적재산권)</h2>
+                <div class="article-content">
+                    <p>개발 완료 후 결과물에 대한 모든 소유권과 지식재산권은 <strong>갑(더젠)</strong>에게 귀속된다.</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제6조 (하자보수)</h2>
+                <div class="article-content">
+                    <ul>
+                        <li><strong>무상 수리:</strong> 개발 완료된 결과물에 시스템 오류, 버그, 오작동 등 결과물 자체의 하자가 발생했을 경우 <strong>1년간</strong> 무상으로 수정한다.</li>
+                        <li><strong>유상 수리:</strong> 개발 완료 후 합의된 범위를 벗어나는 새로운 기능의 추가, 디자인의 변경, 유지보수 등이 해당되며 이에 대한 비용과 일정은 별도 협의하여 결정한다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="article">
+                <h2 class="article-title">제7조 (기타)</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>을은 본 프로젝트를 포트폴리오 용도로 사용할 수 있다.</li>
+                        <li>본 계약에 명시되지 않은 사항은 상호 협의하여 해결한다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-title">계약 체결</div>
+                <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 30px;">
+                    본 계약의 성립을 증명하기 위하여 계약서 2부를 작성하고, 각 1부씩 보관한다.
+                </p>
+
+                <p style="text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 30px;">
+                    계약일: 2025년 12월 3일
+                </p>
+
+                <div class="signature-boxes">
+                    <div class="signature-box">
+                        <h3>갑 (발주자)</h3>
+                        <p><strong>상호:</strong> 주식회사 더젠</p>
+                        <p><strong>대표자:</strong> 이윤정</p>
+                        <div class="sign-line">(서명 또는 인)</div>
+                    </div>
+
+                    <div class="signature-box">
+                        <h3>을 (수주자)</h3>
+                        <p><strong>상호:</strong> JPEX Studio</p>
+                        <p><strong>대표자:</strong> 윤지수</p>
+                        <div class="sign-line">(서명 또는 인)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
