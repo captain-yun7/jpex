@@ -104,3 +104,63 @@ COMMENT ON COLUMN quote_documents.notes IS '기타 사항';
 COMMENT ON COLUMN quote_documents.status IS '상태 (draft, sent, accepted, rejected)';
 COMMENT ON COLUMN quote_documents.created_at IS '생성 일시';
 COMMENT ON COLUMN quote_documents.updated_at IS '수정 일시';
+
+-- ============================================
+-- 계약서 문서 테이블 (관리자용)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS contract_documents (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title VARCHAR(255) NOT NULL,
+  client_name VARCHAR(255),
+  client_address VARCHAR(500),
+  client_contact VARCHAR(100),
+  client_email VARCHAR(255),
+  project_name VARCHAR(255),
+  doc_number VARCHAR(100),
+  contract_date DATE DEFAULT CURRENT_DATE,
+  start_date DATE,
+  end_date DATE,
+  total_amount BIGINT DEFAULT 0,
+  scope_of_work JSONB DEFAULT '[]'::jsonb,
+  payment_schedule JSONB DEFAULT '[]'::jsonb,
+  special_terms TEXT,
+  notes TEXT,
+  status VARCHAR(50) DEFAULT 'draft',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 인덱스 생성
+CREATE INDEX IF NOT EXISTS idx_contract_documents_status ON contract_documents(status);
+CREATE INDEX IF NOT EXISTS idx_contract_documents_created_at ON contract_documents(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_contract_documents_doc_number ON contract_documents(doc_number);
+
+-- 트리거 생성
+DROP TRIGGER IF EXISTS update_contract_documents_updated_at ON contract_documents;
+CREATE TRIGGER update_contract_documents_updated_at
+  BEFORE UPDATE ON contract_documents
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- 코멘트 추가
+COMMENT ON TABLE contract_documents IS 'JPEX 계약서 문서 관리';
+COMMENT ON COLUMN contract_documents.id IS '계약서 고유 ID';
+COMMENT ON COLUMN contract_documents.title IS '계약서 제목';
+COMMENT ON COLUMN contract_documents.client_name IS '계약 상대방 (갑)';
+COMMENT ON COLUMN contract_documents.client_address IS '갑의 주소';
+COMMENT ON COLUMN contract_documents.client_contact IS '갑의 연락처';
+COMMENT ON COLUMN contract_documents.client_email IS '갑의 이메일';
+COMMENT ON COLUMN contract_documents.project_name IS '프로젝트명';
+COMMENT ON COLUMN contract_documents.doc_number IS '문서번호';
+COMMENT ON COLUMN contract_documents.contract_date IS '계약 체결일';
+COMMENT ON COLUMN contract_documents.start_date IS '용역 시작일';
+COMMENT ON COLUMN contract_documents.end_date IS '용역 종료일';
+COMMENT ON COLUMN contract_documents.total_amount IS '총 계약 금액';
+COMMENT ON COLUMN contract_documents.scope_of_work IS '용역 범위 (JSON 배열)';
+COMMENT ON COLUMN contract_documents.payment_schedule IS '대금 지급 일정 (JSON 배열)';
+COMMENT ON COLUMN contract_documents.special_terms IS '특약 사항';
+COMMENT ON COLUMN contract_documents.notes IS '기타 사항';
+COMMENT ON COLUMN contract_documents.status IS '상태 (draft, signed, completed, cancelled)';
+COMMENT ON COLUMN contract_documents.created_at IS '생성 일시';
+COMMENT ON COLUMN contract_documents.updated_at IS '수정 일시';

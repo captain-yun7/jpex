@@ -190,16 +190,19 @@ export default function AdminPage() {
                 <p className="text-sm text-purple-400 font-medium">바로가기 →</p>
               </Link>
 
-              <div className="bg-black-light border-2 border-gray-800 rounded-xl p-6 opacity-50">
+              <Link
+                href="/admin/contracts"
+                className="bg-black-light border-2 border-gray-800 rounded-xl p-6 hover:border-orange-500/50 transition-all group"
+              >
                 <div className="flex items-center gap-4 mb-3">
                   <span className="text-4xl">📁</span>
                   <div>
-                    <h3 className="text-xl font-bold text-white">계약서 관리</h3>
+                    <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">계약서 관리</h3>
                     <p className="text-sm text-gray-400">계약서 생성/조회</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 font-medium">준비중</p>
-              </div>
+                <p className="text-sm text-orange-400 font-medium">바로가기 →</p>
+              </Link>
             </div>
 
             <h2 className="text-2xl font-bold text-white mb-4">견적 요청 목록</h2>
