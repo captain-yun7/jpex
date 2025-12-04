@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>픽앤뷰 리뉴얼 프로젝트 비교 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 120px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.category-row {
+            background: #e8f4fc;
+        }
+
+        .info-table tr.category-row td {
+            font-weight: bold;
+            color: #1565c0;
+        }
+
+        .info-table tr.sub-total {
+            background: #e3f2fd;
+        }
+
+        .info-table tr.sub-total td {
+            color: #1565c0;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row {
+            background: #2c3e50;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-title {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: PNV-2025-001</span>
+                <span>작성일자: 2025년 12월 4일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>픽앤뷰 담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>픽앤뷰 리뉴얼 프로젝트</td>
+                </tr>
+                <tr>
+                    <td>프로젝트 유형</td>
+                    <td>인플루언서 마케팅 플랫폼 (사용자 웹 + 관리자 어드민)</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>인플루언서 마케팅 플랫폼 "픽앤뷰"의 리뉴얼 프로젝트</p>
+
+                    <div class="sub-title">주요 기능</div>
+                    <ul>
+                        <li>사용자 웹: 홈, 리뷰, 캠페인, 유튜브, 마이페이지</li>
+                        <li>관리자 어드민: 전시관리, 회원관리, 콘텐츠관리, 게시판관리</li>
+                        <li>SNS 콘텐츠 자동 수집 (인스타그램/유튜브)</li>
+                        <li>SNS 소셜 로그인 (카카오/네이버)</li>
+                        <li>카카오 알림톡 연동</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 옵션 비교 -->
+            <div class="section">
+                <h2 class="section-title">기술 스택 비교</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="25%">구분</th>
+                                <th>옵션 A (레거시 유지)</th>
+                                <th>옵션 B (최신 스택)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>프론트엔드</strong></td>
+                                <td>JSP + jQuery</td>
+                                <td>Next.js + React + TypeScript</td>
+                            </tr>
+                            <tr>
+                                <td><strong>백엔드</strong></td>
+                                <td>Spring Boot + MyBatis</td>
+                                <td>Spring Boot + JPA<br>또는 Nest.js / FastAPI</td>
+                            </tr>
+                            <tr>
+                                <td><strong>데이터베이스</strong></td>
+                                <td>MySQL</td>
+                                <td>PostgreSQL</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SNS 크롤러</strong></td>
+                                <td>Python</td>
+                                <td>Python</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 옵션 A -->
+            <div class="section">
+                <h2 class="section-title">옵션 A: 레거시 스택 유지 - ₩7,000,000</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">항목</th>
+                                <th>세부내용</th>
+                                <th width="20%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="category-row">
+                                <td colspan="3">A. 프론트엔드 (JSP + jQuery)</td>
+                            </tr>
+                            <tr>
+                                <td>사용자 웹</td>
+                                <td>홈/리뷰/캠페인/유튜브/마이페이지</td>
+                                <td class="amount">1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리자 어드민</td>
+                                <td>전시/회원/콘텐츠/게시판 관리</td>
+                                <td class="amount">1,200,000</td>
+                            </tr>
+                            <tr>
+                                <td>jQuery 동적 기능</td>
+                                <td>슬라이더, 필터링, 폼 검증</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr class="sub-total">
+                                <td colspan="2">소계</td>
+                                <td class="amount">3,200,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">B. 백엔드 (Spring Boot + MyBatis)</td>
+                            </tr>
+                            <tr>
+                                <td>API 개발</td>
+                                <td>8개 도메인 CRUD</td>
+                                <td class="amount">1,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>MyBatis 매핑</td>
+                                <td>SQL 작성 및 매핑</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr>
+                                <td>SNS OAuth/알림톡</td>
+                                <td>카카오/네이버 OAuth, 알림톡</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr class="sub-total">
+                                <td colspan="2">소계</td>
+                                <td class="amount">1,700,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">C. SNS 크롤러 (Python)</td>
+                            </tr>
+                            <tr>
+                                <td>크롤러 개발</td>
+                                <td>인스타그램/유튜브 자동 수집</td>
+                                <td class="amount">1,800,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">D. 기타</td>
+                            </tr>
+                            <tr>
+                                <td>서버 배포 및 테스트</td>
+                                <td>Tomcat 배포, 통합 테스트</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 제작비 (VAT 별도)</strong></td>
+                                <td class="amount"><strong>₩7,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="sub-title">예상 기간</div>
+                    <p>2~3개월</p>
+
+                    <div class="sub-title">장단점</div>
+                    <ul>
+                        <li>기존 코드 일부 재사용으로 초기 개발 속도 빠름</li>
+                        <li>브라우저 호환성 이슈 대응 필요</li>
+                        <li>장기적으로 기술 부채 누적</li>
+                        <li>유지보수 시 코드 파악 및 수정 복잡</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 옵션 B -->
+            <div class="section">
+                <h2 class="section-title">옵션 B: 최신 스택 전환 - ₩10,000,000</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">항목</th>
+                                <th>세부내용</th>
+                                <th width="20%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="category-row">
+                                <td colspan="3">A. 프론트엔드 (Next.js + React + TypeScript)</td>
+                            </tr>
+                            <tr>
+                                <td>사용자 웹</td>
+                                <td>홈/리뷰/캠페인/유튜브/마이페이지</td>
+                                <td class="amount">2,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리자 어드민</td>
+                                <td>React 기반 대시보드</td>
+                                <td class="amount">1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>프로젝트 설정</td>
+                                <td>App Router, Tailwind, 상태관리</td>
+                                <td class="amount">700,000</td>
+                            </tr>
+                            <tr class="sub-total">
+                                <td colspan="2">소계</td>
+                                <td class="amount">4,200,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">B. 백엔드 (Spring Boot + JPA 또는 Nest.js / FastAPI)</td>
+                            </tr>
+                            <tr>
+                                <td>API 개발</td>
+                                <td>8개 도메인 (JPA Entity, Service)</td>
+                                <td class="amount">1,800,000</td>
+                            </tr>
+                            <tr>
+                                <td>SNS OAuth</td>
+                                <td>카카오/네이버 소셜 로그인</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr>
+                                <td>알림톡/엑셀</td>
+                                <td>카카오 알림톡, 엑셀 업로드</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>미디어 관리</td>
+                                <td>AWS S3, CloudFront</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr class="sub-total">
+                                <td colspan="2">소계</td>
+                                <td class="amount">2,800,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">C. SNS 크롤러 (Python)</td>
+                            </tr>
+                            <tr>
+                                <td>크롤러 개발</td>
+                                <td>인스타그램/유튜브 자동 수집</td>
+                                <td class="amount">1,800,000</td>
+                            </tr>
+
+                            <tr class="category-row">
+                                <td colspan="3">D. 인프라 및 테스트</td>
+                            </tr>
+                            <tr>
+                                <td>배포 및 테스트</td>
+                                <td>CI/CD, 모니터링, 통합 테스트</td>
+                                <td class="amount">1,200,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 제작비 (VAT 별도)</strong></td>
+                                <td class="amount"><strong>₩10,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="sub-title">예상 기간</div>
+                    <p>2~3개월</p>
+
+                    <div class="sub-title">장단점</div>
+                    <ul>
+                        <li>컴포넌트 기반 개발로 생산성 향상</li>
+                        <li>TypeScript로 런타임 오류 사전 방지</li>
+                        <li>활발한 커뮤니티 지원 및 라이브러리 생태계</li>
+                        <li>유지보수 시 코드 구조 명확하여 수정 용이</li>
+                        <li>초기 학습 곡선 및 개발 환경 구축 필요</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 유지보수 -->
+            <div class="section">
+                <h2 class="section-title">유지보수 비용</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>옵션 1 : 월 유지보수</td>
+                                <td>별도 협의</td>
+                            </tr>
+                            <tr>
+                                <td>옵션 2 : 건별 유지보수</td>
+                                <td>별도 협의</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 기타 사항 -->
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>디자인 시안은 별도 협의</li>
+                        <li>콘텐츠(텍스트, 이미지)는 발주사 제공</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
