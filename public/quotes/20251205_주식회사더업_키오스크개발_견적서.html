@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키오스크 개발 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 100px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-title {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional App Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: KIOSK-2025-001</span>
+                <span>작성일자: 2025년 12월 5일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>주식회사 더업 담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>사업장 방문객 안내용 키오스크 개발</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>사업장 방문객을 위한 인터랙티브 키오스크 시스템 개발</p>
+                    <div class="sub-section">
+                        <div class="sub-title">디스플레이 사양</div>
+                        <p>3120 x 624 px 터치스크린 LED</p>
+                    </div>
+                    <div class="sub-section">
+                        <div class="sub-title">구동 환경</div>
+                        <p>미니PC (Windows) 키오스크 모드</p>
+                    </div>
+                    <div class="sub-section">
+                        <div class="sub-title">예상 기간</div>
+                        <p>약 8주</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">화면 구성</h2>
+                <div class="section-content">
+                    <ul>
+                        <li><strong>대기화면</strong> - 미디어 아트 영상 자동재생, 터치 안내</li>
+                        <li><strong>메인 메뉴</strong> - HISTORY, AFFILIATES, TECH, MEDIA 4개 섹션</li>
+                        <li><strong>HISTORY 페이지</strong> - 타임라인 레이아웃 (1996~2025년)</li>
+                        <li><strong>AFFILIATES 페이지</strong> - 글로벌 네트워크 지도 및 지점 카드</li>
+                        <li><strong>TECH 페이지</strong> - 제품/기술 그리드 (2열, 4~6개 제품)</li>
+                        <li><strong>MEDIA 페이지</strong> - 미디어 자료 그리드 (3열, 6~9개 콘텐츠)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">주요 기능</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>터치 이벤트 처리 및 화면 전환 애니메이션</li>
+                        <li>30초 무조작 시 자동 대기화면 복귀</li>
+                        <li>3120 x 624 해상도 최적화</li>
+                        <li>파란색 계열 테크 디자인</li>
+                        <li>미니PC 키오스크 모드 구동 설정</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">항목</th>
+                                <th>세부내용</th>
+                                <th width="25%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>기획 및 디자인</td>
+                                <td>UI/UX 설계, 화면 디자인 (6개 화면)</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr>
+                                <td>키오스크 개발</td>
+                                <td>Windows 애플리케이션 개발</td>
+                                <td class="amount">1,200,000</td>
+                            </tr>
+                            <tr>
+                                <td>테스트 및 배포</td>
+                                <td>실기 테스트, 최적화, 설치 지원</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 금액</strong></td>
+                                <td class="amount"><strong>2,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">클라이언트 제공 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>화면 기획서 (구성안 이미지)</li>
+                        <li>영상 파일 (mp4, 3120x624 인코딩 완료)</li>
+                        <li>이미지 소스 (PNG, 20~30개)</li>
+                        <li>텍스트 콘텐츠 (모든 설명문)</li>
+                        <li>로고, 회사 컬러 가이드</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>개발 완료 후 3개월간 무상 하자보수를 제공합니다.</li>
+                        <li>현장 설치 및 초기 설정 지원을 포함합니다.</li>
+                        <li>추가 화면 및 기능 개발은 별도 협의가 필요합니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box" style="margin-top: 30px;">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
