@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 활용 외국인 환자 예약 및 쇼핑몰 플랫폼 구축 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 100px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #e65100;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .action-btn.primary:hover {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-title {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional App Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: JPEX-QUOTE-20251205-01</span>
+                <span>작성일자: 2025년 12월 5일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>AI 활용 외국인 환자 예약 및 쇼핑몰 플랫폼 구축</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>AI 기반 외국인 환자 상담 및 병원 예약 플랫폼과 의료 화장품 쇼핑몰을 통합한 웹사이트 구축</p>
+                    <div class="sub-section">
+                        <div class="sub-title">예상 기간</div>
+                        <p>약 3~4개월</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">주요 기능</h2>
+                <div class="section-content">
+                    <div class="sub-section">
+                        <div class="sub-title">1. 외국인 환자 병원 예약 플랫폼</div>
+                        <ul>
+                            <li>AI 챗봇 기반 다국어 상담 시스템</li>
+                            <li>병원 검색 및 상세 정보 제공</li>
+                            <li>실시간 예약 관리 시스템</li>
+                            <li>환자 문의 및 상담 기능</li>
+                        </ul>
+                    </div>
+
+                    <div class="sub-section">
+                        <div class="sub-title">2. 쇼핑몰 기능</div>
+                        <ul>
+                            <li>의료 화장품 카탈로그 및 상세 페이지</li>
+                            <li>장바구니 및 주문 관리</li>
+                            <li>결제 시스템 연동 (PG사 연동)</li>
+                            <li>배송 추적 시스템</li>
+                        </ul>
+                    </div>
+
+                    <div class="sub-section">
+                        <div class="sub-title">3. 관리자 페이지 (어드민)</div>
+                        <ul>
+                            <li>고객 관리 (회원 정보, 예약 내역)</li>
+                            <li>상품 관리 (등록, 수정, 재고 관리)</li>
+                            <li>주문/판매 관리 (주문 처리, 매출 통계)</li>
+                            <li>병원 정보 관리</li>
+                            <li>AI 챗봇 대화 이력 및 분석</li>
+                        </ul>
+                    </div>
+
+                    <div class="sub-section">
+                        <div class="sub-title">4. AI 기능</div>
+                        <ul>
+                            <li>다국어 실시간 상담 챗봇</li>
+                            <li>병원 추천 알고리즘</li>
+                            <li>상품 추천 시스템</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="40%">항목</th>
+                                <th>세부내용</th>
+                                <th width="25%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>기획 및 디자인</td>
+                                <td>UI/UX 설계, 화면 디자인</td>
+                                <td class="amount">1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>외국인 환자 예약 플랫폼</td>
+                                <td>병원 검색, 예약 시스템, 상담 기능</td>
+                                <td class="amount">2,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>쇼핑몰 구축</td>
+                                <td>상품 관리, 장바구니, 결제 시스템</td>
+                                <td class="amount">2,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>AI 챗봇 시스템</td>
+                                <td>다국어 상담, 추천 알고리즘</td>
+                                <td class="amount">1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리자 페이지</td>
+                                <td>고객/상품/주문/판매 관리</td>
+                                <td class="amount">1,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>서버 및 배포</td>
+                                <td>백엔드 구축, DB 설계, 배포</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 금액</strong></td>
+                                <td class="amount"><strong>9,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">제공 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>반응형 웹 디자인 (PC, 태블릿, 모바일)</li>
+                        <li>AI 챗봇 시스템 구축 및 연동</li>
+                        <li>PG사 결제 시스템 연동</li>
+                        <li>관리자 페이지 구축</li>
+                        <li>서버 배포 및 도메인 연결</li>
+                        <li>운영 매뉴얼 제공</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">클라이언트 준비 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>병원 및 상품 정보, 이미지 등 콘텐츠 제공</li>
+                        <li>PG사 계약 (결제 시스템 연동용)</li>
+                        <li>AI API 사용료 (OpenAI, Claude 등)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>개발 완료 후 3개월간 무상 하자보수를 제공합니다.</li>
+                        <li>추가 기능 개발은 별도 협의가 필요합니다.</li>
+                        <li>콘텐츠 및 이미지는 클라이언트가 제공해야 합니다.</li>
+                        <li style="font-size: 12px; color: #888;">※ 서버 호스팅 비용: 월 10~30만원 (트래픽에 따라 변동)</li>
+                        <li style="font-size: 12px; color: #888;">※ AI API 사용료: 별도 (사용량에 따라 과금)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box" style="margin-top: 30px;">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
