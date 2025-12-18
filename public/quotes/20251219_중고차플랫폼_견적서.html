@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중고차 플랫폼 제작 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 120px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.category-row {
+            background: #f5f5f5;
+        }
+
+        .info-table tr.category-row td {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-table tr.sub-total {
+            background: #f5f5f5;
+        }
+
+        .info-table tr.sub-total td {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .info-table tr.total-row {
+            background: #000;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #000;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #000;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: white;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn.primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .action-btn.primary:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .reference-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .reference-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .reference-box a {
+            color: #1565c0;
+            text-decoration: none;
+        }
+
+        .reference-box a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-title {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn primary" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: CAR-2025-001</span>
+                <span>작성일자: 2025년 12월 19일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>중고차 플랫폼 제작</td>
+                </tr>
+                <tr>
+                    <td>프로젝트 유형</td>
+                    <td>중고차 매매 플랫폼 (메인 웹사이트 + 관리자 시스템)</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+            <!-- 레퍼런스 분석 -->
+            <div class="section">
+                <h2 class="section-title">레퍼런스 사이트 분석</h2>
+                <div class="section-content">
+                    <div class="reference-box">
+                        <p><strong>분석 대상:</strong> <a href="https://중고차파괴자.com" target="_blank">https://중고차파괴자.com</a></p>
+                        <p><strong>사이트 유형:</strong> 60만 유튜버 중고차파괴자의 중고차 매매 플랫폼</p>
+                    </div>
+
+                    <div class="sub-title">주요 기능 분석</div>
+                    <ul>
+                        <li><strong>메인 페이지:</strong> 회전식 배너, YouTube 채널 영상 임베드 (4개), 차량 검색 인터페이스</li>
+                        <li><strong>차량 검색:</strong> 제조사 → 모델 → 세부모델 계층형 드롭다운, 가격대별 필터링 (9단계)</li>
+                        <li><strong>차량 카테고리:</strong> 국산 / 수입 / 화물·특장 분류</li>
+                        <li><strong>내차팔기:</strong> 판매 상담 신청 폼 (이름, 차량명, 연락처, 문의사항, 개인정보동의)</li>
+                        <li><strong>최근 본 차량:</strong> 3개 슬롯 열람 이력 관리</li>
+                        <li><strong>외부 연동:</strong> 카카오톡 상담, 네이버 블로그, 네이버 지도, YouTube 채널</li>
+                        <li><strong>반응형:</strong> 모바일 (Android/iOS) 분기 처리</li>
+                    </ul>
+
+                    <div class="sub-title">현재 기술 스택 (추정)</div>
+                    <ul>
+                        <li>프론트엔드: HTML/CSS + jQuery + 바닐라 JavaScript</li>
+                        <li>백엔드: PHP 또는 JSP 기반 MVC 구조 (추정)</li>
+                        <li>외부 API: YouTube IFrame API, 카카오톡 채널, 네이버 지도</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>레퍼런스 사이트(중고차파괴자.com)와 동일한 기능을 갖춘 중고차 매매 플랫폼 신규 제작</p>
+
+                    <div class="sub-title">제안 기술 스택</div>
+                    <ul>
+                        <li><strong>프론트엔드:</strong> Next.js (React) + TypeScript + Tailwind CSS</li>
+                        <li><strong>백엔드:</strong> Next.js API Routes</li>
+                        <li><strong>데이터베이스:</strong> PostgreSQL (Supabase)</li>
+                        <li><strong>ORM:</strong> Prisma</li>
+                        <li><strong>이미지 저장:</strong> Cloudflare R2 (30만장 이상 대용량 이미지 저장)</li>
+                        <li><strong>외부 연동:</strong> YouTube IFrame API, 카카오톡 채널 API, 네이버 지도 API</li>
+                        <li><strong>호스팅:</strong> Vercel (프론트) + Supabase (DB) + Cloudflare R2 (이미지)</li>
+                    </ul>
+
+                    <div class="sub-title">기술 스택 선정 이유</div>
+                    <ul>
+                        <li><strong>SEO 최적화:</strong> Next.js SSR/SSG로 검색엔진 노출 극대화 (중고차 검색 유입 핵심)</li>
+                        <li><strong>이미지 최적화:</strong> 차량 사진이 많은 사이트 특성상 next/image 자동 최적화 필수</li>
+                        <li><strong>대용량 이미지:</strong> Cloudflare R2로 30만장 이상 이미지 저장 (이그레스 비용 무료)</li>
+                        <li><strong>검색/필터링 UX:</strong> React 상태 관리로 실시간 필터링 구현 용이</li>
+                        <li><strong>성능:</strong> 정적 생성 + 점진적 재생성(ISR)으로 빠른 페이지 로딩</li>
+                        <li><strong>유지보수:</strong> TypeScript로 타입 안정성 확보, 버그 감소</li>
+                        <li><strong>비용 최적화:</strong> Supabase + R2 이그레스 무료로 운영 비용 최소화</li>
+                    </ul>
+
+                    <div class="sub-title">주요 구현 기능</div>
+                    <ul>
+                        <li>메인 페이지 (배너 슬라이더, YouTube 영상 섹션, 차량 검색)</li>
+                        <li>차량 검색 시스템 (제조사/모델/가격대 필터링)</li>
+                        <li>차량 목록 및 상세 페이지</li>
+                        <li>내차팔기 상담 신청 폼</li>
+                        <li>최근 본 차량 기능</li>
+                        <li>관리자 시스템 (차량 등록/수정/삭제, 상담 관리)</li>
+                        <li>반응형 웹 (PC/모바일)</li>
+                    </ul>
+
+                    <div class="sub-title">예상 기간</div>
+                    <p>약 6~8주</p>
+                </div>
+            </div>
+
+            <!-- 견적 상세 -->
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="35%">항목</th>
+                                <th>세부내용</th>
+                                <th width="18%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 기획/설계 -->
+                            <tr class="category-row">
+                                <td colspan="3">A. 기획/설계</td>
+                            </tr>
+                            <tr>
+                                <td>요구사항 분석 / 설계</td>
+                                <td>레퍼런스 분석, 화면설계서, DB 설계</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+
+                            <!-- 프론트엔드 -->
+                            <tr class="category-row">
+                                <td colspan="3">B. 프론트엔드 (Next.js + TypeScript)</td>
+                            </tr>
+                            <tr>
+                                <td>메인 페이지</td>
+                                <td>배너 슬라이더, YouTube 섹션, 검색 UI</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr>
+                                <td>차량 목록/상세 페이지</td>
+                                <td>차량 리스트, 상세 정보, 갤러리</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>서브 페이지</td>
+                                <td>내차팔기, 오시는길, 회사소개</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리자 페이지</td>
+                                <td>차량관리, 상담관리, 배너관리</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+
+                            <!-- 백엔드 -->
+                            <tr class="category-row">
+                                <td colspan="3">C. 백엔드 API (Next.js API Routes + Prisma)</td>
+                            </tr>
+                            <tr>
+                                <td>차량 관리 시스템</td>
+                                <td>차량 CRUD, 이미지 업로드, 카테고리 관리</td>
+                                <td class="amount">800,000</td>
+                            </tr>
+                            <tr>
+                                <td>검색 시스템</td>
+                                <td>제조사/모델/가격 필터링, 정렬, 페이징</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>상담 신청 시스템</td>
+                                <td>내차팔기 폼 처리, 이메일 알림</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리자 인증</td>
+                                <td>로그인/로그아웃, 세션 관리</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+
+                            <!-- 데이터베이스/인프라 -->
+                            <tr class="category-row">
+                                <td colspan="3">D. 데이터베이스 / 인프라</td>
+                            </tr>
+                            <tr>
+                                <td>DB 설계 및 구축</td>
+                                <td>Prisma 스키마 설계, Supabase 연동</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr>
+                                <td>이미지 스토리지</td>
+                                <td>Cloudflare R2 연동, 이미지 업로드 설정</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+                            <tr>
+                                <td>배포 환경 구축</td>
+                                <td>Vercel 배포, 환경변수, 도메인 연결</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+
+                            <!-- 외부 연동 -->
+                            <tr class="category-row">
+                                <td colspan="3">E. 외부 서비스 연동</td>
+                            </tr>
+                            <tr>
+                                <td>YouTube API</td>
+                                <td>YouTube IFrame API 영상 임베드</td>
+                                <td class="amount">100,000</td>
+                            </tr>
+                            <tr>
+                                <td>카카오톡 채널</td>
+                                <td>카카오톡 상담 버튼 연동</td>
+                                <td class="amount">100,000</td>
+                            </tr>
+                            <tr>
+                                <td>네이버 지도</td>
+                                <td>오시는길 지도 표시</td>
+                                <td class="amount">100,000</td>
+                            </tr>
+
+                            <!-- 테스트/배포 -->
+                            <tr class="category-row">
+                                <td colspan="3">F. 테스트/배포</td>
+                            </tr>
+                            <tr>
+                                <td>테스트 및 QA</td>
+                                <td>통합 테스트, 버그 수정, 성능 최적화</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr>
+                                <td>SEO 최적화</td>
+                                <td>메타태그, sitemap, 구조화 데이터 설정</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 제작비 (VAT 별도)</strong></td>
+                                <td class="amount"><strong>5,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <p><strong>총 견적 금액: 5,000,000원 (VAT 별도)</strong></p>
+                        <p>VAT 포함 시: 5,500,000원</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 결제 조건 -->
+            <div class="section">
+                <h2 class="section-title">결제 조건</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>비율</th>
+                                <th>금액</th>
+                                <th>시점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>착수금</td>
+                                <td>30%</td>
+                                <td class="amount">1,500,000</td>
+                                <td>계약 체결 시</td>
+                            </tr>
+                            <tr>
+                                <td>잔금</td>
+                                <td>70%</td>
+                                <td class="amount">3,500,000</td>
+                                <td>최종 검수 완료 후</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 유지보수 -->
+            <div class="section">
+                <h2 class="section-title">유지보수 정책</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>무상 하자보수</td>
+                                <td>개발 완료 후 3개월간 오류 및 버그 무상 수정</td>
+                            </tr>
+                            <tr>
+                                <td>월 유지보수 (선택)</td>
+                                <td>별도 협의 (콘텐츠 업데이트, 기능 수정 포함)</td>
+                            </tr>
+                            <tr>
+                                <td>건별 유지보수</td>
+                                <td>별도 협의</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 기타 사항 -->
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>디자인 시안은 레퍼런스 사이트 기반으로 제작 (별도 디자인 요청 시 추가 비용 발생)</li>
+                        <li>콘텐츠(차량 정보, 이미지, 텍스트)는 발주사 제공</li>                        
+                        <li>호스팅: Vercel</li>
+                        <li>DB: Supabase</li>
+                        <li>이미지 저장: Cloudflare R2</li>
+                        <li>예상 이미지 용량: 30만장 × 평균 1MB = 약 300GB</li>
+                        <li>SSL 인증서: Vercel 자동 제공</li>
+                        <li>카카오톡 채널, 네이버 지도 API 사용료는 무료 범위 내 제공</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                    <li>레퍼런스 사이트의 기능 외 추가 기능 개발 시 별도 견적이 필요합니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
