@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPEX Studio 회사소개서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #e2e8f0;
+            color: #222;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== 표지 ===== */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+            height: 100%;
+            background: var(--primary);
+            color: white;
+        }
+
+        .cover-top {
+            padding: 50px 60px;
+        }
+
+        .cover-badge {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2px;
+        }
+
+        .cover-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .cover-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .cover-sub {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+        }
+
+        .cover-bottom {
+            background: var(--accent);
+            padding: 30px 60px;
+        }
+
+        .cover-info {
+            display: flex;
+            gap: 40px;
+            font-size: 13px;
+            color: white;
+        }
+
+        /* ===== 내부 페이지 공통 ===== */
+        .inner {
+            padding: 60px 70px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 40px;
+            right: 70px;
+            font-size: 11px;
+            color: #999;
+        }
+
+        .section-label {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        /* ===== 회사소개 페이지 ===== */
+        .intro-text {
+            font-size: 15px;
+            line-height: 2;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .company-table {
+            width: 100%;
+            border-top: 2px solid var(--primary);
+        }
+
+        .company-table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .company-table th {
+            width: 120px;
+            padding: 16px 0;
+            font-weight: 500;
+            color: var(--primary);
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .company-table td {
+            padding: 16px 0;
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* ===== 서비스 페이지 ===== */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-num {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            width: 60px;
+            flex-shrink: 0;
+        }
+
+        .service-content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .service-content p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .service-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .service-tag {
+            font-size: 11px;
+            color: var(--primary);
+            background: var(--light);
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        /* ===== 기술 페이지 ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px 30px;
+        }
+
+        .tech-category h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .tech-category ul {
+            list-style: none;
+        }
+
+        .tech-category li {
+            font-size: 13px;
+            color: #555;
+            padding: 6px 0;
+        }
+
+        /* ===== 프로세스 ===== */
+        .process-section {
+            margin-top: 50px;
+        }
+
+        .process-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .process-step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 auto 12px;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .step-arrow {
+            color: var(--accent);
+            align-self: center;
+            margin-top: -20px;
+            font-weight: bold;
+        }
+
+        /* ===== 연락처 페이지 ===== */
+        .contact-section {
+            margin-top: auto;
+            padding-top: 40px;
+        }
+
+        .contact-box {
+            background: var(--primary);
+            padding: 40px;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact-item {
+            font-size: 13px;
+        }
+
+        .contact-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            color: white;
+        }
+
+        /* ===== 인쇄 ===== */
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                page-break-after: always;
+                box-shadow: none;
+            }
+            .page:last-child { page-break-after: auto; }
+            .no-print { display: none; }
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            background: var(--accent);
+        }
+
+        @media print {
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">PDF 저장</button>
+
+    <!-- 1. 표지 -->
+    <div class="page cover">
+        <div class="cover-top">
+            <span class="cover-badge">COMPANY PROFILE 2025</span>
+        </div>
+        <div class="cover-main">
+            <h1 class="cover-title">JPEX Studio</h1>
+            <p class="cover-sub">소프트웨어 개발 파트너</p>
+        </div>
+        <div class="cover-bottom">
+            <div class="cover-info">
+                <span>dev@jpexstudio.com</span>
+                <span>010-2174-5072</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 회사소개 -->
+    <div class="page">
+        <div class="inner">
+            <div class="section-label">ABOUT US</div>
+            <h2 class="section-title">회사 소개</h2>
+
+            <p class="intro-text">
+                JPEX Studio는 웹사이트, 모바일 앱, 업무 시스템 등<br>
+                다양한 소프트웨어 개발 서비스를 제공합니다.<br><br>
+                고객의 비즈니스 목표를 이해하고,<br>
+                실제 운영 환경에 맞는 솔루션을 설계하고 구현합니다.
+            </p>
+
+            <table class="company-table">
+                <tr>
+                    <th>상호</th>
+                    <td>JPEX Studio</td>
+                </tr>
+                <tr>
+                    <th>대표자</th>
+                    <td>윤지수</td>
+                </tr>
+                <tr>
+                    <th>사업자등록번호</th>
+                    <td>560-45-01327</td>
+                </tr>
+                <tr>
+                    <th>연락처</th>
+                    <td>010-2174-5072</td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td>dev@jpexstudio.com</td>
+                </tr>
+            </table>
+
+            <span class="page-num">02</span>
+        </div>
+    </div>
+
+    <!-- 3. 서비스 -->
+    <div class="page">
+        <div class="inner">
+            <div class="section-label">SERVICES</div>
+            <h2 class="section-title">서비스 영역</h2>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-num">01</div>
+                    <div class="service-content">
+                        <h3>웹 개발</h3>
+                        <p>기업 홈페이지, 쇼핑몰, 예약 시스템, 관리자 페이지 등 웹 기반 서비스를 개발합니다. 반응형 디자인으로 모바일 환경에서도 최적화된 사용자 경험을 제공합니다.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">기업 홈페이지</span>
+                            <span class="service-tag">쇼핑몰</span>
+                            <span class="service-tag">관리자 시스템</span>
+                            <span class="service-tag">반응형 웹</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-num">02</div>
+                    <div class="service-content">
+                        <h3>앱 개발</h3>
+                        <p>iOS, Android 앱을 개발합니다. Flutter, React Native를 활용한 크로스플랫폼 개발로 효율적인 앱 서비스를 구축합니다.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">하이브리드 앱</span>
+                            <span class="service-tag">Flutter</span>
+                            <span class="service-tag">React Native</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-num">03</div>
+                    <div class="service-content">
+                        <h3>시스템 개발</h3>
+                        <p>업무 자동화, API 연동, 데이터 수집 등 비즈니스 효율을 높이는 시스템을 개발합니다.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">업무 자동화</span>
+                            <span class="service-tag">API 연동</span>
+                            <span class="service-tag">크롤링</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-num">04</div>
+                    <div class="service-content">
+                        <h3>유지보수</h3>
+                        <p>기존 시스템의 안정적인 운영을 지원합니다. 버그 수정, 기능 추가, 서버 관리 등을 제공합니다.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">버그 수정</span>
+                            <span class="service-tag">기능 추가</span>
+                            <span class="service-tag">서버 관리</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <span class="page-num">03</span>
+        </div>
+    </div>
+
+    <!-- 4. 기술 & 프로세스 -->
+    <div class="page">
+        <div class="inner">
+            <div class="section-label">TECHNOLOGY</div>
+            <h2 class="section-title">기술 스택</h2>
+
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>React / Next.js</li>
+                        <li>Vue.js / Nuxt.js</li>
+                        <li>TypeScript</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js / Express</li>
+                        <li>Spring Boot</li>
+                        <li>Python / FastAPI</li>
+                        <li>PHP / Laravel</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Database</h4>
+                    <ul>
+                        <li>MySQL / PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>Redis</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Mobile</h4>
+                    <ul>
+                        <li>Flutter</li>
+                        <li>React Native</li>
+                        <li>Hybrid WebView</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Cloud</h4>
+                    <ul>
+                        <li>AWS / GCP</li>
+                        <li>Naver Cloud</li>
+                        <li>Docker</li>
+                        <li>Vercel</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Figma</li>
+                        <li>Notion</li>
+                        <li>Slack</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="process-section">
+                <div class="process-title">진행 프로세스</div>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-num">1</div>
+                        <div class="step-label">상담</div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-num">2</div>
+                        <div class="step-label">기획</div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-num">3</div>
+                        <div class="step-label">디자인</div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-num">4</div>
+                        <div class="step-label">개발</div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-num">5</div>
+                        <div class="step-label">테스트</div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-num">6</div>
+                        <div class="step-label">오픈</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-box">
+                    <div class="contact-title">Contact</div>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">010-2174-5072</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">dev@jpexstudio.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <span class="page-num">04</span>
+        </div>
+    </div>
+</body>
+</html>
