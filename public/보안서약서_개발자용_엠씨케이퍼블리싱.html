@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보안서약서</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.8;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 15px;
+        }
+        .doc-info {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        .project-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .project-info-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .intro {
+            margin-bottom: 30px;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .pledge-section {
+            margin-bottom: 20px;
+        }
+        .pledge-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .pledge-list {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .pledge-item {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .danger-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .commitment {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .signature-section {
+            margin-top: 50px;
+            page-break-inside: avoid;
+        }
+        .signature-info {
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .info-value {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 3px;
+        }
+        .signature-line {
+            margin-top: 40px;
+            text-align: right;
+        }
+        .signature-box {
+            display: inline-block;
+            border-bottom: 2px solid #333;
+            width: 200px;
+            height: 40px;
+            margin-left: 20px;
+        }
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .action-btn {
+            padding: 10px 16px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .action-btn:hover {
+            background: #555;
+        }
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        @media print {
+            body {
+                padding: 20px;
+                background: white;
+            }
+            .action-buttons {
+                display: none !important;
+            }
+            html {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="header">
+        <h1>보 안 서 약 서</h1>
+        <div class="doc-info">
+            문서번호: PNV-SEC-2025-001<br>
+            작성일자: 2025년 12월 19일
+        </div>
+    </div>
+
+    <div class="project-info">
+        <div class="project-info-title">프로젝트 정보</div>
+        <div style="font-size: 14px; line-height: 1.6;">
+            프로젝트명: 픽앤뷰 리뉴얼 프로젝트<br>
+            발주자: (주)엠씨케이퍼블리싱 (사업자등록번호: 211-86-54814)<br>
+            수주자: JPEX Studio (사업자등록번호: 560-45-01327)<br>
+            용역계약서 문서번호: PNV-2025-001<br>
+            계약일: 2025년 12월 19일
+        </div>
+    </div>
+
+    <div class="intro">
+        본인은 JPEX Studio의 일원으로서 픽앤뷰 리뉴얼 프로젝트 수행 중 
+        알게 된 정보를 적절히 관리하고 보호할 것을 다음과 같이 서약합니다.
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">1. 기밀정보 보호</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 프로젝트 수행 중 알게 된 소스코드, 회원정보, 비즈니스 로직 등을 
+                외부에 공개하거나 누설하지 않는다.
+            </div>
+            <div class="pledge-item">
+                ② 프로젝트와 관련된 정보를 개인적 용도로 사용하지 않는다.
+            </div>
+            <div class="pledge-item">
+                ③ 서버 계정, API 키 등 접속정보를 안전하게 관리한다.
+            </div>
+        </div>
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">2. 개인정보 보호</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 프로젝트 수행 중 접근한 회원 개인정보를 외부에 유출하지 않는다.
+            </div>
+            <div class="pledge-item">
+                ② 개인정보가 포함된 데이터를 개인 PC나 USB에 무단으로 복사하지 않는다.
+            </div>
+            <div class="pledge-item">
+                ③ 테스트 시 실제 회원정보 대신 더미 데이터를 사용하도록 노력한다.
+            </div>
+        </div>
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">3. 보안 준수사항</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 소스코드를 공개 저장소(GitHub Public 등)에 업로드하지 않는다.
+            </div>
+            <div class="pledge-item">
+                ② API 키나 데이터베이스 비밀번호를 소스코드에 직접 작성하지 않고 환경변수로 관리한다.
+            </div>
+            <div class="pledge-item">
+                ③ 보안 문제 발견 시 발주자에게 즉시 알리겠다.
+            </div>
+        </div>
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">4. 프로젝트 종료 시</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 프로젝트 완료 후 개인 PC에 남아있는 소스코드와 관련 자료를 삭제한다.
+            </div>
+            <div class="pledge-item">
+                ② 회원 개인정보가 포함된 데이터베이스 백업 파일이나 테스트 데이터를 삭제한다.
+            </div>
+        </div>
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">5. 포트폴리오 및 SNS</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 프로젝트 내용을 SNS나 블로그에 올릴 때는 회원정보 등 민감한 정보를 제외한다.
+            </div>
+            <div class="pledge-item">
+                ② 포트폴리오 작성 시 화면 캡처에 개인정보가 포함되지 않도록 주의한다.
+            </div>
+        </div>
+    </div>
+
+    <div class="pledge-section">
+        <div class="pledge-title">6. 의무 지속</div>
+        <div class="pledge-list">
+            <div class="pledge-item">
+                ① 프로젝트 완료 후에도 알게 된 정보의 비밀을 유지한다.
+            </div>
+            <div class="pledge-item">
+                ② 특히 회원 개인정보는 영구적으로 보호한다.
+            </div>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>※ 참고사항</strong><br>
+        기밀정보나 개인정보를 고의로 유출할 경우 관련 법령(부정경쟁방지법, 개인정보보호법 등)에 따라 
+        법적 책임이 발생할 수 있으니 주의하시기 바랍니다.
+    </div>
+
+    <div class="commitment">
+        본인은 상기 사항을 성실히 준수할 것을 엄숙히 서약합니다.
+    </div>
+
+    <div class="signature-section">
+        <div class="signature-info">
+            <div class="info-row">
+                <div class="info-label">소속:</div>
+                <div class="info-value">JPEX Studio</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">성명:</div>
+                <div class="info-value">윤지수</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">생년월일:</div>
+                <div class="info-value">1991년 5월 2일</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">직책:</div>
+                <div class="info-value">JPEX Studio 개발자</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">연락처:</div>
+                <div class="info-value">010-2174-5072</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">이메일:</div>
+                <div class="info-value">jpexstudio@naver.com</div>
+            </div>
+        </div>
+
+        <div class="signature-line">
+            <p style="margin-bottom: 10px;">
+                서약일: 2025년 12월 19일
+            </p>
+            <p>
+                서약자: 윤지수 (서명 또는 인)
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd;">
+        <div style="text-align: center; font-size: 13px; color: #666;">
+            본 서약서는 발주자((주)엠씨케이퍼블리싱) 및 수주자(JPEX Studio)에 각 1부씩 제출합니다.
+        </div>
+    </div>
+
+</body>
+</html>
