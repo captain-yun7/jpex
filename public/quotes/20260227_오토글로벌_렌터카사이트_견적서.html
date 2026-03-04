@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(주)오토글로벌 렌터카 사이트 및 견적 시스템 개발 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 120px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.category-row {
+            background: #f5f5f5;
+        }
+
+        .info-table tr.category-row td {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-table tr.total-row {
+            background: #000;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #000;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #000;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #000;
+            color: white;
+            border: 1px solid #000;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            .action-buttons { display: none !important; }
+            body { background: white; padding: 0; margin: 0; }
+            .container { max-width: 100%; box-shadow: none; border: none; }
+            .section { page-break-inside: avoid; }
+            html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer { padding-left: 30px; padding-right: 30px; }
+            .company-info { grid-template-columns: 1fr; }
+            .doc-title { font-size: 20px; letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web & AI Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: AG-2026-001</span>
+                <span>작성일자: 2026년 2월 27일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>(주)오토글로벌 하명 부장님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>렌터카 고객 사이트 및 장기렌터카 견적 웹 프로그램 개발</td>
+                </tr>
+                <tr>
+                    <td>프로젝트 유형</td>
+                    <td>렌터카 고객용 웹사이트 + 내부용 견적 관리 시스템</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>렌터카 사업 운영을 위한 <strong>고객용 렌터카 사이트</strong>와 <strong>내부 장기렌터카 견적 웹 프로그램</strong> 2개 시스템을 구축합니다.</p>
+
+                    <div class="sub-title">(1) 렌터카 고객 사이트</div>
+                    <p>코웨이몰 렌탈 사이트와 유사한 구조의 렌터카 전문 웹사이트</p>
+                    <ul>
+                        <li>메인 페이지 (차량 카탈로그, 프로모션 배너, 상담 신청)</li>
+                        <li>차량 목록 및 상세 페이지 (차종별 분류, 옵션, 렌탈료 안내)</li>
+                        <li>렌탈 상담 신청 폼 (이름, 연락처, 관심 차종, 렌탈 기간)</li>
+                        <li>이벤트/혜택 페이지</li>
+                        <li>고객 후기 및 FAQ</li>
+                        <li>회사 소개 및 오시는 길</li>
+                        <li>반응형 웹 디자인 (PC / 모바일)</li>
+                    </ul>
+
+                    <div class="sub-title">(2) 장기렌터카 견적 웹 프로그램 (내부용)</div>
+                    <p>기존 엑셀 기반 견적 시스템을 웹으로 전환한 내부 업무 시스템</p>
+                    <ul>
+                        <li>직원 및 협력업체 계정 발급 (관리자만)</li>
+                        <li>차량 관리 / 등록 (차종, 옵션, 가격 정보)</li>
+                        <li>견적 입력 시 견적서 PDF 자동 생성</li>
+                        <li>PDF 출력 / 인쇄 기능</li>
+                        <li>반응형 웹</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 견적 내역 -->
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="30%">항목</th>
+                                <th>세부내용</th>
+                                <th width="18%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- (1) 렌터카 고객 사이트 -->
+                            <tr class="category-row">
+                                <td colspan="3">(1) 렌터카 고객 사이트</td>
+                            </tr>
+                            <tr>
+                                <td>UX·UI 디자인</td>
+                                <td>메인, 차량 목록/상세, 상담 신청, 이벤트 등 페이지 디자인</td>
+                                <td class="amount">600,000</td>
+                            </tr>
+                            <tr>
+                                <td>프론트엔드 개발</td>
+                                <td>반응형 퍼블리싱, 차량 카탈로그, 상담 신청 폼, FAQ</td>
+                                <td class="amount">1,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>백엔드 / 관리자</td>
+                                <td>차량·배너·후기·상담 관리, DB 구축</td>
+                                <td class="amount">900,000</td>
+                            </tr>
+                            <tr>
+                                <td>배포 및 세팅</td>
+                                <td>도메인 연결, SSL, 서버 배포</td>
+                                <td class="amount">200,000</td>
+                            </tr>
+
+                            <!-- (2) 장기렌터카 견적 웹 프로그램 -->
+                            <tr class="category-row">
+                                <td colspan="3">(2) 장기렌터카 견적 웹 프로그램 (내부용)</td>
+                            </tr>
+                            <tr>
+                                <td>계정 / 권한 관리</td>
+                                <td>직원·협력업체 계정 발급 (관리자), 역할별 접근 제어</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr>
+                                <td>차량 관리 시스템</td>
+                                <td>차량 등록/수정/삭제, 차종·옵션·가격 정보 관리</td>
+                                <td class="amount">600,000</td>
+                            </tr>
+                            <tr>
+                                <td>견적서 자동 생성</td>
+                                <td>견적 입력 → PDF 자동 생성 → 출력/인쇄 기능</td>
+                                <td class="amount">900,000</td>
+                            </tr>
+                            <tr>
+                                <td>UI / 반응형 개발</td>
+                                <td>내부용 대시보드 UI, PC/태블릿/모바일 반응형</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 견적금액 (VAT 별도)</strong></td>
+                                <td class="amount"><strong>5,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <p><strong>총 견적 금액: 5,000,000원 (VAT 별도)</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 개발 일정 -->
+            <div class="section">
+                <h2 class="section-title">개발 일정</h2>
+                <div class="section-content">
+                    <p><strong>총 개발 기간: 약 6주</strong></p>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>단계</th>
+                                <th>기간</th>
+                                <th>주요 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1단계: 기획/설계</td>
+                                <td>1주차</td>
+                                <td>요구사항 확정, 화면 설계, DB 설계, 엑셀 견적서 분석</td>
+                            </tr>
+                            <tr>
+                                <td>2단계: 디자인</td>
+                                <td>2주차</td>
+                                <td>고객 사이트 UX·UI 디자인, 내부 시스템 UI 설계</td>
+                            </tr>
+                            <tr>
+                                <td>3단계: 고객 사이트 개발</td>
+                                <td>3~4주차</td>
+                                <td>프론트엔드, 백엔드, 관리자 페이지, 상담 신청 기능</td>
+                            </tr>
+                            <tr>
+                                <td>4단계: 견적 시스템 개발</td>
+                                <td>4~5주차</td>
+                                <td>계정 관리, 차량 등록, 견적 입력, PDF 자동 생성</td>
+                            </tr>
+                            <tr>
+                                <td>5단계: 테스트/납품</td>
+                                <td>6주차</td>
+                                <td>통합 테스트, 버그 수정, 사용 교육, 최종 배포</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 결제 조건 -->
+            <div class="section">
+                <h2 class="section-title">결제 조건</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>비율</th>
+                                <th>금액</th>
+                                <th>시점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>계약금</td>
+                                <td>40%</td>
+                                <td class="amount">2,000,000</td>
+                                <td>계약 체결 시</td>
+                            </tr>
+                            <tr>
+                                <td>잔금</td>
+                                <td>60%</td>
+                                <td class="amount">3,000,000</td>
+                                <td>최종 검수 완료 후</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 유지보수 -->
+            <div class="section">
+                <h2 class="section-title">유지보수 및 기술 지원</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>무상 하자보수</td>
+                                <td>개발 완료 후 1개월간 오류 및 버그 무상 수정</td>
+                            </tr>
+                            <tr>
+                                <td>장애 대응</td>
+                                <td>무상 기간 내 평일 업무시간 기준 24시간 내 대응</td>
+                            </tr>
+                            <tr>
+                                <td>추가 기능 요청</td>
+                                <td>건별 별도 견적 협의</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 기타 사항 -->
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>서버 호스팅 및 도메인 비용은 발주처 부담</li>
+                        <li>차량 이미지, 상세 정보 등 콘텐츠는 발주처 제공</li>
+                        <li>기존 엑셀 견적서 양식을 기반으로 PDF 템플릿 구현</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
