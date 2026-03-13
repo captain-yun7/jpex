@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커튼·블라인드 시공업체 네이버 캘린더 알림톡 자동화 시스템 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 120px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #000;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #000;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #000;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #000;
+            color: white;
+            border: 1px solid #000;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            .action-buttons { display: none !important; }
+            body { background: white; padding: 0; margin: 0; }
+            .container { max-width: 100%; box-shadow: none; border: none; }
+            .section { page-break-inside: avoid; }
+            html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer { padding-left: 30px; padding-right: 30px; }
+            .company-info { grid-template-columns: 1fr; }
+            .doc-title { font-size: 20px; letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web & AI Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: CB-2026-001</span>
+                <span>작성일자: 2026년 3월 13일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>주식회사 데코인홈 박정언 대표님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>네이버 캘린더 × 카카오 알림톡 자동 발송 시스템</td>
+                </tr>
+                <tr>
+                    <td>프로젝트 유형</td>
+                    <td>네이버 캘린더 일정 연동 기반 카카오 비즈니스 알림톡 자동화</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+
+            <!-- 현황 분석 -->
+            <div class="section">
+                <h2 class="section-title">현황 분석</h2>
+                <div class="section-content">
+                    <p>현재 네이버 캘린더에 등록된 시공/실측/상담 일정을 직원이 직접 확인한 뒤, <strong>윙고(Wingo) 프로그램에서 수동으로 알림톡을 발송</strong>하는 방식으로 운영 중입니다. 일정이 많아질 경우 발송 누락 가능성이 있으며, 반복적인 수작업으로 인한 업무 비효율이 발생하고 있습니다.</p>
+
+                    <div class="sub-title">자동화 목표</div>
+                    <p>네이버 캘린더 일정 등록/변경 시 <strong>자동으로 알림톡 발송 트리거가 작동</strong>하여, 지정된 시간에 고객에게 알림톡이 자동 전송되는 시스템을 구축합니다.</p>
+                </div>
+            </div>
+
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <div class="sub-title">자동 발송 알림톡 (5종)</div>
+                    <ul>
+                        <li><strong>시공 확정 알림톡:</strong> 시공 일정 확정 시 고객에게 날짜/시간/주소 안내</li>
+                        <li><strong>설치 확정 알림톡:</strong> 설치 일정 확정 시 방문 예정 안내</li>
+                        <li><strong>실측 일정 확정 알림톡:</strong> 실측 방문 일정 확정 시 안내</li>
+                        <li><strong>계약 완료 알림톡:</strong> 계약 체결 완료 시 확인 안내</li>
+                        <li><strong>상담 보류 안내 알림톡:</strong> 상담 보류 상태 안내 및 재상담 유도</li>
+                    </ul>
+
+                    <div class="sub-title">처리 프로세스</div>
+                    <ul>
+                        <li><strong>1. 일정 등록:</strong> 네이버 캘린더에 일정 등록 (일정 제목에 유형 구분 키워드 포함)</li>
+                        <li><strong>2. 자동 감지:</strong> 서버에서 캘린더 일정 변경을 실시간 감지</li>
+                        <li><strong>3. 트리거 실행:</strong> 일정 유형에 따라 해당 알림톡 템플릿 자동 매칭</li>
+                        <li><strong>4. 알림톡 발송:</strong> 지정 시간에 카카오 비즈니스 채널을 통해 고객에게 자동 전송</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 기술 스택 -->
+            <div class="section">
+                <h2 class="section-title">제안 기술 스택</h2>
+                <div class="section-content">
+                    <ul>
+                        <li><strong>캘린더 연동:</strong> 네이버 캘린더 CalDAV / API 연동</li>
+                        <li><strong>알림톡 발송:</strong> 카카오 비즈니스 채널 알림톡 API (비즈메시지)</li>
+                        <li><strong>서버:</strong> Node.js 또는 Python 기반 자동화 서버</li>
+                        <li><strong>스케줄러:</strong> 일정 감지 폴링 + 발송 시간 예약 큐</li>
+                        <li><strong>관리 화면:</strong> 발송 현황 조회 및 로그 확인 웹 대시보드</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 견적 내역 -->
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="30%">항목</th>
+                                <th>세부내용</th>
+                                <th width="18%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>네이버 캘린더 연동</td>
+                                <td>CalDAV/API 연동, 일정 자동 감지, 신규/변경/삭제 이벤트 처리</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>카카오 알림톡 연동</td>
+                                <td>카카오 비즈니스 채널 알림톡 API 연동, 발송 시스템 구축</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>알림톡 템플릿 설계/등록</td>
+                                <td>5종 알림톡 메시지 템플릿 설계 및 카카오 검수 등록</td>
+                                <td class="amount">300,000</td>
+                            </tr>
+                            <tr>
+                                <td>자동 발송 스케줄러</td>
+                                <td>일정 유형별 자동 트리거, 발송 시간 설정, 큐 관리, 재시도 처리</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr>
+                                <td>관리 대시보드</td>
+                                <td>발송 현황 조회, 성공/실패 로그, 발송 내역 검색</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 견적금액</strong></td>
+                                <td class="amount"><strong>2,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <p><strong>총 견적 금액: 2,000,000원 (VAT 포함)</strong></p>
+                        <p>* 서버 호스팅 비용 및 알림톡 발송 건당 비용 별도</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 개발 일정 -->
+            <div class="section">
+                <h2 class="section-title">개발 일정</h2>
+                <div class="section-content">
+                    <p><strong>총 개발 기간: 약 3주</strong></p>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>단계</th>
+                                <th>기간</th>
+                                <th>주요 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1단계: 설계 및 연동</td>
+                                <td>1주차</td>
+                                <td>요구사항 확정, 네이버 캘린더 API 연동, 알림톡 템플릿 설계 및 카카오 검수 등록</td>
+                            </tr>
+                            <tr>
+                                <td>2단계: 핵심 기능 개발</td>
+                                <td>2주차</td>
+                                <td>카카오 알림톡 API 연동, 자동 발송 스케줄러 개발, 트리거 로직 구현</td>
+                            </tr>
+                            <tr>
+                                <td>3단계: 대시보드/테스트</td>
+                                <td>3주차</td>
+                                <td>관리 대시보드 개발, 통합 테스트, 실 발송 검증, 최종 납품</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 결제 조건 -->
+            <div class="section">
+                <h2 class="section-title">결제 조건</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>비율</th>
+                                <th>금액</th>
+                                <th>시점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>계약금</td>
+                                <td>50%</td>
+                                <td class="amount">1,000,000</td>
+                                <td>계약 체결 시</td>
+                            </tr>
+                            <tr>
+                                <td>잔금</td>
+                                <td>50%</td>
+                                <td class="amount">1,000,000</td>
+                                <td>최종 검수 완료 후</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 유지보수 -->
+            <div class="section">
+                <h2 class="section-title">유지보수 및 기술 지원</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>무상 하자보수</td>
+                                <td>개발 완료 후 1개월간 오류 및 버그 무상 수정</td>
+                            </tr>
+                            <tr>
+                                <td>장애 대응</td>
+                                <td>무상 기간 내 평일 업무시간 기준 24시간 내 대응</td>
+                            </tr>
+                            <tr>
+                                <td>추가 기능 요청</td>
+                                <td>건별 별도 견적 협의</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 기타 사항 -->
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>카카오 비즈니스 채널 개설 및 알림톡 발신 프로필 등록은 발주처 진행</li>
+                        <li>알림톡 발송 건당 비용(약 8~10원/건)은 발주처 부담</li>
+                        <li>네이버 캘린더 계정 접근 권한은 발주처 제공</li>
+                        <li>알림톡 템플릿 카카오 검수 기간(영업일 기준 3~5일)이 일정에 포함됩니다</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
