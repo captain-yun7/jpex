@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에스킴컴퍼니 SEO 친화적 URL 구조 및 포트폴리오 관리 시스템 견적서</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #e9ecef;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border: 1px solid #ced4da;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            padding: 50px 60px 30px;
+            border-bottom: 2px solid #333;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .company-brand {
+            flex: 1;
+        }
+
+        .company-logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+            text-align: right;
+            padding-top: 5px;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .recipient-section {
+            padding: 30px 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipient-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .recipient-table td {
+            padding: 8px 0;
+        }
+
+        .recipient-table td:first-child {
+            width: 120px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .recipient-table td:last-child {
+            color: #000;
+        }
+
+        .content {
+            padding: 40px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .info-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info-table td {
+            color: #555;
+        }
+
+        .info-table td.amount {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .info-table tr.total-row {
+            background: #000;
+        }
+
+        .info-table tr.total-row td {
+            border-top: 2px solid #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box strong {
+            color: #000;
+        }
+
+        .note-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d9e0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            padding: 30px 60px;
+            background: #000;
+            color: white;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-item {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            color: #95a5a6;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #ecf0f1;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #000;
+            color: white;
+            border: 1px solid #000;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            .action-buttons { display: none !important; }
+            body { background: white; padding: 0; margin: 0; }
+            .container { max-width: 100%; box-shadow: none; border: none; }
+            .section { page-break-inside: avoid; }
+            html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 768px) {
+            .header, .content, .recipient-section, .footer { padding-left: 30px; padding-right: 30px; }
+            .company-info { grid-template-columns: 1fr; }
+            .doc-title { font-size: 20px; letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+            </svg>
+            인쇄 / PDF 저장
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div class="company-brand">
+                    <div class="company-logo">JPEX Studio</div>
+                    <div class="company-tagline">Professional Web & AI Development</div>
+                </div>
+                <div class="doc-title">견적서</div>
+            </div>
+            <div class="doc-meta">
+                <span>문서번호: ASKIM-2026-001</span>
+                <span>작성일자: 2026년 3월 23일</span>
+            </div>
+        </div>
+
+        <div class="recipient-section">
+            <table class="recipient-table">
+                <tr>
+                    <td>수신</td>
+                    <td><strong>에스킴컴퍼니 담당자님 귀하</strong></td>
+                </tr>
+                <tr>
+                    <td>프로젝트명</td>
+                    <td>SEO 친화적 URL 구조 적용 및 포트폴리오 관리 시스템 개선</td>
+                </tr>
+                <tr>
+                    <td>프로젝트 유형</td>
+                    <td>기존 웹사이트 SEO 최적화 및 포트폴리오 관리 기능 추가 개발</td>
+                </tr>
+                <tr>
+                    <td>유효기간</td>
+                    <td>견적서 발행일로부터 30일</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content">
+
+            <!-- 프로젝트 개요 -->
+            <div class="section">
+                <h2 class="section-title">프로젝트 개요</h2>
+                <div class="section-content">
+                    <p>에스킴컴퍼니 웹사이트의 검색 노출 성능을 근본적으로 개선합니다. 현재 동적 파라미터 기반 URL을 <strong>검색엔진 친화적 구조로 전환</strong>하고, 포트폴리오 콘텐츠가 Google·Naver에서 효과적으로 색인될 수 있도록 <strong>메타 정보 관리, 콘텐츠 분류 체계, 소셜 공유 최적화</strong>까지 일괄 적용합니다.</p>
+
+                    <div class="sub-title">현재 상태 및 개선 방향</div>
+                    <ul>
+                        <li><strong>URL 구조 개선:</strong> portfolio.php?idx=52 같은 동적 URL을 /portfolio/puma-seongsu-campaign 형태의 의미 기반 URL로 전환하여 검색엔진 인식률 향상</li>
+                        <li><strong>콘텐츠 분류 체계 구축:</strong> 지역별·업종별 2단계 카테고리 구조를 도입하고, 같은 분류 내 관련 콘텐츠를 자동 추천하여 사이트 체류 시간 증가</li>
+                        <li><strong>검색 결과 품질 관리:</strong> 각 콘텐츠별 검색 결과에 노출되는 제목·설명을 직접 관리할 수 있는 기능 추가</li>
+                        <li><strong>소셜 공유 대응:</strong> 카카오톡·링크드인 등에서 링크 공유 시 브랜드 이미지에 맞는 미리보기 자동 생성</li>
+                        <li><strong>검색엔진 색인 자동화:</strong> 새 콘텐츠 발행 시 검색엔진에 자동 알림하여 빠른 노출 확보</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 견적 내역 -->
+            <div class="section">
+                <h2 class="section-title">견적 내역</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th width="30%">항목</th>
+                                <th>세부내용</th>
+                                <th width="18%">금액(원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SEO 구조 리팩토링</td>
+                                <td>Slug 기반 URL 전환, 영문/숫자/하이픈 입력 규칙 적용, 기존 URL 리다이렉트 처리, H1~H3 마크업 구조 정리</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+                            <tr>
+                                <td>포트폴리오 분류 시스템</td>
+                                <td>지역·업종 2단계 카테고리 CRUD, 관련 콘텐츠 동일 분류 내 랜덤 자동 추천(2~3개), 카테고리 필터 UI</td>
+                                <td class="amount">600,000</td>
+                            </tr>
+                            <tr>
+                                <td>메타 정보 관리 기능</td>
+                                <td>콘텐츠별 Meta Title·Description 직접 입력, OG Tag(썸네일/제목/설명) 자동 생성, 관리자 편집 화면 통합</td>
+                                <td class="amount">400,000</td>
+                            </tr>
+                            <tr>
+                                <td>검색엔진 색인 자동화</td>
+                                <td>Sitemap.xml 스케줄링 자동 갱신(cron), Google Search Console 제출 형태 구성, robots.txt 점검</td>
+                                <td class="amount">500,000</td>
+                            </tr>
+
+                            <tr class="total-row">
+                                <td colspan="2"><strong>총 견적금액 (VAT 포함)</strong></td>
+                                <td class="amount"><strong>2,000,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <p><strong>총 견적 금액: 2,000,000원 (VAT 포함)</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 개발 일정 -->
+            <div class="section">
+                <h2 class="section-title">개발 일정</h2>
+                <div class="section-content">
+                    <p><strong>총 개발 기간: 약 3주</strong></p>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>단계</th>
+                                <th>기간</th>
+                                <th>주요 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1단계: 현황 분석 및 설계</td>
+                                <td>1주차</td>
+                                <td>기존 사이트 코드·DB 분석, URL 매핑 설계, 카테고리 분류 체계 확정</td>
+                            </tr>
+                            <tr>
+                                <td>2단계: 백엔드 개발</td>
+                                <td>2주차</td>
+                                <td>URL 전환 및 리다이렉트, 분류 시스템 구축, 메타 정보 관리 기능 개발</td>
+                            </tr>
+                            <tr>
+                                <td>3단계: 프론트엔드 및 납품</td>
+                                <td>3주차</td>
+                                <td>카테고리 필터 UI, 소셜 공유 태그, Sitemap 자동화, 통합 테스트 및 납품</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 결제 조건 -->
+            <div class="section">
+                <h2 class="section-title">결제 조건</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>비율</th>
+                                <th>금액</th>
+                                <th>시점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>계약금</td>
+                                <td>50%</td>
+                                <td class="amount">1,000,000</td>
+                                <td>계약 체결 시</td>
+                            </tr>
+                            <tr>
+                                <td>잔금</td>
+                                <td>50%</td>
+                                <td class="amount">1,000,000</td>
+                                <td>최종 검수 완료 후</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 유지보수 -->
+            <div class="section">
+                <h2 class="section-title">유지보수 및 기술 지원</h2>
+                <div class="section-content">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>무상 하자보수</td>
+                                <td>개발 완료 후 1개월간 오류 및 버그 무상 수정</td>
+                            </tr>
+                            <tr>
+                                <td>장애 대응</td>
+                                <td>무상 기간 내 평일 업무시간 기준 24시간 내 대응</td>
+                            </tr>
+                            <tr>
+                                <td>추가 기능 요청</td>
+                                <td>건별 별도 견적 협의</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 기타 사항 -->
+            <div class="section">
+                <h2 class="section-title">기타 사항</h2>
+                <div class="section-content">
+                    <ul>
+                        <li>기존 웹사이트 소스코드 및 서버(FTP/SSH) 접근 권한은 발주처 제공</li>
+                        <li>기존 URL에서 신규 URL로의 301 리다이렉트 처리 포함 (SEO 점수 유지)</li>
+                        <li>기존 포트폴리오 데이터는 현행 DB 기준으로 자동 마이그레이션</li>
+                        <li>이미지 최적화 및 Lazy Loading은 본 견적 범위에서 제외</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>참고사항</strong></p>
+                <ul>
+                    <li>본 견적서는 작성일로부터 30일간 유효합니다.</li>
+                    <li>프로젝트 진행 중 요구사항 변경 시 일정과 비용이 조정될 수 있습니다.</li>
+                    <li>세부 사항은 계약 시 협의를 통해 확정됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="info-item">
+                    <div class="info-label">상호</div>
+                    <div class="info-value">JPEX Studio</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">대표자</div>
+                    <div class="info-value">윤지수</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">사업자등록번호</div>
+                    <div class="info-value">560-45-01327</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">연락처</div>
+                    <div class="info-value">010-2174-5072</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
