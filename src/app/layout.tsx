@@ -62,8 +62,8 @@ export const metadata: Metadata = {
   // 추가 메타 태그
   other: {
     'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'black-translucent',
-    'theme-color': '#00A0FF',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'theme-color': '#FFFFFF',
   },
 };
 
@@ -75,10 +75,15 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <head>
-        {/* Preconnect to external domains */}
+        {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+        {/* Inter — 영문/숫자 (mobbin 톤) */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -94,15 +99,15 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       </head>
-      <body className="font-sans bg-gray-900 text-white antialiased" style={{backgroundColor: '#151517'}}>
+      <body className="font-sans bg-surface text-ink antialiased">
         <ClientErrorBoundary>
           {children}
         </ClientErrorBoundary>
-        
+
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-white px-4 py-2 rounded-md z-50 focus:z-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-white px-4 py-2 rounded-md z-50"
         >
           메인 콘텐츠로 건너뛰기
         </a>

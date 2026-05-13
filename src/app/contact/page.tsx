@@ -1,6 +1,5 @@
 /**
  * Contact 페이지 → Quote 페이지로 리다이렉트
- * 견적 문의로 통합
  */
 
 'use client';
@@ -12,15 +11,14 @@ export default function Contact() {
   const router = useRouter();
 
   useEffect(() => {
-    // 즉시 견적 문의 페이지로 리다이렉트
     router.replace('/quote');
   }, [router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
+    <div className="min-h-screen flex items-center justify-center bg-surface">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green mx-auto mb-4"></div>
-        <p className="text-gray-400">견적 문의 페이지로 이동 중...</p>
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-line border-t-accent mx-auto mb-4" />
+        <p className="text-[14.5px] text-ink-muted">견적 문의 페이지로 이동 중...</p>
       </div>
     </div>
   );

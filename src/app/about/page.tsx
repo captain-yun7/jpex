@@ -1,166 +1,96 @@
 /**
- * About 페이지
- * JPEX 회사 소개 및 개발자 정보
+ * About 페이지 — 노트폴리오 톤
  */
 
-import { Layout, Section } from '@/components/layout';
+import { Layout } from '@/components/layout';
 import Link from 'next/link';
 
+const skills = [
+  {
+    category: 'Frontend',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+  },
+  {
+    category: 'Backend',
+    technologies: ['Node.js', 'Express', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'REST API', 'GraphQL'],
+  },
+  {
+    category: 'AI & ML',
+    technologies: ['OpenAI GPT', 'LangChain', 'TensorFlow', 'PyTorch', 'NLP', 'Computer Vision'],
+  },
+  {
+    category: 'DevOps & Cloud',
+    technologies: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Vercel', 'GitHub Actions'],
+  },
+  {
+    category: 'Tools',
+    technologies: ['Git', 'Figma', 'VS Code', 'Postman', 'Notion'],
+  },
+];
+
+const values = [
+  { title: '혁신적 사고', description: '최신 기술 트렌드를 빠르게 습득하고 창의적인 솔루션을 제안합니다.' },
+  { title: '품질 중심', description: '코드 품질과 성능 최적화를 통해 장기적으로 유지보수가 용이한 시스템을 구축합니다.' },
+  { title: '소통과 협업', description: '클라이언트와의 원활한 소통을 통해 요구사항을 정확히 파악하고 구현합니다.' },
+  { title: '신속한 개발', description: '효율적인 개발 프로세스로 빠른 프로토타이핑과 안정적인 배포를 실현합니다.' },
+];
+
 export default function About() {
-  const skills = [
-    {
-      category: 'Frontend',
-      icon: '🎨',
-      technologies: [
-        'React', 'Next.js', 'TypeScript', 'JavaScript',
-        'Tailwind CSS', 'Material-UI', 'Styled Components',
-        'HTML5', 'CSS3', 'SASS/SCSS'
-      ]
-    },
-    {
-      category: 'Backend',
-      icon: '⚙️',
-      technologies: [
-        'Node.js', 'Express.js', 'Python', 'FastAPI',
-        'Django', 'PostgreSQL', 'MongoDB', 'Redis',
-        'REST API', 'GraphQL', 'JWT Authentication'
-      ]
-    },
-    {
-      category: 'AI & ML',
-      icon: '🤖',
-      technologies: [
-        'OpenAI GPT API', 'LangChain', 'Python',
-        'TensorFlow', 'PyTorch', 'Scikit-learn',
-        'Natural Language Processing', 'Computer Vision'
-      ]
-    },
-    {
-      category: 'DevOps & Cloud',
-      icon: '☁️',
-      technologies: [
-        'AWS', 'Google Cloud', 'Docker', 'Kubernetes',
-        'Vercel', 'Netlify', 'CI/CD', 'GitHub Actions',
-        'Linux', 'Nginx', 'PM2'
-      ]
-    },
-    {
-      category: 'Tools & Others',
-      icon: '🛠️',
-      technologies: [
-        'Git', 'GitHub', 'VS Code', 'Figma',
-        'Postman', 'Jira', 'Slack', 'Notion',
-        'Adobe Creative Suite', 'Webpack', 'Vite'
-      ]
-    }
-  ];
-
-  const values = [
-    {
-      icon: '💡',
-      title: '혁신적 사고',
-      description: '최신 기술 트렌드를 빠르게 습득하고 창의적인 솔루션을 제안합니다.'
-    },
-    {
-      icon: '🎯',
-      title: '품질 중심',
-      description: '코드 품질과 성능 최적화를 통해 장기적으로 유지보수가 용이한 시스템을 구축합니다.'
-    },
-    {
-      icon: '🤝',
-      title: '소통과 협업',
-      description: '클라이언트와의 원활한 소통을 통해 요구사항을 정확히 파악하고 구현합니다.'
-    },
-    {
-      icon: '⚡',
-      title: '신속한 개발',
-      description: '효율적인 개발 프로세스로 빠른 프로토타이핑과 안정적인 배포를 실현합니다.'
-    }
-  ];
-
   return (
     <Layout>
-      {/* Hero Section */}
-      <Section padding="xl" id="about-hero">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="relative">
-            <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-              안녕하세요, <span className="text-accent">JPEX</span>입니다
-            </h1>
-            
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              5년차 풀스택 개발자로서 <span className="text-accent font-semibold">현대적이고 혁신적인 디지털 솔루션</span>을 
-              제공하는 프리랜서입니다. 클라이언트의 비즈니스 성장을 위해 
-              <span className="text-accent font-semibold"> 최신 기술과 창의적인 아이디어</span>로 
-              최적의 결과를 만들어냅니다.
-            </p>
-          </div>
-        </div>
-      </Section>
+      {/* 인트로 */}
+      <section className="container mx-auto pt-20 lg:pt-32 pb-16 lg:pb-20">
+        <p className="inline-flex items-center gap-2 font-display text-[12.5px] font-semibold tracking-[0.25em] text-ink uppercase mb-7"><span className="inline-block w-1.5 h-1.5 rounded-full bg-accent align-middle" /> 
+          About
+        </p>
+        <h1 className="text-3xl md:text-4xl lg:text-[52px] font-semibold text-ink leading-[1.2] tracking-tight max-w-4xl">
+          5년차 <span className="text-accent-underline">풀스택 개발자</span>, JPEX입니다.
+        </h1>
+        <p className="text-[16.5px] text-ink-muted mt-8 max-w-2xl leading-relaxed">
+          웹·앱부터 AI 솔루션, 클라우드 인프라까지. 클라이언트의 비즈니스
+          성장을 위해 최신 기술과 창의적 아이디어로 최적의 결과를 만들어냅니다.
+        </p>
+      </section>
 
       {/* 핵심 가치 */}
-      <Section background="secondary" padding="xl">
-        <div className="text-center space-y-12">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-              핵심 가치
-            </h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              저의 개발 철학과 업무 방식을 이끌어가는 핵심 가치들입니다
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="group bg-background-primary p-8 rounded-2xl border border-secondary hover:border-accent transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2"
-              >
-                <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">
-                  {value.title}
+      <section className="border-t border-line">
+        <div className="container mx-auto py-20 lg:py-24">
+          <p className="text-[12.5px] font-semibold tracking-[0.2em] text-ink-subtle uppercase mb-10">
+            Core Values
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
+            {values.map((v) => (
+              <div key={v.title} className="bg-surface p-8 lg:p-10">
+                <h3 className="text-[17px] font-semibold text-ink mb-3">
+                  {v.title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  {value.description}
+                <p className="text-[15px] text-ink-muted leading-relaxed">
+                  {v.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* 기술 스택 */}
-      <Section padding="xl">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-              기술 스택
-            </h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              다양한 프로젝트 경험을 통해 축적한 기술들입니다
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {skills.map((skill, index) => (
+      <section className="border-t border-line bg-surface-alt">
+        <div className="container mx-auto py-20 lg:py-24">
+          <p className="text-[12.5px] font-semibold tracking-[0.2em] text-ink-subtle uppercase mb-10">
+            Tech Stack
+          </p>
+          <div className="space-y-1">
+            {skills.map((s) => (
               <div
-                key={index}
-                className="bg-background-secondary p-8 rounded-2xl border border-secondary hover:border-accent transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
+                key={s.category}
+                className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-10 py-7 lg:py-8 border-b border-line last:border-0"
               >
-                <div className="flex items-center mb-6">
-                  <div className="text-3xl mr-4">{skill.icon}</div>
-                  <h3 className="text-2xl font-semibold text-text-primary">
-                    {skill.category}
-                  </h3>
-                </div>
-                
+                <h3 className="text-[17px] font-medium text-ink">{s.category}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {skill.technologies.map((tech, techIndex) => (
+                  {s.technologies.map((tech) => (
                     <span
-                      key={techIndex}
-                      className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors duration-200"
+                      key={tech}
+                      className="px-3 py-1.5 text-[14px] text-ink-muted bg-surface border border-line rounded"
                     >
                       {tech}
                     </span>
@@ -170,36 +100,30 @@ export default function About() {
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* CTA Section */}
-      <Section padding="xl">
-        <div className="text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-            함께 프로젝트를 시작해보세요
-          </h2>
-          
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            여러분의 아이디어를 현실로 만들어드리겠습니다. 
-            언제든지 편하게 연락주세요!
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-            >
-              연락하기
-            </a>
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold min-h-12 bg-transparent text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-            >
-              견적 요청하기
-            </Link>
+      {/* CTA */}
+      <section className="border-t border-line">
+        <div className="container mx-auto py-20 lg:py-24 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <h2 className="text-xl md:text-2xl font-semibold text-ink">
+              함께 프로젝트를 시작해볼까요?
+            </h2>
+            <p className="text-[15.5px] text-ink-muted mt-2">
+              아이디어를 현실로 만들어드리겠습니다.
+            </p>
           </div>
+          <Link
+            href="/quote"
+            className="group/btn inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-medium text-white bg-ink rounded-full hover:bg-ink/85 shadow-card hover:shadow-lift transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            견적 문의하기
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
         </div>
-      </Section>
+      </section>
     </Layout>
   );
 }

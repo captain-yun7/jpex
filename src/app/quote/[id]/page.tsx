@@ -161,11 +161,11 @@ export default function QuoteDetail() {
   if (loading) {
     return (
       <Layout>
-        <Section padding="xl">
+        <Section padding="lg">
           <div className="flex justify-center items-center min-h-[400px]">
             <div className="text-center space-y-4">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto"></div>
-              <p className="text-text-secondary">견적서를 불러오는 중...</p>
+              <p className="text-ink-muted">견적서를 불러오는 중...</p>
             </div>
           </div>
         </Section>
@@ -176,14 +176,14 @@ export default function QuoteDetail() {
   if (error || !quote) {
     return (
       <Layout>
-        <Section padding="xl">
+        <Section padding="lg">
           <div className="flex justify-center items-center min-h-[400px]">
             <div className="text-center space-y-4">
               <div className="text-6xl">😔</div>
-              <h2 className="text-2xl font-bold text-text-primary">
+              <h2 className="text-2xl font-bold text-ink">
                 {error || '견적서를 찾을 수 없습니다'}
               </h2>
-              <p className="text-text-secondary">
+              <p className="text-ink-muted">
                 요청하신 견적서를 찾을 수 없습니다. URL을 확인해주세요.
               </p>
               <Link href="/quote" className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors">
@@ -207,14 +207,14 @@ export default function QuoteDetail() {
   return (
     <Layout>
       {/* 헤더 */}
-      <Section padding="lg" background="secondary">
+      <Section padding="lg" background="alt">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-text-primary mb-2">
+              <h1 className="text-3xl font-bold text-ink mb-2">
                 견적서 상세
               </h1>
-              <p className="text-text-secondary">
+              <p className="text-ink-muted">
                 견적 번호: {quote.id.slice(0, 8).toUpperCase()}
               </p>
             </div>
@@ -232,71 +232,71 @@ export default function QuoteDetail() {
       </Section>
 
       {/* 견적서 내용 */}
-      <Section padding="xl">
+      <Section padding="lg">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* 고객 정보 */}
-          <div className="bg-background-secondary p-6 rounded-xl border border-secondary">
-            <h2 className="text-xl font-semibold text-text-primary mb-4">고객 정보</h2>
+          <div className="bg-surface-alt p-6 rounded-xl border border-line">
+            <h2 className="text-xl font-semibold text-ink mb-4">고객 정보</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-text-secondary text-sm">이름</span>
-                <p className="text-text-primary font-medium">{quote.name}</p>
+                <span className="text-ink-muted text-sm">이름</span>
+                <p className="text-ink font-medium">{quote.name}</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">이메일</span>
-                <p className="text-text-primary font-medium">{quote.email}</p>
+                <span className="text-ink-muted text-sm">이메일</span>
+                <p className="text-ink font-medium">{quote.email}</p>
               </div>
               {quote.company && (
                 <div>
-                  <span className="text-text-secondary text-sm">회사명</span>
-                  <p className="text-text-primary font-medium">{quote.company}</p>
+                  <span className="text-ink-muted text-sm">회사명</span>
+                  <p className="text-ink font-medium">{quote.company}</p>
                 </div>
               )}
               <div>
-                <span className="text-text-secondary text-sm">요청일</span>
-                <p className="text-text-primary font-medium">{formatDate(quote.created_at)}</p>
+                <span className="text-ink-muted text-sm">요청일</span>
+                <p className="text-ink font-medium">{formatDate(quote.created_at)}</p>
               </div>
             </div>
           </div>
 
           {/* 프로젝트 정보 */}
-          <div className="bg-background-secondary p-6 rounded-xl border border-secondary">
-            <h2 className="text-xl font-semibold text-text-primary mb-4">프로젝트 정보</h2>
+          <div className="bg-surface-alt p-6 rounded-xl border border-line">
+            <h2 className="text-xl font-semibold text-ink mb-4">프로젝트 정보</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-text-secondary text-sm">프로젝트 유형</span>
-                <p className="text-text-primary font-medium">{getProjectTypeName(quote.project_type)}</p>
+                <span className="text-ink-muted text-sm">프로젝트 유형</span>
+                <p className="text-ink font-medium">{getProjectTypeName(quote.project_type)}</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">프로젝트 규모</span>
-                <p className="text-text-primary font-medium">{getProjectScopeName(quote.project_scope)}</p>
+                <span className="text-ink-muted text-sm">프로젝트 규모</span>
+                <p className="text-ink font-medium">{getProjectScopeName(quote.project_scope)}</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">희망 일정</span>
-                <p className="text-text-primary font-medium">{getTimelineName(quote.timeline)}</p>
+                <span className="text-ink-muted text-sm">희망 일정</span>
+                <p className="text-ink font-medium">{getTimelineName(quote.timeline)}</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">예산 범위</span>
-                <p className="text-text-primary font-medium">{getBudgetRangeName(quote.budget_range)}</p>
+                <span className="text-ink-muted text-sm">예산 범위</span>
+                <p className="text-ink font-medium">{getBudgetRangeName(quote.budget_range)}</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">복잡도 점수</span>
-                <p className="text-text-primary font-medium">{quote.complexity_score}점</p>
+                <span className="text-ink-muted text-sm">복잡도 점수</span>
+                <p className="text-ink font-medium">{quote.complexity_score}점</p>
               </div>
               <div>
-                <span className="text-text-secondary text-sm">긴급도 계수</span>
-                <p className="text-text-primary font-medium">x{quote.urgency_multiplier}</p>
+                <span className="text-ink-muted text-sm">긴급도 계수</span>
+                <p className="text-ink font-medium">x{quote.urgency_multiplier}</p>
               </div>
             </div>
           </div>
 
           {/* 요구사항 */}
-          <div className="bg-background-secondary p-6 rounded-xl border border-secondary">
-            <h2 className="text-xl font-semibold text-text-primary mb-4">요구사항</h2>
+          <div className="bg-surface-alt p-6 rounded-xl border border-line">
+            <h2 className="text-xl font-semibold text-ink mb-4">요구사항</h2>
             
             {requirements.features && requirements.features.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-text-primary mb-2">선택 기능</h3>
+                <h3 className="text-lg font-medium text-ink mb-2">선택 기능</h3>
                 <div className="flex flex-wrap gap-2">
                   {requirements.features.map((feature: string, index: number) => (
                     <span key={index} className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">
@@ -309,7 +309,7 @@ export default function QuoteDetail() {
 
             {requirements.aiFeatures && requirements.aiFeatures.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-text-primary mb-2">AI 기능</h3>
+                <h3 className="text-lg font-medium text-ink mb-2">AI 기능</h3>
                 <div className="flex flex-wrap gap-2">
                   {requirements.aiFeatures.map((feature: string, index: number) => (
                     <span key={index} className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
@@ -322,7 +322,7 @@ export default function QuoteDetail() {
 
             {requirements.technologies && requirements.technologies.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-text-primary mb-2">선호 기술</h3>
+                <h3 className="text-lg font-medium text-ink mb-2">선호 기술</h3>
                 <div className="flex flex-wrap gap-2">
                   {requirements.technologies.map((tech: string, index: number) => (
                     <span key={index} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
@@ -335,8 +335,8 @@ export default function QuoteDetail() {
 
             {requirements.description && (
               <div>
-                <h3 className="text-lg font-medium text-text-primary mb-2">프로젝트 설명</h3>
-                <p className="text-text-secondary whitespace-pre-wrap">{requirements.description}</p>
+                <h3 className="text-lg font-medium text-ink mb-2">프로젝트 설명</h3>
+                <p className="text-ink-muted whitespace-pre-wrap">{requirements.description}</p>
               </div>
             )}
           </div>
@@ -344,25 +344,25 @@ export default function QuoteDetail() {
           {/* 예상 비용 */}
           {estimatedCost.min && estimatedCost.max && (
             <div className="bg-gradient-to-r from-accent/10 to-accent/5 p-6 rounded-xl border border-accent/20">
-              <h2 className="text-xl font-semibold text-text-primary mb-4">예상 비용</h2>
+              <h2 className="text-xl font-semibold text-ink mb-4">예상 비용</h2>
               <div className="text-center space-y-4">
                 <div className="text-3xl font-bold text-accent">
                   {estimatedCost.min?.toLocaleString()}만원 - {estimatedCost.max?.toLocaleString()}만원
                 </div>
                 {estimatedCost.timeline && (
-                  <p className="text-text-secondary">예상 개발 기간: {estimatedCost.timeline}</p>
+                  <p className="text-ink-muted">예상 개발 기간: {estimatedCost.timeline}</p>
                 )}
               </div>
               
               {estimatedCost.breakdown && estimatedCost.breakdown.length > 0 && (
                 <div className="mt-6 space-y-2">
-                  <h3 className="text-lg font-medium text-text-primary">비용 상세</h3>
+                  <h3 className="text-lg font-medium text-ink">비용 상세</h3>
                   {estimatedCost.breakdown.map((item: EstimatedCostBreakdown, index: number) => (
-                    <div key={index} className="flex justify-between py-2 border-b border-secondary/30">
+                    <div key={index} className="flex justify-between py-2 border-b border-line/30">
                       <div>
-                        <span className="text-text-primary">{item.category}</span>
+                        <span className="text-ink">{item.category}</span>
                         {item.description && (
-                          <span className="text-text-secondary text-sm ml-2">({item.description})</span>
+                          <span className="text-ink-muted text-sm ml-2">({item.description})</span>
                         )}
                       </div>
                       <span className="font-medium text-accent">{item.cost?.toLocaleString()}만원</span>

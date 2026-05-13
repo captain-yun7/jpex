@@ -1,1 +1,1 @@
-export { HeroSlider } from './HeroSlider';
+export { HomeGallery } from './HomeGallery';
