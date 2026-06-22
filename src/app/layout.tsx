@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_CONFIG, SEO_CONFIG } from "@/lib/constants";
+import { getSeoSettings, type SeoSettings } from "@/lib/db";
 import { ClientErrorBoundary } from "@/components/common";
 
 // Pretendard 폰트 import
@@ -16,56 +17,88 @@ import '@fontsource/pretendard/600.css';  // SemiBold
 import '@fontsource/pretendard/700.css';  // Bold
 import '@fontsource/pretendard/900.css';  // Black
 
-export const metadata: Metadata = {
-  title: {
-    template: SEO_CONFIG.titleTemplate,
-    default: SEO_CONFIG.defaultTitle,
-  },
-  description: SEO_CONFIG.description,
-  keywords: [...SEO_CONFIG.keywords],
-  authors: [{ name: SEO_CONFIG.author }],
-  creator: SEO_CONFIG.creator,
-  publisher: SEO_CONFIG.publisher,
-  robots: SEO_CONFIG.robots,
-  metadataBase: new URL(SITE_CONFIG.url),
-  
-  // Open Graph
-  openGraph: {
-    type: 'website',
-    locale: 'ko_KR',
-    url: SITE_CONFIG.url,
-    siteName: SITE_CONFIG.name,
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.description,
-    images: [
-      {
-        url: SITE_CONFIG.ogImage,
-        width: 1200,
-        height: 630,
-        alt: SITE_CONFIG.title,
-      },
-    ],
-  },
-  
-  // Twitter
-  twitter: {
-    card: 'summary_large_image',
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.description,
-    images: [SITE_CONFIG.ogImage],
-    creator: SITE_CONFIG.author.twitter,
-  },
-  
-  // 검증 코드
-  verification: SEO_CONFIG.verification,
-  
-  // 추가 메타 태그
-  other: {
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
-    'theme-color': '#FFFFFF',
-  },
-};
+// DB의 SEO 설정을 1시간마다 재검증 (관리자 저장 후 반영)
+export const revalidate = 3600;
+
+/**
+ * 관리자 SEO 설정(DB) > 코드 상수 순으로 메타데이터를 구성한다.
+ * DB 미설정/미연결 시에는 상수값으로 폴백한다.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  let seo: SeoSettings | null = null;
+  try {
+    seo = await getSeoSettings();
+  } catch {
+    seo = null;
+  }
+
+  const title = seo?.site_title || SEO_CONFIG.defaultTitle;
+  const description = seo?.site_description || SEO_CONFIG.description;
+  const keywords = seo?.keywords
+    ? seo.keywords.split(',').map((k) => k.trim()).filter(Boolean)
+    : [...SEO_CONFIG.keywords];
+  const ogImage = seo?.og_image || SITE_CONFIG.ogImage;
+
+  const googleCode = seo?.google_verification || SEO_CONFIG.verification.google;
+  const naverCode = seo?.naver_verification || SEO_CONFIG.verification.naver;
+  const bingCode = seo?.bing_verification || SEO_CONFIG.verification.bing;
+
+  const otherVerification: Record<string, string> = {};
+  if (naverCode) otherVerification['naver-site-verification'] = naverCode;
+  if (bingCode) otherVerification['msvalidate.01'] = bingCode;
+
+  return {
+    title: {
+      template: SEO_CONFIG.titleTemplate,
+      default: title,
+    },
+    description,
+    keywords,
+    authors: [{ name: SEO_CONFIG.author }],
+    creator: SEO_CONFIG.creator,
+    publisher: SEO_CONFIG.publisher,
+    robots: SEO_CONFIG.robots,
+    metadataBase: new URL(SITE_CONFIG.url),
+
+    openGraph: {
+      type: 'website',
+      locale: 'ko_KR',
+      url: SITE_CONFIG.url,
+      siteName: SITE_CONFIG.name,
+      title,
+      description,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+      creator: SITE_CONFIG.author.twitter,
+    },
+
+    verification: {
+      google: googleCode || undefined,
+      ...(Object.keys(otherVerification).length > 0
+        ? { other: otherVerification }
+        : {}),
+    },
+
+    other: {
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'default',
+      'theme-color': '#FFFFFF',
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -98,6 +131,32 @@ export default function RootLayout({
         {/* 성능 힌트 */}
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://image.thum.io" />
+        <link rel="dns-prefetch" href="//image.thum.io" />
+
+        {/* 사이트 전역 구조화 데이터 (Organization) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: SITE_CONFIG.name,
+              url: SITE_CONFIG.url,
+              description: SITE_CONFIG.description,
+              email: SITE_CONFIG.author.email,
+              sameAs: [SITE_CONFIG.author.github, SITE_CONFIG.author.linkedin],
+              areaServed: 'KR',
+              knowsAbout: [
+                '홈페이지 제작',
+                '웹사이트 개발',
+                'AI 솔루션 개발',
+                '업무 자동화',
+                '반응형 웹',
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="font-sans bg-surface text-ink antialiased">
         <ClientErrorBoundary>

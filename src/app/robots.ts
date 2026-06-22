@@ -19,6 +19,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/'],
       },
     ],
-    sitemap: 'https://jpex.co.kr/sitemap.xml',
+    sitemap: 'https://www.jpexstudio.com/sitemap.xml',
   };
 }
