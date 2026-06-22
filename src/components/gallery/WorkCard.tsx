@@ -67,6 +67,19 @@ export const WorkCard: React.FC<WorkCardProps> = ({ data, className, priority })
   const wrapperClass = cn('group block', className);
 
   if (data.href) {
+    const isExternal = /^https?:\/\//.test(data.href);
+    if (isExternal) {
+      return (
+        <a
+          href={data.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={wrapperClass}
+        >
+          {inner}
+        </a>
+      );
+    }
     return (
       <Link href={data.href} className={wrapperClass}>
         {inner}

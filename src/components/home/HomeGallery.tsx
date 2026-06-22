@@ -25,7 +25,7 @@ const works: GalleryItem[] = projects.map((p) => ({
     categoryLabel: CATEGORY_LABEL[p.category] ?? p.category,
     image: p.image,
     year: p.year,
-    href: `/portfolio?p=${p.id}`,
+    href: p.liveUrl || undefined,
   } satisfies WorkItemData,
 }));
 
