@@ -8,14 +8,14 @@
 // ============================================================================
 
 export const SITE_CONFIG = {
-  name: 'JPEX',
-  title: 'JPEX - 프리랜서 웹 개발 & AI 솔루션',
-  description: '전문적인 웹/앱 개발 및 AI 솔루션 서비스를 제공하는 프리랜서 개발자입니다.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jpex.kr',
+  name: 'JpexStudio',
+  title: 'JpexStudio - 홈페이지 제작 & AI 솔루션 개발',
+  description: '회사·병원·쇼핑몰 홈페이지 제작부터 AI 솔루션 개발까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹 개발 스튜디오입니다.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jpexstudio.com',
   ogImage: '/images/og-image.jpg',
   author: {
-    name: 'JPEX Developer',
-    email: 'contact@jpex.kr',
+    name: 'JpexStudio',
+    email: 'jslovejs182@gmail.com',
     twitter: '@jpex_dev',
     github: 'https://github.com/jpex-dev',
     linkedin: 'https://linkedin.com/in/jpex-dev',
@@ -445,18 +445,18 @@ export const CONTACT_INFO = {
 // ============================================================================
 
 export const SEO_CONFIG = {
-  titleTemplate: '%s | JPEX',
-  defaultTitle: 'JPEX - 프리랜서 웹 개발 & AI 솔루션',
-  description: '전문적인 웹/앱 개발 및 AI 솔루션 서비스를 제공하는 프리랜서 개발자입니다.',
+  titleTemplate: '%s | JpexStudio',
+  defaultTitle: 'JpexStudio - 홈페이지 제작 & AI 솔루션 개발',
+  description: '회사·병원·쇼핑몰 홈페이지 제작부터 AI 솔루션 개발까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹 개발 스튜디오입니다.',
   keywords: [
-    '웹개발', '앱개발', 'AI개발', '프리랜서',
-    'React', 'Next.js', 'TypeScript', 'Node.js',
-    '웹사이트제작', '모바일앱', '인공지능', '챗봇',
-    '기술컨설팅', '성능최적화', '반응형웹',
+    '홈페이지 제작', '웹사이트 제작', '회사 홈페이지 제작', '병원 홈페이지 제작',
+    '쇼핑몰 제작', '분양 사이트 제작', '반응형 웹 제작', '홈페이지 제작 업체',
+    'AI 솔루션 개발', '챗봇 개발', '업무 자동화', 'AI 개발',
+    'React', 'Next.js', 'TypeScript', '웹 개발 외주',
   ],
-  author: 'JPEX Developer',
-  creator: 'JPEX',
-  publisher: 'JPEX',
+  author: 'JpexStudio',
+  creator: 'JpexStudio',
+  publisher: 'JpexStudio',
   robots: 'index,follow',
   googlebot: 'index,follow',
   verification: {

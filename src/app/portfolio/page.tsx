@@ -10,8 +10,8 @@ import { projects } from './data';
 
 // SEO 메타데이터
 export const metadata: Metadata = {
-  title: '홈페이지 제작 포트폴리오 | 회사 홈페이지, 병원 홈페이지 제작 전문 - JPEX',
-  description: '회사 홈페이지 제작, 병원 홈페이지 제작, 쇼핑몰 제작, AI 솔루션 개발 전문. 8개 이상의 성공 사례를 보유한 JPEX의 웹 개발 포트폴리오를 확인하세요. 반응형 웹사이트, 모바일 최적화, SEO 최적화까지 완벽 제작.',
+  title: '홈페이지 제작 포트폴리오 | 회사·병원·쇼핑몰 제작 전문 - JpexStudio',
+  description: '회사 홈페이지, 분양 사이트, AI 자동화 SaaS, AI 채점 시스템 등 실제 운영 중인 12개 프로젝트를 직접 확인하세요. JpexStudio는 라이브 URL로 검증된 웹 개발·AI 솔루션 포트폴리오를 제공합니다.',
   keywords: [
     '홈페이지 제작',
     '회사 홈페이지 제작',
@@ -33,20 +33,20 @@ export const metadata: Metadata = {
     'AI 솔루션 개발'
   ],
   openGraph: {
-    title: '홈페이지 제작 포트폴리오 - 회사/병원/쇼핑몰 제작 전문 JPEX',
-    description: '회사 홈페이지, 병원 홈페이지, 쇼핑몰 제작 전문. 8개 이상의 성공 사례를 확인하세요.',
+    title: '홈페이지 제작 포트폴리오 - 회사/병원/쇼핑몰 제작 전문 JpexStudio',
+    description: '실제 운영 중인 12개 프로젝트로 검증된 웹 개발·AI 솔루션 포트폴리오를 확인하세요.',
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://jpex.co.kr/portfolio',
-    siteName: 'JPEX',
+    url: 'https://www.jpexstudio.com/portfolio',
+    siteName: 'JpexStudio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '홈페이지 제작 포트폴리오 - JPEX',
-    description: '회사 홈페이지, 병원 홈페이지, 쇼핑몰 제작 전문',
+    title: '홈페이지 제작 포트폴리오 - JpexStudio',
+    description: '실제 운영 중인 12개 프로젝트로 검증된 웹 개발·AI 솔루션 포트폴리오',
   },
   alternates: {
-    canonical: 'https://jpex.co.kr/portfolio',
+    canonical: 'https://www.jpexstudio.com/portfolio',
   },
   robots: {
     index: true,
@@ -66,36 +66,39 @@ export default function PortfolioPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: '홈페이지 제작 포트폴리오 - JPEX',
-    description: '회사 홈페이지 제작, 병원 홈페이지 제작, 쇼핑몰 제작 등 다양한 웹 개발 프로젝트 포트폴리오',
-    url: 'https://jpex.co.kr/portfolio',
+    name: '홈페이지 제작 포트폴리오 - JpexStudio',
+    description: '회사 홈페이지 제작, 분양 사이트 제작, AI 자동화 솔루션 등 실제 운영 중인 웹 개발 프로젝트 포트폴리오',
+    url: 'https://www.jpexstudio.com/portfolio',
     mainEntity: {
       '@type': 'ItemList',
+      numberOfItems: projects.length,
       itemListElement: projects.map((project, index) => ({
         '@type': 'ListItem',
         position: index + 1,
+        url: project.liveUrl || undefined,
         item: {
           '@type': 'CreativeWork',
           name: project.title,
           description: project.description,
-          image: `https://jpex.co.kr${project.image}`,
+          image: project.image,
+          url: project.liveUrl || undefined,
           dateCreated: project.year,
           keywords: project.technologies.join(', '),
           creator: {
             '@type': 'Organization',
-            name: 'JPEX',
-            url: 'https://jpex.co.kr'
+            name: 'JpexStudio',
+            url: 'https://www.jpexstudio.com'
           }
         }
       }))
     },
     provider: {
       '@type': 'Organization',
-      name: 'JPEX',
-      url: 'https://jpex.co.kr',
-      description: '홈페이지 제작, 웹 개발, AI 솔루션 전문 기업',
+      name: 'JpexStudio',
+      url: 'https://www.jpexstudio.com',
+      description: '홈페이지 제작, 웹 개발, AI 솔루션 전문 스튜디오',
       sameAs: [
-        'https://github.com/jpex'
+        'https://github.com/jpex-dev'
       ]
     }
   };
