@@ -163,7 +163,7 @@ export default function AdminPage() {
             </div>
 
             {/* 네비게이션 메뉴 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               <div className="bg-green/10 border-2 border-green rounded-xl p-6">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="text-4xl">📋</span>
@@ -202,6 +202,20 @@ export default function AdminPage() {
                   </div>
                 </div>
                 <p className="text-sm text-orange-400 font-medium">바로가기 →</p>
+              </Link>
+
+              <Link
+                href="/admin/seo"
+                className="bg-black-light border-2 border-gray-800 rounded-xl p-6 hover:border-green/50 transition-all group"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-4xl">🔍</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-green transition-colors">SEO 설정</h3>
+                    <p className="text-sm text-gray-400">메타태그·인증코드</p>
+                  </div>
+                </div>
+                <p className="text-sm text-green font-medium">바로가기 →</p>
               </Link>
             </div>
 

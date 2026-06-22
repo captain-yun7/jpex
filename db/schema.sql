@@ -164,3 +164,37 @@ COMMENT ON COLUMN contract_documents.notes IS '기타 사항';
 COMMENT ON COLUMN contract_documents.status IS '상태 (draft, signed, completed, cancelled)';
 COMMENT ON COLUMN contract_documents.created_at IS '생성 일시';
 COMMENT ON COLUMN contract_documents.updated_at IS '수정 일시';
+
+-- ============================================
+-- SEO 설정 테이블 (관리자용, 단일 행)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS seo_settings (
+  id INTEGER PRIMARY KEY DEFAULT 1,
+  site_title VARCHAR(255),
+  site_description TEXT,
+  keywords TEXT,
+  og_image VARCHAR(500),
+  google_verification VARCHAR(255),
+  naver_verification VARCHAR(255),
+  bing_verification VARCHAR(255),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT seo_settings_singleton CHECK (id = 1)
+);
+
+-- 트리거 생성
+DROP TRIGGER IF EXISTS update_seo_settings_updated_at ON seo_settings;
+CREATE TRIGGER update_seo_settings_updated_at
+  BEFORE UPDATE ON seo_settings
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- 코멘트 추가
+COMMENT ON TABLE seo_settings IS 'JPEX 사이트 전역 SEO 설정 (단일 행, id=1)';
+COMMENT ON COLUMN seo_settings.site_title IS '사이트 기본 제목 (메타 title 기본값)';
+COMMENT ON COLUMN seo_settings.site_description IS '사이트 기본 설명 (메타 description)';
+COMMENT ON COLUMN seo_settings.keywords IS '키워드 (쉼표 구분)';
+COMMENT ON COLUMN seo_settings.og_image IS 'Open Graph 대표 이미지 URL';
+COMMENT ON COLUMN seo_settings.google_verification IS 'Google Search Console 인증코드';
+COMMENT ON COLUMN seo_settings.naver_verification IS '네이버 웹마스터 인증코드';
+COMMENT ON COLUMN seo_settings.bing_verification IS 'Bing 웹마스터 인증코드';

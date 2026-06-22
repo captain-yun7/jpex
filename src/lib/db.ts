@@ -423,3 +423,71 @@ export async function deleteContractDocument(id: string) {
 
   return result[0] || null;
 }
+
+// ============================================
+// SEO 설정 관리 (단일 행, id=1)
+// ============================================
+
+/**
+ * SEO 설정 타입 정의
+ */
+export interface SeoSettings {
+  site_title?: string | null;
+  site_description?: string | null;
+  keywords?: string | null;
+  og_image?: string | null;
+  google_verification?: string | null;
+  naver_verification?: string | null;
+  bing_verification?: string | null;
+  updated_at?: Date;
+}
+
+/**
+ * SEO 설정 조회 (없으면 null)
+ */
+export async function getSeoSettings(): Promise<SeoSettings | null> {
+  const result = await sql`
+    SELECT * FROM seo_settings WHERE id = 1 LIMIT 1
+  `;
+
+  return (result[0] as SeoSettings) || null;
+}
+
+/**
+ * SEO 설정 저장 (upsert, 단일 행)
+ */
+export async function upsertSeoSettings(data: SeoSettings) {
+  const result = await sql`
+    INSERT INTO seo_settings (
+      id,
+      site_title,
+      site_description,
+      keywords,
+      og_image,
+      google_verification,
+      naver_verification,
+      bing_verification
+    ) VALUES (
+      1,
+      ${data.site_title || null},
+      ${data.site_description || null},
+      ${data.keywords || null},
+      ${data.og_image || null},
+      ${data.google_verification || null},
+      ${data.naver_verification || null},
+      ${data.bing_verification || null}
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      site_title = EXCLUDED.site_title,
+      site_description = EXCLUDED.site_description,
+      keywords = EXCLUDED.keywords,
+      og_image = EXCLUDED.og_image,
+      google_verification = EXCLUDED.google_verification,
+      naver_verification = EXCLUDED.naver_verification,
+      bing_verification = EXCLUDED.bing_verification,
+      updated_at = NOW()
+    RETURNING *
+  `;
+
+  return result[0] || null;
+}
