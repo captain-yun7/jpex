@@ -71,12 +71,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               >
                 {CONTACT_INFO.email}
               </a>
-              <a
-                href={`tel:${CONTACT_INFO.phone.replace(/[^0-9]/g, '')}`}
-                className="block hover:text-accent transition-colors"
-              >
-                {CONTACT_INFO.phone}
-              </a>
             </div>
           </div>
 

@@ -188,12 +188,6 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
                 <a href={`mailto:${CONTACT_INFO.email}`} className="block hover:text-ink">
                   {CONTACT_INFO.email}
                 </a>
-                <a
-                  href={`tel:${CONTACT_INFO.phone.replace(/[^0-9]/g, '')}`}
-                  className="block hover:text-ink"
-                >
-                  {CONTACT_INFO.phone}
-                </a>
               </div>
             </nav>
           </div>

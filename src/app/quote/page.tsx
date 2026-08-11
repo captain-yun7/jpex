@@ -393,17 +393,10 @@ export default function Quote() {
           <p className="text-[15.5px] text-ink-muted mb-3">급하신가요? 바로 연락주세요.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-[15.5px]">
             <a
-              href="tel:010-2174-5072"
+              href="mailto:captain@jpexstudio.com"
               className="text-ink font-medium hover:text-accent transition-colors"
             >
-              010-2174-5072
-            </a>
-            <span className="hidden sm:block text-line-strong">·</span>
-            <a
-              href="mailto:jslovejs182@gmail.com"
-              className="text-ink font-medium hover:text-accent transition-colors"
-            >
-              jslovejs182@gmail.com
+              captain@jpexstudio.com
             </a>
           </div>
         </div>

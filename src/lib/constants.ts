@@ -10,12 +10,12 @@
 export const SITE_CONFIG = {
   name: 'JpexStudio',
   title: 'JpexStudio - 홈페이지 제작 & AI 솔루션 개발',
-  description: '회사·병원·쇼핑몰 홈페이지 제작부터 AI 솔루션 개발까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹 개발 스튜디오입니다.',
+  description: '웹 서비스·SaaS부터 AI 에이전트, LLM 데이터셋 구축까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹·AI 개발 스튜디오입니다.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jpexstudio.com',
   ogImage: '/images/og-image.jpg',
   author: {
     name: 'JpexStudio',
-    email: 'jslovejs182@gmail.com',
+    email: 'captain@jpexstudio.com',
     twitter: '@jpex_dev',
     github: 'https://github.com/jpex-dev',
     linkedin: 'https://linkedin.com/in/jpex-dev',
@@ -428,8 +428,7 @@ export const SOCIAL_LINKS = {
 // ============================================================================
 
 export const CONTACT_INFO = {
-  email: 'jslovejs182@gmail.com',
-  phone: '010-2174-5072',
+  email: 'captain@jpexstudio.com',
   address: '서울 및 경기 협의',
   businessHours: {
     weekdays: '09:00 - 18:00',
