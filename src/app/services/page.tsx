@@ -30,6 +30,9 @@ const services = [
     description:
       'OpenAI API 및 최신 AI 기술을 활용한 맞춤형 자동화 및 지능형 시스템 개발',
     features: [
+      'LLM 학습/평가 데이터셋 구축 서비스',
+      'RAG 기반 사내 LLM 구축 서비스',
+      'AI Agent 컨설팅',
       '챗봇 개발 및 고도화',
       '문서 자동 분석 및 요약',
       '이미지/음성 인식 시스템',
