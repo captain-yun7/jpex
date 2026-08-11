@@ -35,7 +35,7 @@ export default function PortfolioContent() {
         categoryLabel: CATEGORY_LABEL[p.category] ?? p.category,
         image: p.image,
         year: p.year,
-        href: p.liveUrl || undefined,
+        href: p.detailHref ?? (p.liveUrl || undefined),
       } satisfies WorkItemData,
     }));
   }, [activeId]);

@@ -29,9 +29,39 @@ export interface Project {
   results: string[];
   duration: string;
   year: string;
+  /** 내부 상세 페이지 경로 (있으면 카드 클릭 시 liveUrl 대신 이동) */
+  detailHref?: string;
+  /** 납품처·파트너사 */
+  clients?: string[];
 }
 
 export const projects: Project[] = [
+  {
+    id: 9,
+    title: 'DomainXiom - LLM 학습/평가 데이터셋 제작 솔루션',
+    category: 'ai',
+    description:
+      '도메인 전문 문서를 OCR로 디지털화하고 RAG 파이프라인으로 QA 데이터셋을 생성한 뒤, 전문가(SME) 검수 웹앱으로 품질을 보증하는 고품질 LLM 학습/평가 데이터셋 제작 솔루션입니다.',
+    image: '/portfolio/domainxiom.png',
+    liveUrl: '',
+    detailHref: '/portfolio/domainxiom',
+    githubUrl: '',
+    technologies: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Docker', 'RAG', 'OCR'],
+    features: [
+      '전문 문서 아카이브 OCR 디지털화 (37,000+ 페이지)',
+      'RAG 파이프라인 기반 QA 데이터셋 자동 생성',
+      '전문가(SME) 다중사용자 검수 워크스페이스 (HITL)',
+      '검수 합의(IAA)·진행률 모니터링 및 데이터셋 반출',
+    ],
+    results: [
+      '고품질 LLM 학습/평가 데이터셋 구축',
+      '전문가 검수로 데이터 품질·저작권 보증',
+      '플리토·업스테이지·에이치제이엘 납품',
+    ],
+    clients: ['플리토', '업스테이지', '에이치제이엘'],
+    duration: '12주',
+    year: '2026',
+  },
   {
     id: 1,
     title: '쿠쿠배배 - 배달 실적 자동화 SaaS',
