@@ -48,11 +48,11 @@ export default function PortfolioContent() {
           Portfolio
         </p>
         <h1 className="text-3xl md:text-4xl lg:text-[52px] font-semibold text-ink leading-[1.2] tracking-tight max-w-4xl">
-          홈페이지 제작 <span className="text-accent-underline">포트폴리오</span>.
+          웹 서비스 & AI 개발 <span className="text-accent-underline">포트폴리오</span>.
         </h1>
         <p className="text-[16.5px] text-ink-muted mt-8 max-w-2xl leading-relaxed">
-          회사 홈페이지, 병원 홈페이지, 쇼핑몰, 분양 사이트 등 다양한 분야의
-          웹 개발 프로젝트를 확인해보세요.
+          웹 서비스, SaaS부터 AI 에이전트, LLM 데이터셋 구축까지 —
+          최신 기술로 완성한 다양한 프로젝트를 확인해보세요.
         </p>
       </section>
 
