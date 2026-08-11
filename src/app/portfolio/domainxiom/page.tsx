@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 
 const project = projects.find((p) => p.detailHref === '/portfolio/domainxiom')!;
 
+/** 납품처 공식 로고 (없는 곳은 텍스트로 표기) */
+const CLIENT_LOGOS: Record<string, { src: string; className: string }> = {
+  플리토: { src: '/portfolio/logos/flitto.svg', className: 'h-[19px]' },
+  업스테이지: { src: '/portfolio/logos/upstage.svg', className: 'h-[28px]' },
+};
+
 export default function DomainXiomPage() {
   return (
     <Layout>
@@ -83,14 +89,22 @@ export default function DomainXiomPage() {
               납품처 · 파트너사
             </h3>
             <ul className="space-y-2.5">
-              {(project.clients ?? []).map((c) => (
-                <li
-                  key={c}
-                  className="px-4 py-3 rounded-lg bg-surface-alt ring-1 ring-line text-[15px] font-medium text-ink"
-                >
-                  {c}
-                </li>
-              ))}
+              {(project.clients ?? []).map((c) => {
+                const logo = CLIENT_LOGOS[c];
+                return (
+                  <li
+                    key={c}
+                    className="flex items-center min-h-[52px] px-4 py-3 rounded-lg bg-surface-alt ring-1 ring-line"
+                  >
+                    {logo ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={logo.src} alt={c} className={`${logo.className} w-auto`} />
+                    ) : (
+                      <span className="text-[15px] font-medium text-ink">{c}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
