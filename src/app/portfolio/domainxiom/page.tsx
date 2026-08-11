@@ -24,7 +24,7 @@ export default function DomainXiomPage() {
       <section className="container mx-auto pt-20 lg:pt-32 pb-12 lg:pb-16">
         <Link
           href="/portfolio"
-          className="inline-flex items-center gap-1.5 text-[13.5px] text-ink-muted hover:text-ink transition-colors mb-8"
+          className="flex w-fit items-center gap-1.5 text-[13.5px] text-ink-muted hover:text-ink transition-colors mb-10"
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
