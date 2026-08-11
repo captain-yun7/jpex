@@ -10,31 +10,28 @@ import { projects } from './data';
 
 // SEO 메타데이터
 export const metadata: Metadata = {
-  title: '홈페이지 제작 포트폴리오 | 회사·병원·쇼핑몰 제작 전문 - JpexStudio',
-  description: '회사 홈페이지, 분양 사이트, AI 자동화 SaaS, AI 채점 시스템 등 실제 운영 중인 12개 프로젝트를 직접 확인하세요. JpexStudio는 라이브 URL로 검증된 웹 개발·AI 솔루션 포트폴리오를 제공합니다.',
+  title: '웹 서비스 & AI 개발 포트폴리오 | SaaS·AI 에이전트·LLM 데이터셋 - JpexStudio',
+  description: '웹 서비스, SaaS, AI 에이전트, LLM 학습/평가 데이터셋 구축 등 실제 운영 중인 프로젝트를 직접 확인하세요. JpexStudio는 라이브 URL로 검증된 웹·AI 개발 포트폴리오를 제공합니다.',
   keywords: [
+    'AI 솔루션 개발',
+    'AI 에이전트 개발',
+    'LLM 데이터셋 구축',
+    'RAG 구축',
+    'SaaS 개발',
+    '웹 서비스 개발',
+    '업무 자동화',
+    '챗봇 개발',
     '홈페이지 제작',
     '회사 홈페이지 제작',
-    '병원 홈페이지 제작',
-    '쇼핑몰 제작',
-    '분양 사이트 제작',
     '웹사이트 제작',
     '반응형 웹 제작',
-    '홈페이지 제작 업체',
-    '홈페이지 제작 회사',
     '웹 개발 외주',
-    '홈페이지 외주',
     '웹 에이전시',
-    '온라인 강의 플랫폼 제작',
-    '분양 홈페이지 제작',
     '기업 홈페이지 제작',
-    '반응형 홈페이지 제작',
-    '모바일 홈페이지 제작',
-    'AI 솔루션 개발'
   ],
   openGraph: {
-    title: '홈페이지 제작 포트폴리오 - 회사/병원/쇼핑몰 제작 전문 JpexStudio',
-    description: '실제 운영 중인 12개 프로젝트로 검증된 웹 개발·AI 솔루션 포트폴리오를 확인하세요.',
+    title: '웹 서비스 & AI 개발 포트폴리오 - JpexStudio',
+    description: '실제 운영 중인 프로젝트로 검증된 웹 서비스·SaaS·AI 솔루션 포트폴리오를 확인하세요.',
     type: 'website',
     locale: 'ko_KR',
     url: 'https://www.jpexstudio.com/portfolio',
@@ -42,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '홈페이지 제작 포트폴리오 - JpexStudio',
-    description: '실제 운영 중인 12개 프로젝트로 검증된 웹 개발·AI 솔루션 포트폴리오',
+    title: '웹 서비스 & AI 개발 포트폴리오 - JpexStudio',
+    description: '실제 운영 중인 프로젝트로 검증된 웹 서비스·SaaS·AI 솔루션 포트폴리오',
   },
   alternates: {
     canonical: 'https://www.jpexstudio.com/portfolio',
@@ -66,8 +63,8 @@ export default function PortfolioPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: '홈페이지 제작 포트폴리오 - JpexStudio',
-    description: '회사 홈페이지 제작, 분양 사이트 제작, AI 자동화 솔루션 등 실제 운영 중인 웹 개발 프로젝트 포트폴리오',
+    name: '웹 서비스 & AI 개발 포트폴리오 - JpexStudio',
+    description: '웹 서비스·SaaS 개발, AI 에이전트, LLM 데이터셋 구축 등 실제 운영 중인 웹·AI 프로젝트 포트폴리오',
     url: 'https://www.jpexstudio.com/portfolio',
     mainEntity: {
       '@type': 'ItemList',
@@ -96,7 +93,7 @@ export default function PortfolioPage() {
       '@type': 'Organization',
       name: 'JpexStudio',
       url: 'https://www.jpexstudio.com',
-      description: '홈페이지 제작, 웹 개발, AI 솔루션 전문 스튜디오',
+      description: '웹 서비스·SaaS·AI 솔루션 개발 전문 스튜디오',
       sameAs: [
         'https://github.com/jpex-dev'
       ]

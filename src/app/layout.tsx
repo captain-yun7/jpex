@@ -148,11 +148,13 @@ export default function RootLayout({
               sameAs: [SITE_CONFIG.author.github, SITE_CONFIG.author.linkedin],
               areaServed: 'KR',
               knowsAbout: [
-                '홈페이지 제작',
-                '웹사이트 개발',
-                'AI 솔루션 개발',
+                '웹 서비스 개발',
+                'SaaS 개발',
+                'AI 에이전트 개발',
+                'LLM 학습/평가 데이터셋 구축',
+                'RAG 시스템 구축',
                 '업무 자동화',
-                '반응형 웹',
+                '홈페이지 제작',
               ],
             }),
           }}

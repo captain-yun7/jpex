@@ -9,7 +9,7 @@
 
 export const SITE_CONFIG = {
   name: 'JpexStudio',
-  title: 'JpexStudio - 홈페이지 제작 & AI 솔루션 개발',
+  title: 'JpexStudio - 웹 서비스 & AI 솔루션 개발',
   description: '웹 서비스·SaaS부터 AI 에이전트, LLM 데이터셋 구축까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹·AI 개발 스튜디오입니다.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jpexstudio.com',
   ogImage: '/images/og-image.jpg',
@@ -445,12 +445,12 @@ export const CONTACT_INFO = {
 
 export const SEO_CONFIG = {
   titleTemplate: '%s | JpexStudio',
-  defaultTitle: 'JpexStudio - 홈페이지 제작 & AI 솔루션 개발',
-  description: '회사·병원·쇼핑몰 홈페이지 제작부터 AI 솔루션 개발까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹 개발 스튜디오입니다.',
+  defaultTitle: 'JpexStudio - 웹 서비스 & AI 솔루션 개발',
+  description: '웹 서비스·SaaS 개발부터 AI 에이전트, RAG, LLM 데이터셋 구축까지. JpexStudio는 실제 운영 중인 프로젝트로 검증된 웹·AI 개발 스튜디오입니다.',
   keywords: [
-    '홈페이지 제작', '웹사이트 제작', '회사 홈페이지 제작', '병원 홈페이지 제작',
-    '쇼핑몰 제작', '분양 사이트 제작', '반응형 웹 제작', '홈페이지 제작 업체',
-    'AI 솔루션 개발', '챗봇 개발', '업무 자동화', 'AI 개발',
+    'AI 솔루션 개발', 'AI 에이전트 개발', 'LLM 데이터셋 구축', 'RAG 구축',
+    '챗봇 개발', '업무 자동화', 'AI 개발', '웹 서비스 개발',
+    'SaaS 개발', '홈페이지 제작', '웹사이트 제작', '반응형 웹 제작',
     'React', 'Next.js', 'TypeScript', '웹 개발 외주',
   ],
   author: 'JpexStudio',
