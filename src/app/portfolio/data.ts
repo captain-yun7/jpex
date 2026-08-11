@@ -42,9 +42,8 @@ export const projects: Project[] = [
     category: 'ai',
     description:
       '도메인 전문 문서를 OCR로 디지털화하고 RAG 파이프라인으로 QA 데이터셋을 생성한 뒤, 전문가(SME) 검수 웹앱으로 품질을 보증하는 고품질 LLM 학습/평가 데이터셋 제작 솔루션입니다.',
-    image: '/portfolio/domainxiom.png',
-    liveUrl: '',
-    detailHref: '/portfolio/domainxiom',
+    image: shot('https://domainxiom.vercel.app'),
+    liveUrl: 'https://domainxiom.vercel.app',
     githubUrl: '',
     technologies: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Docker', 'RAG', 'OCR'],
     features: [

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     '도메인 전문 문서를 OCR·RAG 파이프라인으로 가공하고 전문가 검수로 품질을 보증하는 고품질 LLM 학습/평가 데이터셋 제작 솔루션. 플리토·업스테이지·에이치제이엘 납품.',
 };
 
-const project = projects.find((p) => p.detailHref === '/portfolio/domainxiom')!;
+const project = projects.find((p) => p.title.startsWith('DomainXiom'))!;
 
 /** 납품처 공식 로고 (없는 곳은 텍스트로 표기) */
 const CLIENT_LOGOS: Record<string, { src: string; className: string }> = {
@@ -48,7 +48,7 @@ export default function DomainXiomPage() {
         <div className="rounded-xl overflow-hidden ring-1 ring-line shadow-card bg-surface-alt">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={project.image}
+            src="/portfolio/domainxiom.png"
             alt="DomainXiom 전문가 검수 워크스페이스"
             className="w-full h-auto"
           />
